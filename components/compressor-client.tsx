@@ -170,9 +170,9 @@ export function CompressorClient() {
       </div>
 
       <p className="hint">
-        브라우저에서 처리되며 서버는 압축에만 사용됩니다. 민감한 이미지는 오프라인
-        도구를 권장합니다.{" "}
-        <Link href="/blog">이미지 용량·SEO 팁</Link>은 블로그를 참고하세요.
+        업로드한 이미지는 서버에 저장하지 않으며, 처리 후 결과 파일만 다운로드할 수
+        있습니다. 개인·업무상 민감한 원본은 가능하면 로컬에서 다루는 것을 권장합니다.{" "}
+        <Link href="/blog">이미지 용량·SEO 팁</Link>은 블로그에서 확인하세요.
       </p>
 
       <style jsx>{`
@@ -184,8 +184,13 @@ export function CompressorClient() {
           background: var(--card);
           border: 1px solid var(--border);
           border-radius: 12px;
-          padding: 1.5rem;
+          padding: 1rem 1rem 1.15rem;
           box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+        }
+        @media (min-width: 640px) {
+          .card {
+            padding: 1.5rem;
+          }
         }
         .label {
           display: block;
@@ -218,19 +223,23 @@ export function CompressorClient() {
           cursor: pointer;
         }
         .btn-primary {
-          margin-top: 1.25rem;
+          margin-top: 1rem;
           width: 100%;
-          padding: 0.75rem 1rem;
-          font-size: 1rem;
-          font-weight: 600;
+          padding: 0.9rem 1.1rem;
+          font-size: 1.06rem;
+          font-weight: 700;
+          letter-spacing: -0.02em;
           color: #fff;
-          background: var(--accent);
+          background: linear-gradient(180deg, #10b981 0%, #059669 100%);
           border: none;
-          border-radius: 8px;
+          border-radius: 10px;
           cursor: pointer;
+          box-shadow: 0 2px 8px rgb(5 150 105 / 0.35);
+          min-height: 48px;
         }
         .btn-primary:hover:not(:disabled) {
-          background: var(--accent-hover);
+          background: linear-gradient(180deg, #059669 0%, #047857 100%);
+          box-shadow: 0 3px 10px rgb(5 150 105 / 0.45);
         }
         .btn-primary:disabled {
           opacity: 0.5;
@@ -271,10 +280,18 @@ export function CompressorClient() {
           font-weight: 600;
         }
         .hint {
-          margin-top: 1.5rem;
-          font-size: 0.85rem;
+          margin-top: 1rem;
+          font-size: 0.8rem;
           color: var(--muted);
           text-align: center;
+          line-height: 1.55;
+          padding: 0 0.15rem;
+        }
+        @media (min-width: 640px) {
+          .hint {
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+          }
         }
       `}</style>
     </div>

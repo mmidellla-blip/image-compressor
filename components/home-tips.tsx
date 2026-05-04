@@ -47,9 +47,15 @@ export function HomeTips() {
       </p>
       <style>{`
         .tips {
-          margin-top: 2.5rem;
-          padding-top: 2rem;
+          margin-top: 1.25rem;
+          padding-top: 1.25rem;
           border-top: 1px solid var(--border);
+        }
+        @media (min-width: 640px) {
+          .tips {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+          }
         }
         .tips-title {
           font-size: 1.15rem;

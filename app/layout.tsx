@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { getPublicSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+const siteUrl = getPublicSiteUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  ...(siteUrl ? { metadataBase: siteUrl } : {}),
   title: {
     default:
       "이미지 용량 줄이기 무료 사이트 | JPG·PNG 압축, 사진 용량 줄이기",
