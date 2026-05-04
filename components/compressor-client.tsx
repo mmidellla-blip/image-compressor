@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
-import { AdsenseSlot } from "./adsense-slot";
 
 function formatBytes(n: number) {
   if (n < 1024) return `${n} B`;
@@ -88,11 +87,6 @@ export function CompressorClient() {
 
   return (
     <div className="compressor">
-      <AdsenseSlot
-        slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_HOME ?? "home-inline"}
-        className="mb-8"
-      />
-
       <div className="card">
         <label className="label" htmlFor="file">
           이미지 선택

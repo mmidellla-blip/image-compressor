@@ -13,11 +13,13 @@ export function SiteChrome({
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo">
-            용량 줄이기
+            이미지 용량 줄이기
           </Link>
           <nav className="nav" aria-label="주요 메뉴">
-            <Link href="/">압축</Link>
+            <Link href="/">홈</Link>
             <Link href="/blog">블로그</Link>
+            <Link href="/about">소개</Link>
+            <Link href="/contact">문의</Link>
           </nav>
         </div>
       </header>
@@ -27,7 +29,45 @@ export function SiteChrome({
       </main>
 
       <footer className="footer">
-        <p>© {new Date().getFullYear()} · 이미지 용량 줄이기</p>
+        <div className="footer-grid">
+          <div>
+            <p className="footer-brand">이미지 용량 줄이기</p>
+            <p className="footer-tag">
+              사진·JPG·PNG 용량 줄이기와 이미지 압축 가이드를 제공합니다.
+            </p>
+          </div>
+          <div>
+            <p className="footer-col-title">콘텐츠</p>
+            <ul className="footer-links">
+              <li>
+                <Link href="/">이미지 압축 도구</Link>
+              </li>
+              <li>
+                <Link href="/blog">블로그</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="footer-col-title">사이트</p>
+            <ul className="footer-links">
+              <li>
+                <Link href="/about">소개</Link>
+              </li>
+              <li>
+                <Link href="/contact">문의</Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy">개인정보처리방침</Link>
+              </li>
+              <li>
+                <Link href="/terms">이용약관</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p className="footer-copy">
+          © {new Date().getFullYear()} · 이미지 용량 줄이기
+        </p>
       </footer>
 
       <style>{`
@@ -47,20 +87,24 @@ export function SiteChrome({
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 1rem;
+          flex-wrap: wrap;
         }
         .logo {
-          font-weight: 700;
+          font-weight: 800;
           text-decoration: none;
           color: var(--fg);
+          font-size: 0.95rem;
         }
         .nav {
           display: flex;
-          gap: 1.25rem;
+          flex-wrap: wrap;
+          gap: 0.75rem 1.1rem;
         }
         .nav a {
           text-decoration: none;
           color: var(--muted);
-          font-size: 0.9rem;
+          font-size: 0.88rem;
         }
         .nav a:hover {
           color: var(--accent);
@@ -74,9 +118,62 @@ export function SiteChrome({
         }
         .footer {
           border-top: 1px solid var(--border);
-          padding: 1rem;
-          text-align: center;
+          background: #fff;
+          padding: 1.5rem 1rem 1.25rem;
+        }
+        .footer-grid {
+          max-width: 56rem;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+          .footer-grid {
+            grid-template-columns: 1.4fr 1fr 1fr;
+          }
+        }
+        .footer-brand {
+          font-weight: 800;
+          margin: 0 0 0.35rem;
+          font-size: 0.95rem;
+        }
+        .footer-tag {
+          margin: 0;
+          font-size: 0.85rem;
+          color: var(--muted);
+          line-height: 1.55;
+        }
+        .footer-col-title {
           font-size: 0.8rem;
+          font-weight: 700;
+          margin: 0 0 0.5rem;
+          color: var(--fg);
+        }
+        .footer-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .footer-links li {
+          margin-bottom: 0.35rem;
+        }
+        .footer-links a {
+          font-size: 0.85rem;
+          color: var(--muted);
+          text-decoration: none;
+        }
+        .footer-links a:hover {
+          color: var(--accent);
+        }
+        .footer-copy {
+          max-width: 56rem;
+          margin: 1.25rem auto 0;
+          text-align: center;
+          font-size: 0.75rem;
+          color: var(--muted);
+        }
+        .footer-copy a {
           color: var(--muted);
         }
       `}</style>
