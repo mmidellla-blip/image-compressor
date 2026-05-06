@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { SITE_BRAND } from "@/lib/site-brand";
 import { getPublicSiteUrl } from "@/lib/site-url";
 import "./globals.css";
@@ -36,6 +37,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <Script
+          id="adsense-script"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200717713315446"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <a href="#main" className="skip-link">
           본문으로 건너뛰기
         </a>
