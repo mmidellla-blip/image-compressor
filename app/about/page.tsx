@@ -52,6 +52,15 @@ export default function AboutPage() {
           필요한 사고방식과 도구 사용법을 함께 다룹니다.
         </p>
 
+        <h2 className="legal-h2">광고 및 운영</h2>
+        <p>
+          서버·도메인 등 운영 비용의 일부를 충당하기 위해 제3자 광고(예: Google AdSense)를
+          게재할 수 있습니다. 광고는 방문 페이지와 이용자 관심사에 따라 자동으로 선택·표시될
+          수 있으며, 쿠키 등에 대한 안내는{" "}
+          <Link href="/privacy-policy#adsense">개인정보처리방침</Link>에서 확인할 수
+          있습니다.
+        </p>
+
         <h2 className="legal-h2">면책 안내</h2>
         <p>
           도구는 편의를 위해 제공되며, 결과물의 최종 사용 책임은 사용자에게 있습니다.

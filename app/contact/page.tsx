@@ -17,8 +17,11 @@ export default function ContactPage() {
       <article>
         <h1 className="legal-h1">문의</h1>
         <p className="legal-lead">
-          서비스 이용, 콘텐츠 오류 제보, 저작권 관련 문의는 아래 양식을 통해 메일을 보내
-          주세요. 답변 가능한 범위에서 순차적으로 회신드립니다.
+          서비스 이용, 콘텐츠 오류 제보, 저작권·개인정보·광고(쿠키) 관련 문의는 아래 양식을
+          통해 메일을 보내 주세요. 답변 가능한 범위에서 순차적으로 회신드립니다. 공개
+          심사·운영 전에는 실제 수신 가능한 이메일로{" "}
+          <code className="inline-code">NEXT_PUBLIC_CONTACT_EMAIL</code> 을 설정하는 것을
+          권장합니다.
         </p>
 
         <h2 className="legal-h2">연락 방법</h2>
@@ -56,6 +59,12 @@ export default function ContactPage() {
           line-height: 1.75;
           margin: 0 0 1rem;
         }
+        .inline-code {
+          font-size: 0.88em;
+          background: #f5f5f5;
+          padding: 0.1rem 0.35rem;
+          border-radius: 4px;
+        }
         .legal-h2 {
           font-size: 1.15rem;
           font-weight: 800;
@@ -65,12 +74,6 @@ export default function ContactPage() {
           margin: 0 0 1rem;
           line-height: 1.75;
           font-size: 0.95rem;
-        }
-        .inline-code {
-          font-size: 0.88em;
-          background: #f5f5f5;
-          padding: 0.1rem 0.35rem;
-          border-radius: 4px;
         }
         .legal-muted {
           font-size: 0.88rem;

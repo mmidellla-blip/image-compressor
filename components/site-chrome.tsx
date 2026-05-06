@@ -65,6 +65,10 @@ export function SiteChrome({
             </ul>
           </div>
         </div>
+        <p className="footer-cookie">
+          쿠키 및 맞춤 광고에 관한 안내는{" "}
+          <Link href="/privacy-policy#adsense">개인정보처리방침</Link>을 참고하세요.
+        </p>
         <p className="footer-copy">
           © {new Date().getFullYear()} · 이미지 용량 줄이기
         </p>
@@ -166,9 +170,26 @@ export function SiteChrome({
         .footer-links a:hover {
           color: var(--accent);
         }
-        .footer-copy {
+        .footer-cookie {
           max-width: 56rem;
           margin: 1.25rem auto 0;
+          padding: 0 0.5rem;
+          text-align: center;
+          font-size: 0.75rem;
+          color: var(--muted);
+          line-height: 1.55;
+        }
+        .footer-cookie a {
+          color: var(--muted);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+        .footer-cookie a:hover {
+          color: var(--accent);
+        }
+        .footer-copy {
+          max-width: 56rem;
+          margin: 0.65rem auto 0;
           text-align: center;
           font-size: 0.75rem;
           color: var(--muted);

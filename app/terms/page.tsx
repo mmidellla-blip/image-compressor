@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-  const updated = "2026년 5월 4일";
+  const updated = "2026년 5월 6일";
   return (
     <SiteChrome mainClassName="legal-main">
       <article>
@@ -79,9 +79,18 @@ export default function TermsPage() {
           민사소송법 등 관련 법령에 따릅니다.
         </p>
 
-        <h2 className="legal-h2">제9조 (문의)</h2>
+        <h2 className="legal-h2">제9조 (광고 및 제3자 서비스)</h2>
         <p>
-          본 약관과 관련된 문의는 <Link href="/contact">문의 페이지</Link>를 이용해 주세요.
+          사이트에는 Google AdSense 등 제3자가 제공하는 광고가 표시될 수 있습니다. 광고의
+          내용·진실성·적법성은 각 광고주 또는 광고 네트워크의 책임이며, 사이트 운영자는 제3자
+          광고의 내용을 보증하지 않습니다. 광고 표시와 관련된 데이터 처리(쿠키 등)에 대해서는{" "}
+          <Link href="/privacy-policy#adsense">개인정보처리방침</Link>의 관련 조항을 따릅니다.
+        </p>
+
+        <h2 className="legal-h2">제10조 (문의)</h2>
+        <p>
+          본 약관·광고·개인정보와 관련된 문의는 <Link href="/contact">문의 페이지</Link>를
+          이용해 주세요.
         </p>
 
         <p className="legal-back">
