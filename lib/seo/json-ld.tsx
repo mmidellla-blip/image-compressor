@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/tools/types";
+import { SITE_BRAND } from "@/lib/site-brand";
 
 type JsonLdGraphProps = {
   id: string;
@@ -75,6 +76,28 @@ export function buildBreadcrumbListLd(
   };
 }
 
+/** 도구 사용 방법 — 검색·AI 답변용 HowTo */
+export function buildHowToLd(args: {
+  name: string;
+  description: string;
+  url: string;
+  steps: { name: string; text: string }[];
+}): Record<string, unknown> {
+  return {
+    "@type": "HowTo",
+    name: args.name,
+    description: args.description,
+    url: args.url,
+    inLanguage: "ko-KR",
+    step: args.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 /** 블로그 글 — 검색·소셜 미리보기 보조 */
 export function buildArticleLd(args: {
   headline: string;
@@ -96,11 +119,11 @@ export function buildArticleLd(args: {
     dateModified: mod,
     author: {
       "@type": "Organization",
-      name: "무료 온라인 이미지 툴 모음",
+      name: SITE_BRAND,
     },
     publisher: {
       "@type": "Organization",
-      name: "무료 온라인 이미지 툴 모음",
+      name: SITE_BRAND,
     },
   };
 }

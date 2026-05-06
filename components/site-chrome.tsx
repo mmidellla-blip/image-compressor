@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SITE_INFO_LAST_UPDATED } from "@/lib/site-config";
+import { SITE_BRAND } from "@/lib/site-brand";
 import { getAllToolDefinitions } from "@/lib/tools/definitions";
 
 export function SiteChrome({
@@ -16,8 +17,9 @@ export function SiteChrome({
     <div className="site">
       <header className="header">
         <div className="header-inner">
-          <Link href="/" className="logo">
-            무료 이미지 툴 모음
+          <Link href="/" className="logo" aria-label={`${SITE_BRAND} 홈`}>
+            <span className="logo-name">{SITE_BRAND}</span>
+            <span className="logo-tag">브라우저 처리 · 무료 이미지 툴</span>
           </Link>
           <nav className="nav" aria-label="주요 메뉴">
             <Link href="/">홈</Link>
@@ -36,10 +38,10 @@ export function SiteChrome({
       <footer className="footer">
         <div className="footer-grid">
           <div>
-            <p className="footer-brand">무료 온라인 이미지 툴 모음</p>
+            <p className="footer-brand">{SITE_BRAND}</p>
             <p className="footer-tag">
-              이미지 용량 줄이기·포맷 변환·크기 조절·PDF 변환 등 브라우저에서 처리하는 무료
-              이미지 툴을 제공합니다.
+              이미지 압축·포맷 변환·크기 조절·PDF 변환 등을 회원가입 없이 브라우저에서 처리할 수
+              있도록 구성했습니다.
             </p>
           </div>
           <div>
@@ -90,7 +92,7 @@ export function SiteChrome({
           <Link href="/privacy-policy">개인정보처리방침</Link>을 참고하세요.
         </p>
         <p className="footer-meta">
-          최종 정보 갱신: {SITE_INFO_LAST_UPDATED} · © {new Date().getFullYear()} 무료 이미지 툴 모음
+          최종 정보 갱신: {SITE_INFO_LAST_UPDATED} · © {new Date().getFullYear()} {SITE_BRAND}
         </p>
       </footer>
 
@@ -115,10 +117,22 @@ export function SiteChrome({
           flex-wrap: wrap;
         }
         .logo {
+          display: flex;
+          flex-direction: column;
+          gap: 0.08rem;
           font-weight: 800;
           text-decoration: none;
           color: var(--fg);
-          font-size: 0.95rem;
+          line-height: 1.2;
+        }
+        .logo-name {
+          font-size: 1.02rem;
+          letter-spacing: -0.02em;
+        }
+        .logo-tag {
+          font-size: 0.68rem;
+          font-weight: 600;
+          color: var(--muted);
         }
         .nav {
           display: flex;

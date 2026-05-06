@@ -8,11 +8,13 @@ import {
   JsonLdScript,
   buildBreadcrumbListLd,
   buildFaqPageLd,
+  buildHowToLd,
   buildWebApplicationLd,
 } from "@/lib/seo/json-ld";
 import { getToolDefinition } from "@/lib/tools/definitions";
 import { TOOL_SEO_SUPPLEMENTS } from "@/lib/tools/seo-supplements";
 import type { ToolSlug } from "@/lib/tools/types";
+import { SITE_BRAND } from "@/lib/site-brand";
 import { getCanonicalUrl } from "@/lib/site-url";
 import type { ReactNode } from "react";
 
@@ -38,6 +40,15 @@ export function ToolLayout({ slug, children }: Props) {
       name: t.h1,
       description: t.schemaDescription,
       url: appUrl,
+    }),
+    buildHowToLd({
+      name: `${t.h1} — 사용 방법`,
+      description: t.schemaDescription,
+      url: appUrl,
+      steps: t.howToSteps.map((s) => ({
+        name: s.title,
+        text: s.body,
+      })),
     }),
     buildFaqPageLd(t.faqs),
     buildBreadcrumbListLd([
@@ -120,7 +131,7 @@ export function ToolLayout({ slug, children }: Props) {
 
         <nav className="tool-end-nav" aria-label="관련 페이지">
           <Link href="/" className="tool-end-link">
-            ← 무료 이미지 툴 모음 홈
+            ← {SITE_BRAND} 홈
           </Link>
           <Link href="/blog" className="tool-end-link">
             블로그 전체

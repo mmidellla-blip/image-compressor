@@ -1,8 +1,9 @@
 import { ImageResponse } from "next/og";
+import { SITE_BRAND } from "@/lib/site-brand";
 
 export const runtime = "edge";
 
-export const alt = "무료 온라인 이미지 툴 모음 — 압축 · 변환 · 크기조절 · PDF";
+export const alt = `${SITE_BRAND} — 압축 · 변환 · 크기조절 · PDF`;
 
 export const size = {
   width: 1200,
@@ -51,7 +52,7 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.02em",
             }}
           >
-            무료 온라인 이미지 툴 모음
+            {SITE_BRAND}
           </div>
         </div>
         <div

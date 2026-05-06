@@ -72,8 +72,18 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         answer:
           "업로드는 가능하지만, 사진 위주 PNG는 JPEG나 WebP로 바꾸면 이미지 용량 줄이기 효과가 큰 경우가 많습니다.",
       },
+      {
+        question: "JPG 용량을 줄이면 화질이 깨지나요?",
+        answer:
+          "용량을 줄일 때 손실 압축이 들어가면 디테일이 줄어들 수 있습니다. 목표 용량을 너무 낮게 잡지 말고, 결과를 확대해 글자·얼굴 윤곽·작은 텍스트를 확인하세요.",
+      },
+      {
+        question: "WebP 파일은 어디서 안 열리나요?",
+        answer:
+          "일부 구형 PC 사진 앱, 오래된 인쇄소·행정망 PC, 구형 모바일 뷰어에서 문제가 될 수 있습니다. 제출처가 JPG만 허용하면 JPEG로 내보내세요.",
+      },
     ],
-    relatedToolSlugs: ["jpg-to-png", "png-to-webp", "resize", "passport-photo"],
+    relatedToolSlugs: ["png-to-webp", "resize", "pdf-convert", "jpg-to-png"],
     relatedBlogSlugs: [
       "이미지-압축-방법",
       "jpg-용량-줄이기",
@@ -203,6 +213,11 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         answer:
           "품질 손실이 큰 경우입니다. PNG→WebP 대신 ‘이미지 용량 줄이기’에서 JPEG을 쓰거나, 원본 해상도를 올려 다시 시도해 보세요.",
       },
+      {
+        question: "WebP는 어디서 안 열리나요?",
+        answer:
+          "구형 브라우저·뷰어, 일부 민원·은행 내부 PC, 메일 첨부 미리보기에서 안 열릴 수 있습니다. 제출 전에는 JPG/PNG 요구 사항을 확인하고, 필요하면 JPEG로 다시 저장하세요.",
+      },
     ],
     relatedToolSlugs: ["compress", "jpg-to-png", "resize", "gif-compress"],
     relatedBlogSlugs: [
@@ -280,6 +295,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     relatedBlogSlugs: ["이미지-압축-방법", "온라인-이미지-압축", "무료-이미지-줄이기-툴"],
     schemaDescription:
       "GIF 이미지 압축 서비스(준비 중) 안내 및 대안 무료 이미지 툴 링크를 제공합니다.",
+    homeGrid: "experimental",
   },
   {
     slug: "resize",
@@ -314,6 +330,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     ],
     useCasesTitle: "이럴 때 사용하세요",
     useCases: [
+      "카카오톡 프로필·오픈채팅 배경 등에서 권장 픽셀·용량 안내가 있을 때",
       "게시판·블로그 첨부 규격에 ‘가로 n픽셀 이하’가 있을 때",
       "사람인·잡코리아 등 프로필 사진 픽셀 안내에 맞추기 전",
       "공공기관·학교 과제 제출란에 해상도 제한이 있을 때",
@@ -340,6 +357,11 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         question: "리사이즈 후에도 용량 제한에 안 맞아요.",
         answer:
           "픽셀만 줄고 파일 포맷이 무겁게 남았을 수 있습니다. 같은 이미지를 ‘이미지 용량 줄이기’에서 JPEG으로 한 번 더 맞춰 보세요.",
+      },
+      {
+        question: "사람인·잡코리아 프로필은 픽셀만 맞추면 되나요?",
+        answer:
+          "픽셀과 파일 용량 제한이 함께 있는 경우가 많습니다. 크기 조절 후에도 MB·KB 상한에 걸리면 압축 도구로 이어서 맞추세요.",
       },
     ],
     relatedToolSlugs: ["compress", "passport-photo", "jpg-to-png", "pdf-convert"],
@@ -412,8 +434,13 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         answer:
           "용량 외에 가로·세로 픽셀·확장자 제한이 있을 수 있습니다. 블로그의 ‘취업 사진 업로드 오류 해결’ 글과 함께 순서대로 점검해 보세요.",
       },
+      {
+        question: "증명사진 용량 제한은 보통 얼마까지인가요?",
+        answer:
+          "접수처마다 다릅니다. 흔히 500KB~2MB, 픽셀은 수백~수천 px로 제한하는 경우가 많습니다. 사람인·잡코리아·공공 전자민원 화면에 표시된 숫자를 그대로 맞추는 것이 안전합니다.",
+      },
     ],
-    relatedToolSlugs: ["compress", "resize", "jpg-to-png", "png-to-webp"],
+    relatedToolSlugs: ["compress", "resize", "png-to-webp", "pdf-convert"],
     relatedBlogSlugs: [
       "증명사진-용량-줄이는-방법",
       "jpg-용량-줄이기",
@@ -456,6 +483,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     useCasesTitle: "이럴 때 사용하세요",
     useCases: [
       "공공기관·학교 과제에 서류 여 장을 ‘한 개 PDF’로 제출해야 할 때",
+      "사람인·잡코리아 등에서 서류·포트폴리오를 PDF로만 업로드해야 할 때",
       "스마트폰으로 연속 촬영한 서류를 순서대로 묶을 때",
       "이메일·메신저로 여러 이미지를 한 번에 보내야 할 때",
       "이력서·포트폴리오 이미지를 한 파일로 정리해 올릴 때",
@@ -481,6 +509,11 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         question: "페이지 순서가 뒤바뀌었어요.",
         answer:
           "브라우저에서 파일을 다시 선택할 때 목록 순서대로 들어갑니다. 한 장씩 순서를 확인하며 고르거나, 파일명 숫자 접두어로 정렬해 보세요.",
+      },
+      {
+        question: "사람인·잡코리아에 PDF만 올리라고 나오는데 이미지만 있어요.",
+        answer:
+          "이 도구로 JPG·PNG를 한 파일 PDF로 묶은 뒤 업로드하면 됩니다. 용량 제한이 있으면 먼저 ‘이미지 용량 줄이기’로 각 장을 줄인 다음 PDF로 합치세요.",
       },
     ],
     relatedToolSlugs: ["compress", "resize", "jpg-to-png", "png-to-webp"],
@@ -696,6 +729,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     ],
     schemaDescription:
       "사진 모자이크 기능(준비 중) 안내 및 개인정보 최소 노출 습관을 안내합니다.",
+    homeGrid: "experimental",
   },
   {
     slug: "background-remove",
@@ -764,6 +798,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     ],
     schemaDescription:
       "이미지 배경 제거 기능(준비 중) 안내 및 촬영·포맷 대안을 제공합니다.",
+    homeGrid: "experimental",
   },
 ];
 
@@ -777,6 +812,18 @@ export function getToolDefinition(slug: ToolSlug): ToolDefinition {
 
 export function getAllToolDefinitions(): ToolDefinition[] {
   return TOOL_DEFINITIONS;
+}
+
+/** 홈 상단·메인 그리드(실험·로드맵 제외) */
+export function getHomePrimaryTools(): ToolDefinition[] {
+  return TOOL_DEFINITIONS.filter(
+    (t) => t.homeGrid !== "experimental" && t.homeGrid !== "omit",
+  );
+}
+
+/** 홈 하단 ‘실험·로드맵’ 소구역 */
+export function getHomeExperimentalTools(): ToolDefinition[] {
+  return TOOL_DEFINITIONS.filter((t) => t.homeGrid === "experimental");
 }
 
 export function isToolSlug(s: string): s is ToolSlug {

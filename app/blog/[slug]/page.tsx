@@ -15,6 +15,7 @@ import {
   getPostBySlug,
   getRelatedPosts,
 } from "@/lib/blog-posts";
+import { SITE_BRAND } from "@/lib/site-brand";
 import { getCanonicalUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -125,7 +126,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
         <BlogRelatedTools toolSlugs={toolKeys} />
 
-        <aside className="cta-box" aria-label="무료 이미지 툴 안내">
+        <aside className="cta-box" aria-label="도구 안내">
           <p>
             브라우저에서 바로 쓰는{" "}
             <Link href="/compress" className="cta-link">
@@ -136,8 +137,16 @@ export default async function BlogArticlePage({ params }: Props) {
               PNG → WebP
             </Link>
             ,{" "}
+            <Link href="/resize" className="cta-link">
+              이미지 크기 조절
+            </Link>
+            ,{" "}
+            <Link href="/pdf-convert" className="cta-link">
+              PDF 변환
+            </Link>
+            ,{" "}
             <Link href="/" className="cta-link">
-              무료 이미지 툴 모음 홈
+              {SITE_BRAND} 홈
             </Link>
             으로 이어서 이용해 보세요.
           </p>
@@ -161,7 +170,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
         <nav className="article-site-nav" aria-label="사이트 이동">
           <Link href="/" className="article-home-link">
-            ← 무료 이미지 툴 모음 홈으로
+            ← {SITE_BRAND} 홈으로
           </Link>
         </nav>
       </article>

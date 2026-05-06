@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_BRAND } from "@/lib/site-brand";
 import { getToolDefinition, type ToolSlug } from "@/lib/tools/definitions";
 import { getCanonicalUrl } from "@/lib/site-url";
 
@@ -18,7 +19,7 @@ export function buildToolMetadata(slug: ToolSlug): Metadata {
       ...(canonical ? { url: canonical } : {}),
       locale: "ko_KR",
       type: "website",
-      siteName: "무료 온라인 이미지 툴 모음",
+      siteName: SITE_BRAND,
     },
     robots: { index: true, follow: true },
   };

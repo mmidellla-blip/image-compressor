@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_BRAND } from "@/lib/site-brand";
 import { getPublicSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -7,11 +8,11 @@ const siteUrl = getPublicSiteUrl();
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: siteUrl } : {}),
   title: {
-    default: "무료 온라인 이미지 툴 모음 | 압축·변환·PDF",
-    template: "%s | 무료 이미지 툴 모음",
+    default: `${SITE_BRAND} | 무료 이미지 압축·변환 (브라우저)`,
+    template: `%s | ${SITE_BRAND}`,
   },
   description:
-    "이미지 용량 줄이기, JPG·PNG·WebP 변환, 이미지 크기 조절, 증명사진 압축, PDF 변환 등 무료 이미지 툴을 모았습니다.",
+    "회원가입 없이 브라우저에서 이미지 용량 줄이기, JPG·PNG·WebP 변환, 크기 조절, 증명사진·PDF까지 무료로 처리합니다. 서버 저장 없이 이용할 수 있습니다.",
   keywords: [
     "무료 이미지 툴",
     "이미지 용량 줄이기",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "무료 온라인 이미지 툴 모음",
+    siteName: SITE_BRAND,
   },
   robots: { index: true, follow: true },
 };

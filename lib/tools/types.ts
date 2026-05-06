@@ -49,4 +49,9 @@ export type ToolDefinition = {
   relatedBlogSlugs: string[];
   /** schema.org WebApplication.description */
   schemaDescription: string;
+  /**
+   * 홈 도구 그리드: 기본 | 실험·로드맵(하단 소구역) | 생략(푸터·직접 링크만).
+   * 미지정 시 primary.
+   */
+  homeGrid?: "primary" | "experimental" | "omit";
 };

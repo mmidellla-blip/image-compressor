@@ -15,10 +15,10 @@ const CARD_VISUAL: Record<
   resize: { emoji: "↔️", category: "크기 조절" },
   "passport-photo": { emoji: "🪪", category: "증명사진" },
   "pdf-convert": { emoji: "📄", category: "PDF" },
-  "heic-to-jpg": { emoji: "📱", category: "준비 중" },
-  "pdf-compress": { emoji: "📑", category: "준비 중" },
-  "photo-mosaic": { emoji: "🔒", category: "준비 중" },
-  "background-remove": { emoji: "✂️", category: "준비 중" },
+  "heic-to-jpg": { emoji: "📱", category: "HEIC → JPG" },
+  "pdf-compress": { emoji: "📑", category: "PDF 압축" },
+  "photo-mosaic": { emoji: "🔒", category: "모자이크" },
+  "background-remove": { emoji: "✂️", category: "배경 제거" },
 };
 
 type Props = {
@@ -29,6 +29,8 @@ type Props = {
 
 export function ToolCard({ tool, variant = "default" }: Props) {
   const visual = CARD_VISUAL[tool.slug];
+  const isExperimental = tool.homeGrid === "experimental";
+  const category = isExperimental ? "실험·로드맵" : visual.category;
   const shortDesc =
     tool.intro.length > 72 ? `${tool.intro.slice(0, 72).trim()}…` : tool.intro;
   const isHome = variant === "home";
@@ -44,7 +46,7 @@ export function ToolCard({ tool, variant = "default" }: Props) {
         <span className="tool-card-emoji" aria-hidden>
           {visual.emoji}
         </span>
-        <span className="tool-card-cat">{visual.category}</span>
+        <span className="tool-card-cat">{category}</span>
       </div>
       <span className="tool-card-title">{tool.h1}</span>
       <span className="tool-card-desc">{shortDesc}</span>
@@ -88,11 +90,10 @@ export function ToolCard({ tool, variant = "default" }: Props) {
         }
         .tool-card:hover {
           border-color: #6ee7b7;
-          box-shadow: 0 8px 24px rgb(5 150 105 / 0.14);
-          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgb(5 150 105 / 0.12);
         }
         .tool-card:active {
-          transform: translateY(0);
+          box-shadow: 0 2px 8px rgb(5 150 105 / 0.1);
         }
         .tool-card:focus-visible {
           outline: 2px solid var(--accent);
