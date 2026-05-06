@@ -45,7 +45,8 @@ export default async function BlogArticlePage({ params }: Props) {
 
   const related = getRelatedPosts(slug, 3);
   const toolKeys: ToolSlug[] =
-    blogRelatedToolSlugs[post.slug] ?? (["compress", "png-to-webp", "resize"] as const);
+    blogRelatedToolSlugs[post.slug] ??
+    (["compress", "heic-to-jpg", "passport-photo", "pdf-convert"] as const);
 
   const path = `/blog/${encodeURIComponent(post.slug)}`;
   const canonical = getCanonicalUrl(path) ?? path;
@@ -139,6 +140,14 @@ export default async function BlogArticlePage({ params }: Props) {
             ,{" "}
             <Link href="/resize" className="cta-link">
               이미지 크기 조절
+            </Link>
+            ,{" "}
+            <Link href="/heic-to-jpg" className="cta-link">
+              HEIC → JPG
+            </Link>
+            ,{" "}
+            <Link href="/passport-photo" className="cta-link">
+              증명사진 용량 줄이기
             </Link>
             ,{" "}
             <Link href="/pdf-convert" className="cta-link">

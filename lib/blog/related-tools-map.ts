@@ -21,7 +21,12 @@ export const blogRelatedToolSlugs: Partial<Record<string, ToolSlug[]>> = {
   "카카오톡-사진-용량-줄이기": ["compress", "resize", "png-to-webp"],
   "블로그-본문-이미지-용량-줄이기": ["compress", "resize", "png-to-webp"],
   "쇼핑몰-상세페이지-이미지-최적화": ["compress", "png-to-webp", "resize"],
-  "아이폰-heic-사진-jpg-변환-방법": ["compress", "resize", "jpg-to-png"],
+  "아이폰-heic-사진-jpg-변환-방법": [
+    "heic-to-jpg",
+    "compress",
+    "passport-photo",
+    "pdf-convert",
+  ],
   "pdf-용량-줄이기-전-이미지-압축-이유": ["pdf-convert", "compress", "resize"],
   "네이버-블로그-이미지-최적화-방법": ["compress", "resize", "png-to-webp"],
   "사진-업로드-오류-해결-방법": ["compress", "resize", "passport-photo"],

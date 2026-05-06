@@ -46,6 +46,10 @@ export default function HomePage() {
           채용 사이트·공공 제출·메일 첨부 전에 걸리는 용량 제한을, 설치 없이 브라우저에서
           바로 맞춰 보세요.
         </p>
+        <p className="home-problem-lead">
+          사람인·잡코리아·공공기관 업로드 오류, 아이폰 HEIC 사진 문제, PDF 제출 전 이미지
+          최적화, 메일 첨부용 압축 같은 실사용 이슈를 바로 해결하는 데 초점을 맞췄습니다.
+        </p>
         <ul className="home-pill-list" aria-label="서비스 특징">
           <li>회원가입 없이 사용</li>
           <li>브라우저에서 처리</li>
@@ -152,6 +156,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="home-problems" aria-labelledby="problems-heading">
+        <h2 id="problems-heading" className="home-h2">
+          자주 해결하는 문제
+        </h2>
+        <div className="problem-grid">
+          <Link href="/blog/사람인-이력서-사진-용량-줄이기" className="problem-card">
+            <strong>사람인 사진 용량 초과</strong>
+            <span>이력서 업로드 제한에 맞추는 순서 보기</span>
+          </Link>
+          <Link href="/blog/잡코리아-프로필-사진-용량-줄이기" className="problem-card">
+            <strong>잡코리아 업로드 실패</strong>
+            <span>프로필·지원서 규격 차이와 해결 루트</span>
+          </Link>
+          <Link href="/heic-to-jpg" className="problem-card">
+            <strong>아이폰 HEIC 파일 안 열림</strong>
+            <span>HEIC를 JPG로 변환 후 다시 업로드</span>
+          </Link>
+          <Link href="/blog/pdf-용량-줄이기-전-이미지-압축-이유" className="problem-card">
+            <strong>PDF 제출 용량 초과</strong>
+            <span>PDF 전 단계 이미지 최적화 체크리스트</span>
+          </Link>
+          <Link href="/blog/카카오톡-사진-용량-줄이기" className="problem-card">
+            <strong>카카오톡 사진 전송 느림</strong>
+            <span>모바일 전송용 압축 설정 빠르게 적용</span>
+          </Link>
+        </div>
+      </section>
+
       <section className="home-why" id="why" aria-labelledby="why-heading">
         <h2 id="why-heading" className="home-h2">
           왜 {SITE_BRAND}를 사용하나요?
@@ -163,6 +195,19 @@ export default function HomePage() {
           <li>빠른 압축·변환으로 업로드 제한에 맞추기 쉬움</li>
           <li>스마트폰 브라우저에서도 동작하도록 설계</li>
           <li>채용·공공·메신저 등 실제 제출 상황을 염두에 둔 도구 구성</li>
+        </ul>
+      </section>
+
+      <section className="home-errors" aria-labelledby="errors-heading">
+        <h2 id="errors-heading" className="home-h2">
+          왜 업로드 오류가 발생하나요?
+        </h2>
+        <ul className="home-errors-ul">
+          <li>파일 용량 제한을 초과했을 때</li>
+          <li>지원되지 않는 포맷(HEIC/특수 포맷)을 올렸을 때</li>
+          <li>가로·세로 해상도가 너무 클 때</li>
+          <li>서비스가 HEIC를 직접 지원하지 않을 때</li>
+          <li>PDF 내부 이미지 자체가 커서 전체 용량이 커질 때</li>
         </ul>
       </section>
 
@@ -212,6 +257,13 @@ export default function HomePage() {
           font-size: 0.94rem;
           color: var(--muted);
           line-height: 1.65;
+        }
+        .home-problem-lead {
+          margin: 0 auto 0.9rem;
+          max-width: 38rem;
+          font-size: 0.84rem;
+          line-height: 1.55;
+          color: #334155;
         }
         .home-pill-list {
           list-style: none;
@@ -453,6 +505,54 @@ export default function HomePage() {
         }
         .home-why-ul li {
           margin-bottom: 0.35rem;
+        }
+        .home-problems {
+          margin: 0 0 1.75rem;
+        }
+        .problem-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0.62rem;
+        }
+        @media (min-width: 700px) {
+          .problem-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        .problem-card {
+          display: grid;
+          gap: 0.2rem;
+          text-decoration: none;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 0.75rem 0.8rem;
+          background: #fff;
+        }
+        .problem-card strong {
+          color: #0f172a;
+          font-size: 0.9rem;
+        }
+        .problem-card span {
+          color: var(--muted);
+          font-size: 0.78rem;
+          line-height: 1.45;
+        }
+        .problem-card:hover {
+          border-color: #86efac;
+          background: #f8fff9;
+        }
+        .home-errors {
+          margin: 0 0 1.7rem;
+          padding: 1.05rem 0.95rem;
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          background: #fff;
+        }
+        .home-errors-ul {
+          margin: 0;
+          padding-left: 1.15rem;
+          font-size: 0.86rem;
+          line-height: 1.6;
         }
         .home-blog {
           margin-bottom: 2rem;

@@ -10,6 +10,9 @@ import { validateSingleImageFile } from "@/lib/validate-upload";
 export function CompressToolClient() {
   const [file, setFile] = useState<File | null>(null);
   const [format, setFormat] = useState<"jpeg" | "webp">("jpeg");
+  const [mode, setMode] = useState<"saramin" | "email" | "kakaotalk" | "website">(
+    "saramin",
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [originalSize, setOriginalSize] = useState<number | null>(null);
@@ -51,11 +54,37 @@ export function CompressToolClient() {
 
     try {
       const outputType = format === "webp" ? "image/webp" : "image/jpeg";
+      const modeOptions: Record<
+        typeof mode,
+        { quality: number; maxWidthOrHeight: number; label: string }
+      > = {
+        saramin: {
+          quality: 0.86,
+          maxWidthOrHeight: 1200,
+          label: "사람인 제출용",
+        },
+        email: {
+          quality: 0.8,
+          maxWidthOrHeight: 1600,
+          label: "이메일 첨부용",
+        },
+        kakaotalk: {
+          quality: 0.74,
+          maxWidthOrHeight: 1280,
+          label: "카카오톡 전송용",
+        },
+        website: {
+          quality: 0.82,
+          maxWidthOrHeight: 1920,
+          label: "웹사이트 업로드용",
+        },
+      };
+      const picked = modeOptions[mode];
       const compressed = await imageCompression(file, {
         maxSizeMB: 32,
-        maxWidthOrHeight: 8192,
+        maxWidthOrHeight: picked.maxWidthOrHeight,
         useWebWorker: true,
-        initialQuality: 0.82,
+        initialQuality: picked.quality,
         fileType: outputType,
       });
 
@@ -86,6 +115,40 @@ export function CompressToolClient() {
           onFile={onPick}
           disabled={loading}
         />
+
+        <fieldset className="fmt-fs">
+          <legend className="fmt-legend">추천 모드</legend>
+          <div className="mode-row">
+            <button
+              type="button"
+              className={`mode-btn ${mode === "saramin" ? "on" : ""}`}
+              onClick={() => setMode("saramin")}
+            >
+              사람인 제출용
+            </button>
+            <button
+              type="button"
+              className={`mode-btn ${mode === "email" ? "on" : ""}`}
+              onClick={() => setMode("email")}
+            >
+              이메일 첨부용
+            </button>
+            <button
+              type="button"
+              className={`mode-btn ${mode === "kakaotalk" ? "on" : ""}`}
+              onClick={() => setMode("kakaotalk")}
+            >
+              카카오톡 전송용
+            </button>
+            <button
+              type="button"
+              className={`mode-btn ${mode === "website" ? "on" : ""}`}
+              onClick={() => setMode("website")}
+            >
+              웹사이트 업로드용
+            </button>
+          </div>
+        </fieldset>
 
         <fieldset className="fmt-fs">
           <legend className="fmt-legend">출력 형식</legend>
@@ -132,8 +195,8 @@ export function CompressToolClient() {
         />
 
         <p className="tool-formats">
-          지원: JPG, PNG, WebP 등 일반 이미지. GIF 애니메이션은 첫 프레임 위주로 처리될 수
-          있습니다.
+          추천 모드는 업로드 오류를 줄이기 위한 기본값입니다. 제출처 숫자(용량·픽셀)가 있으면
+          그 값을 우선으로 맞춰 주세요.
         </p>
       </div>
 
@@ -167,6 +230,26 @@ export function CompressToolClient() {
           display: flex;
           flex-wrap: wrap;
           gap: 1rem;
+        }
+        .mode-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.45rem;
+        }
+        .mode-btn {
+          border: 1px solid #cbd5e1;
+          background: #fff;
+          color: #0f172a;
+          border-radius: 999px;
+          font-size: 0.78rem;
+          font-weight: 700;
+          padding: 0.38rem 0.58rem;
+          cursor: pointer;
+        }
+        .mode-btn.on {
+          border-color: #059669;
+          color: #065f46;
+          background: #ecfdf5;
         }
         .fmt-label {
           font-size: 0.92rem;

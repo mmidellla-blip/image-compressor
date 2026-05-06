@@ -528,10 +528,9 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "heic-to-jpg",
     path: "/heic-to-jpg",
-    status: "coming_soon",
-    metaTitle: "HEIC → JPG 변환 (준비 중) — 아이폰 사진 호환",
+    metaTitle: "HEIC → JPG 변환 — 아이폰 사진 업로드 오류 해결",
     metaDescription:
-      "아이폰 HEIC 사진을 JPG로 바꾸는 기능을 준비 중입니다. 지금은 블로그 가이드와 JPG 압축·리사이즈 도구로 우회할 수 있습니다.",
+      "아이폰 HEIC 사진이 업로드되지 않을 때 JPG로 바꿔 보세요. 사람인·잡코리아·공공기관 제출 전 브라우저에서 여러 파일을 변환할 수 있습니다.",
     keywords: [
       "HEIC JPG",
       "아이폰 사진 변환",
@@ -541,20 +540,20 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     ],
     h1: "HEIC → JPG 변환",
     intro:
-      "아이폰에서 기본 저장되는 HEIC(HEIF) 파일은 윈도우 PC나 일부 웹 업로드에서 호환 문제가 날 수 있습니다. 브라우저만으로 HEIC 디코딩을 안정적으로 제공하기 위해 기능을 검증 중이며, 공개 시 이 페이지에서 바로 변환할 수 있게 할 예정입니다.",
-    howToTitle: "오픈 예정 흐름",
+      "아이폰에서 기본 저장되는 HEIC(HEIF) 파일은 채용·공공 업로드 화면에서 형식 오류가 자주 납니다. 이 페이지에서 HEIC를 JPG로 변환한 뒤 다시 업로드하면 실패율을 줄일 수 있습니다. 변환은 브라우저에서 수행되며, 서버 저장 없이 바로 다운로드할 수 있습니다.",
+    howToTitle: "사용 방법",
     howToSteps: [
       {
-        title: "1. 준비 중인 기능",
-        body: "HEIC 파일을 업로드하면 JPG로 내보내는 파이프라인을 붙일 계획입니다. 라이브러리 용량·브라우저 호환을 함께 검토합니다.",
+        title: "1. HEIC 파일 선택",
+        body: "아이폰 사진 원본(.heic/.heif)을 한 장 또는 여러 장 선택합니다.",
       },
       {
-        title: "2. 그동안의 우회",
-        body: "아이폰 설정에서 ‘호환성 우선’으로 촬영하거나, 사진 앱에서 JPG로 내보낸 뒤 이 사이트의 이미지 용량 줄이기·크기 조절을 사용해 보세요.",
+        title: "2. JPG 변환",
+        body: "브라우저에서 즉시 JPG로 변환합니다. 업로드 오류가 나는 사이트에 다시 제출해 보세요.",
       },
       {
-        title: "3. 알림",
-        body: "기능이 준비되면 블로그와 소개 페이지에 반영합니다.",
+        title: "3. 필요 시 용량 최적화",
+        body: "변환 후 용량이 크면 ‘이미지 용량 줄이기’로 한 번 더 맞추면 메일 첨부·채용 업로드 통과에 유리합니다.",
       },
     ],
     useCasesTitle: "이럴 때 사용하세요",
@@ -565,34 +564,34 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     ],
     warningsTitle: "사용 전 확인하세요",
     warnings: [
-      "현재 이 URL은 안내·로드맵 페이지입니다. 파일 변환 UI는 아직 없습니다.",
-      "HEIC를 다룰 때도 원본은 아이클라우드·PC에 별도 보관하는 습관을 권장합니다.",
+      "출력은 JPG 고정입니다. 제출처가 PNG·PDF를 요구하면 변환 후 해당 도구를 연계해 주세요.",
+      "HEIC 원본은 아이클라우드·PC에 별도 보관한 뒤 제출용 사본만 변환하는 습관을 권장합니다.",
     ],
     faqs: [
       {
-        question: "언제 쓸 수 있나요?",
+        question: "HEIC 파일이 업로드되지 않을 때 어떻게 해야 하나요?",
         answer:
-          "브라우저에서 안정적으로 디코딩할 수 있는 방식으로 개발 중입니다. 그전까지는 아이폰에서 JPG 내보내기 또는 아래 대체 도구를 활용해 주세요.",
+          "이 페이지에서 JPG로 바꾼 뒤 다시 업로드해 보세요. 사람인·잡코리아·일부 공공 양식은 HEIC를 직접 받지 않는 경우가 많습니다.",
       },
       {
-        question: "지금 당장 JPG가 필요해요.",
+        question: "사람인에서 아이폰 사진 오류가 나는 이유는?",
         answer:
-          "아이폰 ‘설정 → 카메라 → 포맷’에서 호환성 옵션을 쓰거나, 사진 앱에서 JPG로 공유·저장한 뒤 ‘이미지 용량 줄이기’로 맞추면 됩니다.",
+          "업로드 검증이 JPG/JPEG 기준일 때 HEIC는 형식 오류가 납니다. HEIC를 JPG로 변환하면 같은 사진도 통과되는 경우가 많습니다.",
       },
       {
-        question: "용량도 줄이고 싶어요.",
+        question: "JPG 변환 후에도 용량 초과가 나요.",
         answer:
-          "JPG로 내보낸 다음 ‘이미지 용량 줄이기’와 ‘이미지 크기 조절’을 연달아 쓰면 제출 제한에 가깝게 맞출 수 있습니다.",
+          "‘이미지 용량 줄이기’ 또는 ‘증명사진 용량 줄이기’로 KB·픽셀을 추가로 맞춰 주세요. 포맷 문제와 용량 문제는 별개로 걸릴 수 있습니다.",
       },
     ],
-    relatedToolSlugs: ["compress", "resize", "jpg-to-png", "png-to-webp"],
+    relatedToolSlugs: ["compress", "passport-photo", "resize", "pdf-convert"],
     relatedBlogSlugs: [
       "아이폰-heic-사진-jpg-변환-방법",
       "jpg-용량-줄이기",
       "사진-용량-줄이는-법",
     ],
     schemaDescription:
-      "HEIC 이미지를 JPG로 변환하는 기능(준비 중) 안내 및 대안 무료 이미지 툴 링크를 제공합니다.",
+      "아이폰 HEIC 이미지를 브라우저에서 JPG로 변환해 업로드 호환 문제를 줄이는 무료 온라인 도구입니다.",
   },
   {
     slug: "pdf-compress",

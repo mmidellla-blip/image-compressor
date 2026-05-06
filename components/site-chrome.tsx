@@ -1,4 +1,7 @@
+ "use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import type { ReactNode } from "react";
 import { SITE_INFO_LAST_UPDATED } from "@/lib/site-config";
 import { SITE_BRAND } from "@/lib/site-brand";
@@ -12,6 +15,7 @@ export function SiteChrome({
   mainClassName?: string;
 }) {
   const tools = getAllToolDefinitions();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="site">
@@ -21,12 +25,38 @@ export function SiteChrome({
             <span className="logo-name">{SITE_BRAND}</span>
             <span className="logo-tag">브라우저 처리 · 무료 이미지 툴</span>
           </Link>
-          <nav className="nav" aria-label="주요 메뉴">
-            <Link href="/">홈</Link>
-            <Link href="/#tools">도구</Link>
-            <Link href="/blog">블로그</Link>
-            <Link href="/about">소개</Link>
-            <Link href="/contact">문의</Link>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-expanded={menuOpen}
+            aria-controls="site-nav"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span className="menu-icon" aria-hidden>
+              ☰
+            </span>
+            <span className="menu-text">메뉴</span>
+          </button>
+          <nav
+            id="site-nav"
+            className={`nav ${menuOpen ? "nav-open" : ""}`}
+            aria-label="주요 메뉴"
+          >
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              홈
+            </Link>
+            <Link href="/#tools" onClick={() => setMenuOpen(false)}>
+              도구
+            </Link>
+            <Link href="/blog" onClick={() => setMenuOpen(false)}>
+              블로그
+            </Link>
+            <Link href="/about" onClick={() => setMenuOpen(false)}>
+              소개
+            </Link>
+            <Link href="/contact" onClick={() => setMenuOpen(false)}>
+              문의
+            </Link>
           </nav>
         </div>
       </header>
@@ -114,7 +144,7 @@ export function SiteChrome({
           align-items: center;
           justify-content: space-between;
           gap: 1rem;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
         }
         .logo {
           display: flex;
@@ -136,8 +166,29 @@ export function SiteChrome({
         }
         .nav {
           display: flex;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
           gap: 0.75rem 1.1rem;
+        }
+        .menu-toggle {
+          display: none;
+          align-items: center;
+          gap: 0.35rem;
+          border: 1px solid var(--border);
+          background: #fff;
+          color: var(--fg);
+          border-radius: 10px;
+          min-height: 40px;
+          padding: 0.35rem 0.6rem;
+          font-size: 0.78rem;
+          font-weight: 700;
+          cursor: pointer;
+        }
+        .menu-icon {
+          font-size: 0.95rem;
+          line-height: 1;
+        }
+        .menu-text {
+          line-height: 1;
         }
         .nav a {
           text-decoration: none;
@@ -146,6 +197,37 @@ export function SiteChrome({
         }
         .nav a:hover {
           color: var(--accent);
+        }
+        @media (max-width: 768px) {
+          .header-inner {
+            flex-wrap: wrap;
+            gap: 0.65rem;
+          }
+          .menu-toggle {
+            display: inline-flex;
+            margin-left: auto;
+          }
+          .nav {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid var(--border);
+            padding-top: 0.45rem;
+          }
+          .nav.nav-open {
+            display: flex;
+          }
+          .nav a {
+            display: block;
+            padding: 0.55rem 0.1rem;
+            font-size: 0.92rem;
+          }
+        }
+        @media (min-width: 769px) {
+          .nav {
+            display: flex !important;
+          }
         }
         .main {
           flex: 1;
