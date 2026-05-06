@@ -1,30 +1,28 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { getPublicSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const siteUrl = getPublicSiteUrl();
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: siteUrl } : {}),
   title: {
-    default:
-      "이미지 용량 줄이기 무료 사이트 | JPG·PNG 압축, 사진 용량 줄이기",
-    template: "%s | 이미지 용량 줄이기",
+    default: "무료 온라인 이미지 툴 모음 | 압축·변환·PDF",
+    template: "%s | 무료 이미지 툴 모음",
   },
   description:
-    "JPG, PNG 이미지 용량을 무료로 줄이세요. 사진 용량 줄이기, JPG 용량 줄이기, 이미지 압축에 맞춘 온라인 도구.",
+    "이미지 용량 줄이기, JPG·PNG·WebP 변환, 이미지 크기 조절, 증명사진 압축, PDF 변환 등 무료 이미지 툴을 모았습니다.",
   keywords: [
+    "무료 이미지 툴",
     "이미지 용량 줄이기",
-    "JPG 용량 줄이기",
-    "사진 용량 줄이기",
-    "PNG 압축",
-    "무료 이미지 압축",
+    "이미지 압축",
+    "WebP 변환",
+    "PDF 변환",
   ],
   openGraph: {
     type: "website",
     locale: "ko_KR",
+    siteName: "무료 온라인 이미지 툴 모음",
   },
   robots: { index: true, follow: true },
 };
@@ -36,17 +34,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <head>
-        {adsenseClient ? (
-          <Script
-            id="adsense-init"
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        ) : null}
-      </head>
       <body>
         <a href="#main" className="skip-link">
           본문으로 건너뛰기

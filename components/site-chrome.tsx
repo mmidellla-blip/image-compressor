@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { SITE_INFO_LAST_UPDATED } from "@/lib/site-config";
+import { getAllToolDefinitions } from "@/lib/tools/definitions";
 
 export function SiteChrome({
   children,
@@ -8,15 +10,18 @@ export function SiteChrome({
   children: ReactNode;
   mainClassName?: string;
 }) {
+  const tools = getAllToolDefinitions();
+
   return (
     <div className="site">
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo">
-            이미지 용량 줄이기
+            무료 이미지 툴 모음
           </Link>
           <nav className="nav" aria-label="주요 메뉴">
             <Link href="/">홈</Link>
+            <Link href="/#tools">도구</Link>
             <Link href="/blog">블로그</Link>
             <Link href="/about">소개</Link>
             <Link href="/contact">문의</Link>
@@ -31,25 +36,28 @@ export function SiteChrome({
       <footer className="footer">
         <div className="footer-grid">
           <div>
-            <p className="footer-brand">이미지 용량 줄이기</p>
+            <p className="footer-brand">무료 온라인 이미지 툴 모음</p>
             <p className="footer-tag">
-              사진·JPG·PNG 용량 줄이기와 이미지 압축 가이드를 제공합니다.
+              이미지 용량 줄이기·포맷 변환·크기 조절·PDF 변환 등 브라우저에서 처리하는 무료
+              이미지 툴을 제공합니다.
             </p>
           </div>
           <div>
-            <p className="footer-col-title">콘텐츠</p>
+            <p className="footer-col-title">도구</p>
             <ul className="footer-links">
-              <li>
-                <Link href="/">이미지 압축 도구</Link>
-              </li>
-              <li>
-                <Link href="/blog">블로그</Link>
-              </li>
+              {tools.map((t) => (
+                <li key={t.slug}>
+                  <Link href={t.path}>{t.h1}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
             <p className="footer-col-title">사이트</p>
             <ul className="footer-links">
+              <li>
+                <Link href="/blog">블로그</Link>
+              </li>
               <li>
                 <Link href="/about">소개</Link>
               </li>
@@ -65,12 +73,24 @@ export function SiteChrome({
             </ul>
           </div>
         </div>
-        <p className="footer-cookie">
-          쿠키 및 맞춤 광고에 관한 안내는{" "}
-          <Link href="/privacy-policy#adsense">개인정보처리방침</Link>을 참고하세요.
+        <p className="footer-trust">
+          선택한 파일은 가능한 한 브라우저에서 처리되며 서버에 저장되지 않습니다.
         </p>
-        <p className="footer-copy">
-          © {new Date().getFullYear()} · 이미지 용량 줄이기
+        <p className="footer-links-row">
+          <Link href="/contact">문의</Link>
+          {" · "}
+          <Link href="/privacy-policy">개인정보처리방침</Link>
+          {" · "}
+          <Link href="/terms">이용약관</Link>
+          {" · "}
+          <Link href="/sitemap.xml">사이트맵</Link>
+        </p>
+        <p className="footer-cookie">
+          개인정보·쿠키 및 향후 광고 안내는{" "}
+          <Link href="/privacy-policy">개인정보처리방침</Link>을 참고하세요.
+        </p>
+        <p className="footer-meta">
+          최종 정보 갱신: {SITE_INFO_LAST_UPDATED} · © {new Date().getFullYear()} 무료 이미지 툴 모음
         </p>
       </footer>
 
@@ -134,7 +154,7 @@ export function SiteChrome({
         }
         @media (min-width: 640px) {
           .footer-grid {
-            grid-template-columns: 1.4fr 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr 1fr;
           }
         }
         .footer-brand {
@@ -163,16 +183,40 @@ export function SiteChrome({
           margin-bottom: 0.35rem;
         }
         .footer-links a {
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           color: var(--muted);
           text-decoration: none;
         }
         .footer-links a:hover {
           color: var(--accent);
         }
+        .footer-trust {
+          max-width: 56rem;
+          margin: 1.1rem auto 0;
+          padding: 0 0.75rem;
+          text-align: center;
+          font-size: 0.78rem;
+          color: var(--muted);
+          line-height: 1.55;
+        }
+        .footer-links-row {
+          max-width: 56rem;
+          margin: 0.5rem auto 0;
+          text-align: center;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+        .footer-links-row a {
+          color: var(--muted);
+          text-decoration: none;
+        }
+        .footer-links-row a:hover {
+          color: var(--accent);
+          text-decoration: underline;
+        }
         .footer-cookie {
           max-width: 56rem;
-          margin: 1.25rem auto 0;
+          margin: 0.85rem auto 0;
           padding: 0 0.5rem;
           text-align: center;
           font-size: 0.75rem;
@@ -187,15 +231,13 @@ export function SiteChrome({
         .footer-cookie a:hover {
           color: var(--accent);
         }
-        .footer-copy {
+        .footer-meta {
           max-width: 56rem;
-          margin: 0.65rem auto 0;
+          margin: 0.5rem auto 0;
           text-align: center;
-          font-size: 0.75rem;
+          font-size: 0.72rem;
           color: var(--muted);
-        }
-        .footer-copy a {
-          color: var(--muted);
+          line-height: 1.5;
         }
       `}</style>
     </div>

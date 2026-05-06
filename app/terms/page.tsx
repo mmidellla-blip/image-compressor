@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteChrome } from "@/components/site-chrome";
+import { SITE_INFO_LAST_UPDATED } from "@/lib/site-config";
+import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildStaticPageMetadata({
   title: "이용약관",
   description:
-    "이미지 용량 줄이기 사이트 이용약관 — 서비스 범위, 면책, 금지 행위, 준거법 안내.",
-  alternates: { canonical: "/terms" },
-};
+    "무료 온라인 이미지 툴 모음 이용약관 — 서비스 범위, 파일 처리, 면책, 저작권, 광고, 준거법.",
+  path: "/terms",
+  keywords: ["이용약관", "무료 이미지 툴", "파일 처리", "면책"],
+});
 
 export default function TermsPage() {
-  const updated = "2026년 5월 6일";
+  const updated = SITE_INFO_LAST_UPDATED;
   return (
     <SiteChrome mainClassName="legal-main">
       <article>
@@ -42,9 +45,10 @@ export default function TermsPage() {
 
         <h2 className="legal-h2">제4조 (서비스의 제공)</h2>
         <p>
-          사이트는 이미지 관련 정보 제공 및 도구 기능을 제공합니다. 서비스는 운영상·기술상의
-          이유로 변경·중단될 수 있으며, 이에 대해 특별한 배상 의무를 부담하지 않습니다(법령상
-          의무가 있는 경우 제외).
+          사이트는 이미지 관련 정보 제공 및 도구 기능을 제공합니다. 서비스의 구성·기능·UI는
+          운영상·기술상·정책상의 이유로 예고 없이 변경되거나 일시 중단될 수 있습니다. 이에 대해
+          별도의 손해배상 의무를 지지 않으며(법령상 의무가 있는 경우 제외), 중요한 변경은 사이트
+          공지 등 이용자가 확인할 수 있는 방법으로 고지하는 것을 원칙으로 합니다.
         </p>
 
         <h2 className="legal-h2">제5조 (이용자의 의무)</h2>
@@ -66,6 +70,19 @@ export default function TermsPage() {
           이용자에게 귀속되며, 이용자는 업로드에 필요한 권리를 보유해야 합니다.
         </p>
 
+        <h2 className="legal-h2">파일 처리 및 업로드에 관한 안내</h2>
+        <p>
+          이용자가 도구에서 선택한 파일은 원칙적으로 이용자의 브라우저 내에서만 처리되며, 현재
+          서비스 설계상 운영자가 해당 파일을 서버에 영구 저장하지 않습니다. 네트워크 구간에서
+          발생할 수 있는 일시적 전송은 보안·안정적 서비스 제공을 위한 최소 범위에 그치도록
+          합니다. 업로드 파일의 내용에 대한 권리와 책임은 이용자에게 있으며, 타인의 저작권·
+          초상권·영업비밀을 침해하는 파일을 처리해서는 안 됩니다.
+        </p>
+        <p>
+          호환 브라우저·단말 성능에 따라 결과가 달라질 수 있으며, 중요한 원본은 반드시 별도로
+          보관해야 합니다.
+        </p>
+
         <h2 className="legal-h2">제7조 (면책)</h2>
         <p>
           사이트는 제공되는 정보와 도구 결과의 완전성·정확성·적합성을 보증하지 않습니다.
@@ -81,10 +98,10 @@ export default function TermsPage() {
 
         <h2 className="legal-h2">제9조 (광고 및 제3자 서비스)</h2>
         <p>
-          사이트에는 Google AdSense 등 제3자가 제공하는 광고가 표시될 수 있습니다. 광고의
-          내용·진실성·적법성은 각 광고주 또는 광고 네트워크의 책임이며, 사이트 운영자는 제3자
-          광고의 내용을 보증하지 않습니다. 광고 표시와 관련된 데이터 처리(쿠키 등)에 대해서는{" "}
-          <Link href="/privacy-policy#adsense">개인정보처리방침</Link>의 관련 조항을 따릅니다.
+          사이트에는 향후 Google 애드센스 등 제3자가 제공하는 광고가 표시될 수 있습니다.
+          광고의 내용·진실성·적법성은 각 광고주 또는 광고 네트워크의 책임이며, 사이트 운영자는
+          제3자 광고의 내용을 보증하지 않습니다. 광고·쿠키 등 데이터 처리에 대해서는{" "}
+          <Link href="/privacy-policy">개인정보처리방침</Link>을 따릅니다.
         </p>
 
         <h2 className="legal-h2">제10조 (문의)</h2>

@@ -2,32 +2,29 @@
 
 import { useMemo, useState } from "react";
 
-const defaultEmail = "contact@your-domain.com";
+type ContactFormProps = {
+  /** 배포 시 NEXT_PUBLIC_CONTACT_EMAIL 과 동일한 표시용 주소 */
+  contactEmail: string;
+};
 
-export function ContactForm() {
-  const configured =
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || defaultEmail;
-
+/**
+ * 메일 클라이언트 연동 문의 폼. 서버 전송 API 없이 mailto 로 동작합니다.
+ */
+export function ContactForm({ contactEmail }: ContactFormProps) {
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
   const [message, setMessage] = useState("");
 
   const mailto = useMemo(() => {
-    const subject = encodeURIComponent(`[문의] ${name || "이름 미입력"}`);
+    const subject = encodeURIComponent(`[무료 이미지 툴 문의] ${name || "이름 미입력"}`);
     const body = encodeURIComponent(
-      `보내는 사람: ${from || "(이메일 미입력)"}\n\n${message}`,
+      `회신 받을 이메일: ${from || "(미입력)"}\n\n문의 내용:\n${message}`,
     );
-    return `mailto:${configured}?subject=${subject}&body=${body}`;
-  }, [configured, name, from, message]);
+    return `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+  }, [contactEmail, name, from, message]);
 
   return (
     <div className="cf">
-      <p className="cf-note">
-        아래 정보를 입력한 뒤 버튼을 누르면 기본 메일 앱이 열립니다. 메일이 열리지
-        않으면 <strong>{configured}</strong> 로 직접 보내 주세요. 실제 운영 시{" "}
-        <code className="cf-code">NEXT_PUBLIC_CONTACT_EMAIL</code> 환경 변수로 수신
-        주소를 교체할 수 있습니다.
-      </p>
       <div className="cf-fields">
         <label className="cf-label" htmlFor="c-name">
           이름 또는 닉네임
@@ -38,14 +35,16 @@ export function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           autoComplete="name"
+          placeholder="표시할 이름"
         />
         <label className="cf-label" htmlFor="c-from">
-          회신 받을 이메일
+          회신 받을 이메일 (필수에 가깝게)
         </label>
         <input
           id="c-from"
           className="cf-input"
           type="email"
+          inputMode="email"
           value={from}
           onChange={(e) => setFrom(e.target.value)}
           autoComplete="email"
@@ -57,35 +56,27 @@ export function ContactForm() {
         <textarea
           id="c-msg"
           className="cf-textarea"
-          rows={6}
+          rows={7}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="문의 사항을 자세히 적어 주세요."
+          placeholder="오류 재현 순서, 브라우저 종류, 개인정보 관련 요청 등 구체적으로 적어 주세요."
         />
       </div>
-      <a className="cf-submit" href={mailto}>
+      <a
+        className="cf-submit"
+        href={mailto}
+        aria-label="기본 메일 앱으로 문의 메일 작성 열기"
+      >
         메일 앱으로 보내기
       </a>
 
       <style jsx>{`
         .cf {
-          margin-top: 1rem;
-        }
-        .cf-note {
-          font-size: 0.9rem;
-          color: var(--muted);
-          line-height: 1.65;
-          margin: 0 0 1rem;
-        }
-        .cf-code {
-          font-size: 0.85em;
-          background: #f5f5f5;
-          padding: 0.1rem 0.35rem;
-          border-radius: 4px;
+          margin-top: 0.5rem;
         }
         .cf-fields {
           display: grid;
-          gap: 0.75rem;
+          gap: 0.85rem;
           margin-bottom: 1rem;
         }
         .cf-label {
@@ -95,21 +86,31 @@ export function ContactForm() {
         .cf-input,
         .cf-textarea {
           width: 100%;
-          padding: 0.55rem 0.65rem;
+          padding: 0.65rem 0.75rem;
           border: 1px solid var(--border);
-          border-radius: 8px;
+          border-radius: 10px;
           font: inherit;
+          font-size: 1rem;
+          min-height: 48px;
+        }
+        .cf-textarea {
+          min-height: 140px;
+          resize: vertical;
         }
         .cf-submit {
-          display: inline-flex;
+          display: flex;
           justify-content: center;
           align-items: center;
-          padding: 0.65rem 1rem;
-          font-weight: 700;
+          width: 100%;
+          min-height: 52px;
+          padding: 0.75rem 1rem;
+          font-weight: 800;
+          font-size: 1.05rem;
           background: var(--accent);
           color: #fff !important;
-          border-radius: 8px;
+          border-radius: 12px;
           text-decoration: none;
+          box-sizing: border-box;
         }
         .cf-submit:hover {
           background: var(--accent-hover);

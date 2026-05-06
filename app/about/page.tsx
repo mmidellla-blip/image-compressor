@@ -1,72 +1,101 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteChrome } from "@/components/site-chrome";
+import { SITE_INFO_LAST_UPDATED } from "@/lib/site-config";
+import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 
-export const metadata: Metadata = {
-  title: "소개 — 운영 목적과 제공 가치",
+export const metadata: Metadata = buildStaticPageMetadata({
+  title: "소개 — 왜 이 무료 이미지 툴을 만들었나요",
   description:
-    "이미지 용량 줄이기 사이트의 운영 목적, 독자에게 제공하는 가치, 콘텐츠 방향을 설명합니다.",
-  keywords: ["이미지 용량 줄이기", "사이트 소개", "이미지 압축"],
-  alternates: { canonical: "/about" },
-};
+    "취업·제출용 이미지 용량 때문에 다시 편집했던 경험에서 출발한 이 프로젝트. 회원가입 없이 브라우저에서 돌아가는 무료 도구와 로드맵을 소개합니다.",
+  path: "/about",
+  keywords: [
+    "무료 이미지 툴",
+    "이미지 용량 줄이기",
+    "사이트 소개",
+    "개인정보 보호",
+    "온라인 이미지 변환",
+  ],
+});
 
 export default function AboutPage() {
   return (
     <SiteChrome mainClassName="legal-main">
       <article>
         <h1 className="legal-h1">소개</h1>
+        <p className="legal-updated">최종 수정일: {SITE_INFO_LAST_UPDATED}</p>
+
         <p className="legal-lead">
-          이 웹사이트는 <strong>이미지 용량 줄이기</strong>와{" "}
-          <strong>이미지 압축</strong>에 필요한 실무 지식을 정리하고, 누구나 브라우저에서
-          바로 써 볼 수 있는 무료 도구를 제공하는 것을 목적으로 운영됩니다.
+          저 역시 취업 사진이나 제출용 이미지를 올릴 때 &quot;용량 제한을 초과했습니다&quot; 같은
+          문구를 보고, 포토샵 없는 PC에서 다시 줄이느라 시간을 쓴 적이 많았습니다. 그래서{" "}
+          <strong>누구나 빠르게 쓸 수 있는 무료 이미지 툴</strong>을 한곳에 모으고, 회원가입·설치
+          없이 브라우저에서 돌아가게 만들었습니다.
         </p>
 
-        <h2 className="legal-h2">누가 운영하나요?</h2>
+        <h2 className="legal-h2">이 사이트를 만든 이유</h2>
         <p>
-          본 사이트는 독립적으로 콘텐츠를 기획·편집하는 운영자에 의해 관리됩니다. 특정
-          기업이나 공공기관을 대표하지 않으며, 상표·서비스명은 해당 권리자에 속합니다.
-          문의는 <Link href="/contact">문의 페이지</Link>를 통해 접수합니다.
+          검색하면 비슷한 도구는 많습니다. 하지만 광고만 가득하고 설명은 없는 페이지, 처리 후
+          파일이 어디로 가는지 불분명한 서비스도 적지 않았습니다. 그래서{" "}
+          <strong>실제로 따라 할 수 있는 사용 방법</strong>과{" "}
+          <strong>개인정보·파일 처리 방식을 분명히 적은 정책</strong>을 함께 두었습니다.
         </p>
 
-        <h2 className="legal-h2">무엇을 제공하나요?</h2>
+        <h2 className="legal-h2">누구를 위한 사이트인가요?</h2>
         <ul className="legal-ul">
           <li>
-            <strong>무료 이미지 압축 도구:</strong> JPG·PNG 등 이미지를 JPEG 또는 WebP로
-            변환·압축하고 용량 변화를 확인할 수 있습니다.
+            사람인·잡코리아 등에 <strong>이력서·증명사진</strong>을 올리기 전 이미지 용량 줄이기가
+            필요한 분
           </li>
           <li>
-            <strong>블로그 글:</strong> 이미지 용량 줄이기, JPG 용량 줄이기, 사진 용량
-            줄이는 법 등 실생활·업무 상황에 맞춘 긴 형식의 가이드를 제공합니다.
+            공공기관·학교 과제 시스템에 <strong>스캔·사진을 PDF로 제출</strong>해야 하는 분
           </li>
           <li>
-            <strong>정책 페이지:</strong> 개인정보처리방침·이용약관을 통해 서비스 이용과
-            데이터 처리 원칙을 투명하게 안내합니다.
+            블로그·쇼핑몰에 올릴 사진을 <strong>가볍게 만들고 싶은</strong> 크리에이터·자영업자
+          </li>
+          <li>설치형 프로그램 대신 <strong>브라우저만으로</strong> JPG·PNG·WebP를 다루고 싶은 분</li>
+        </ul>
+
+        <h2 className="legal-h2">회원가입 없이, 왜 무료인가요?</h2>
+        <p>
+          도구 자체는 무료로 두고, 블로그 글로 이미지 최적화·제출 팁을 길게 남깁니다. 운영에는
+          도메인·호스팅 비용이 들어가므로, 향후 <strong>Google 애드센스 등 제3자 광고</strong>를 붙일
+          수 있습니다. 다만 광고는 본문·도구보다 앞서지 않게 배치하려 합니다. 미승인 상태에서는 실제
+          광고 코드 대신 안내 문구만 두었습니다.
+        </p>
+
+        <h2 className="legal-h2">파일은 서버에 저장하지 않습니다</h2>
+        <p>
+          선택한 이미지는 <strong>가능한 한 사용자 브라우저 안에서만 처리</strong>하고, 서버에
+          파일을 저장하지 않는 것을 원칙으로 합니다. 민감한 서류는 공용 PC에서 다루지 말고, 처리 후
+          다운로드 폴더를 확인하는 습관을 권합니다. 자세한 내용은{" "}
+          <Link href="/privacy-policy">개인정보처리방침</Link>,{" "}
+          <Link href="/terms">이용약관</Link>의 파일 처리 안내를 참고해 주세요.
+        </p>
+
+        <h2 className="legal-h2">앞으로 더하고 싶은 것</h2>
+        <ul className="legal-ul">
+          <li>
+            <strong>HEIC → JPG</strong>, <strong>PDF 용량 줄이기</strong>, 사진{" "}
+            <strong>모자이크</strong>, <strong>배경 제거</strong> 같은 기능은 브라우저에서 안전하게
+            돌릴 수 있는지 검토한 뒤 순차적으로 올릴 예정입니다. 각각 준비 중 페이지와 대체 도구
+            링크를 열어 두었습니다.
+          </li>
+          <li>
+            블로그는 채용·공공 제출·메신저·플랫폼별로 읽을 만한 글을 꾸준히 보강합니다.
           </li>
         </ul>
 
-        <h2 className="legal-h2">콘텐츠 방향</h2>
+        <h2 className="legal-h2">운영에 대해</h2>
         <p>
-          글과 도구 설명은 검색 유입을 위한 낚시 문구보다, 독자가 실제로 적용할 수 있는
-          순서와 기준을 우선합니다. 이미지 최적화는 단순히 용량 숫자만 줄이는 일이 아니라,
-          목적지(웹·문서·메신저)에 맞는 균형을 찾는 일입니다. 본 사이트는 그 균형을 잡는 데
-          필요한 사고방식과 도구 사용법을 함께 다룹니다.
+          특정 기업을 대표하지 않는 개인이 기획·편집합니다. 오류 제보·제안은{" "}
+          <Link href="/contact">문의 페이지</Link>로 보내 주시면 순차적으로 확인합니다. 바로 답이
+          어려울 수 있어도 재현 순서와 브라우저 정보를 적어 주시면 큰 도움이 됩니다.
         </p>
 
-        <h2 className="legal-h2">광고 및 운영</h2>
+        <h2 className="legal-h2">면책</h2>
         <p>
-          서버·도메인 등 운영 비용의 일부를 충당하기 위해 제3자 광고(예: Google AdSense)를
-          게재할 수 있습니다. 광고는 방문 페이지와 이용자 관심사에 따라 자동으로 선택·표시될
-          수 있으며, 쿠키 등에 대한 안내는{" "}
-          <Link href="/privacy-policy#adsense">개인정보처리방침</Link>에서 확인할 수
-          있습니다.
-        </p>
-
-        <h2 className="legal-h2">면책 안내</h2>
-        <p>
-          도구는 편의를 위해 제공되며, 결과물의 최종 사용 책임은 사용자에게 있습니다.
-          중요한 원본 데이터는 반드시 별도로 보관하고, 민감 정보가 포함된 이미지는 정책에
-          따라 오프라인 처리나 내부 시스템을 검토하시기 바랍니다. 자세한 범위는{" "}
-          <Link href="/terms">이용약관</Link>을 참고해 주세요.
+          도구와 글은 참고용이며, 제출 규격·저작권·최종 결과물의 책임은 이용자에게 있습니다.
+          중요한 원본은 항상 별도로 보관해 주세요.
         </p>
 
         <p className="legal-back">
@@ -81,7 +110,12 @@ export default function AboutPage() {
         .legal-h1 {
           font-size: 1.75rem;
           font-weight: 800;
-          margin: 0 0 0.75rem;
+          margin: 0 0 0.35rem;
+        }
+        .legal-updated {
+          font-size: 0.88rem;
+          color: var(--muted);
+          margin: 0 0 1rem;
         }
         .legal-lead {
           font-size: 1rem;

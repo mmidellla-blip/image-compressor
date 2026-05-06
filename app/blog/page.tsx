@@ -2,36 +2,37 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteChrome } from "@/components/site-chrome";
 import { blogPosts } from "@/lib/blog-posts";
+import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildStaticPageMetadata({
   title: "블로그 · 이미지 용량 줄이기, JPG·PNG 압축 가이드",
   description:
-    "이미지 용량 줄이기, JPG 용량 줄이기, 사진 용량 줄이기, 이미지 압축 방법을 다루는 글 모음입니다.",
+    "이미지 용량 줄이기, JPG·사진 압축, WebP·PDF·이미지 최적화 SEO, 카톡·취업 사진 등 무료 이미지 툴과 함께 보기 좋은 글 모음입니다.",
+  path: "/blog",
   keywords: [
     "이미지 용량 줄이기",
     "JPG 용량 줄이기",
     "사진 용량 줄이기",
     "이미지 압축",
+    "무료 이미지 툴",
   ],
-  alternates: { canonical: "/blog" },
-};
+});
 
 export default function BlogIndexPage() {
   return (
     <SiteChrome>
       <h1 className="page-title">블로그</h1>
       <p className="page-lead">
-        사진 용량 줄이기, 이미지 압축, 웹·쇼핑몰 최적화 팁을 모았습니다. 메인
-        페이지의{" "}
-        <Link href="/" className="inline-link">
+        사진 용량 줄이기, 이미지 압축, 웹·쇼핑몰 최적화 팁을 모았습니다.{" "}
+        <Link href="/compress" className="inline-link">
           이미지 용량 줄이기 도구
         </Link>
-        와 함께 보시면 좋습니다.
+        와 홈의 다른 무료 이미지 툴과 함께 보시면 좋습니다.
       </p>
       <ul className="post-list">
         {blogPosts.map((post) => (
           <li key={post.slug}>
-            <Link href={`/blog/${post.slug}`}>
+            <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
               {post.title}
             </Link>
             <span className="post-desc">{post.description}</span>

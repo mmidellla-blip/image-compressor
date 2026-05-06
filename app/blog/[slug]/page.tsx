@@ -1,10 +1,21 @@
-import { AdsenseSlot } from "@/components/adsense-slot";
+import { BlogRelatedTools } from "@/components/blog/blog-related-tools";
+import { PlaceholderAdBox } from "@/components/tools/placeholder-ad-box";
 import { SiteChrome } from "@/components/site-chrome";
+import { blogRelatedToolSlugs } from "@/lib/blog/related-tools-map";
+import type { ToolSlug } from "@/lib/tools/types";
+import {
+  JsonLdScript,
+  buildArticleLd,
+  buildBreadcrumbListLd,
+  buildFaqPageLd,
+} from "@/lib/seo/json-ld";
+import { buildBlogPostMetadata } from "@/lib/seo/blog-metadata";
 import {
   getAllSlugs,
   getPostBySlug,
   getRelatedPosts,
 } from "@/lib/blog-posts";
+import { getCanonicalUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,17 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) {
     return { title: "글을 찾을 수 없습니다" };
   }
-  return {
-    title: post.title,
-    description: post.description,
-    keywords: [
-      "이미지 용량 줄이기",
-      "JPG 용량 줄이기",
-      "사진 용량 줄이기",
-      post.title,
-    ],
-    alternates: { canonical: `/blog/${encodeURIComponent(post.slug)}` },
-  };
+  return buildBlogPostMetadata(post);
 }
 
 export default async function BlogArticlePage({ params }: Props) {
@@ -42,26 +43,49 @@ export default async function BlogArticlePage({ params }: Props) {
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, 3);
+  const toolKeys: ToolSlug[] =
+    blogRelatedToolSlugs[post.slug] ?? (["compress", "png-to-webp", "resize"] as const);
+
+  const path = `/blog/${encodeURIComponent(post.slug)}`;
+  const canonical = getCanonicalUrl(path) ?? path;
+  const blogIndex = getCanonicalUrl("/blog") ?? "/blog";
+  const home = getCanonicalUrl("/") ?? "/";
+
+  const graph: Record<string, unknown>[] = [
+    buildArticleLd({
+      headline: post.title,
+      description: post.description,
+      url: canonical,
+      datePublished: post.datePublished,
+    }),
+    buildBreadcrumbListLd([
+      { name: "홈", url: home },
+      { name: "블로그", url: blogIndex },
+      { name: post.title, url: canonical },
+    ]),
+  ];
+  if (post.faq && post.faq.length > 0) {
+    graph.push(buildFaqPageLd(post.faq));
+  }
 
   return (
     <SiteChrome mainClassName="article-main">
+      <JsonLdScript id={`jsonld-blog-${post.slug}`} data={graph} />
+
       <article className="article" itemScope itemType="https://schema.org/Article">
-        <p className="breadcrumb">
+        <nav className="breadcrumb" aria-label="breadcrumb">
+          <Link href="/">홈</Link>
+          <span aria-hidden> · </span>
           <Link href="/blog">블로그</Link>
-          <span aria-hidden> / </span>
+          <span aria-hidden> · </span>
           <span>{post.title}</span>
-        </p>
+        </nav>
         <h1 className="article-title" itemProp="headline">
           {post.title}
         </h1>
         <p className="article-desc" itemProp="description">
           {post.description}
         </p>
-
-        <AdsenseSlot
-          slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG ?? "blog-inline"}
-          className="mb-8"
-        />
 
         <div className="prose" itemProp="articleBody">
           {post.sections.map((sec, si) => (
@@ -74,14 +98,48 @@ export default async function BlogArticlePage({ params }: Props) {
           ))}
         </div>
 
-        <aside className="cta-box" aria-label="무료 이미지 압축 도구 안내">
+        {post.closingSummary ? (
+          <section className="article-summary" aria-labelledby="sum-h">
+            <h2 id="sum-h" className="section-h2">
+              한 줄 요약
+            </h2>
+            <p className="article-summary-p">{post.closingSummary}</p>
+          </section>
+        ) : null}
+
+        {post.faq && post.faq.length > 0 ? (
+          <section className="article-faq" aria-labelledby="faq-h">
+            <h2 id="faq-h" className="section-h2">
+              자주 묻는 질문
+            </h2>
+            <dl className="article-faq-dl">
+              {post.faq.map((f, i) => (
+                <div key={i} className="article-faq-item">
+                  <dt className="article-faq-q">{f.question}</dt>
+                  <dd className="article-faq-a">{f.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ) : null}
+
+        <BlogRelatedTools toolSlugs={toolKeys} />
+
+        <aside className="cta-box" aria-label="무료 이미지 툴 안내">
           <p>
-            지금 바로{" "}
-            <Link href="/" className="cta-link">
-              이미지 용량 줄이기 무료 사이트
+            브라우저에서 바로 쓰는{" "}
+            <Link href="/compress" className="cta-link">
+              이미지 용량 줄이기
             </Link>
-            에서 JPG·PNG를 JPEG 또는 WebP로 줄여 보세요. 압축 전후 용량을 숫자로 비교할 수
-            있습니다.
+            ,{" "}
+            <Link href="/png-to-webp" className="cta-link">
+              PNG → WebP
+            </Link>
+            ,{" "}
+            <Link href="/" className="cta-link">
+              무료 이미지 툴 모음 홈
+            </Link>
+            으로 이어서 이용해 보세요.
           </p>
         </aside>
 
@@ -92,11 +150,19 @@ export default async function BlogArticlePage({ params }: Props) {
           <ul className="related-list">
             {related.map((r) => (
               <li key={r.slug}>
-                <Link href={`/blog/${r.slug}`}>{r.title}</Link>
+                <Link href={`/blog/${encodeURIComponent(r.slug)}`}>{r.title}</Link>
                 <span className="related-desc">{r.description}</span>
               </li>
             ))}
           </ul>
+        </nav>
+
+        <PlaceholderAdBox />
+
+        <nav className="article-site-nav" aria-label="사이트 이동">
+          <Link href="/" className="article-home-link">
+            ← 무료 이미지 툴 모음 홈으로
+          </Link>
         </nav>
       </article>
 
@@ -108,6 +174,8 @@ export default async function BlogArticlePage({ params }: Props) {
           font-size: 0.85rem;
           color: var(--muted);
           margin: 0 0 1rem;
+          line-height: 1.5;
+          flex-wrap: wrap;
         }
         .breadcrumb a {
           text-decoration: none;
@@ -141,8 +209,41 @@ export default async function BlogArticlePage({ params }: Props) {
           line-height: 1.8;
           font-size: 0.96rem;
         }
-        .cta-box {
+        .article-summary {
           margin-top: 1.75rem;
+          padding: 1rem 1.1rem;
+          background: #f8fafc;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+        }
+        .article-summary-p {
+          margin: 0;
+          line-height: 1.8;
+          font-size: 0.96rem;
+        }
+        .article-faq {
+          margin-top: 1.75rem;
+        }
+        .article-faq-dl {
+          margin: 0;
+        }
+        .article-faq-item {
+          margin-bottom: 1rem;
+        }
+        .article-faq-q {
+          font-weight: 700;
+          margin: 0 0 0.35rem;
+          font-size: 0.95rem;
+        }
+        .article-faq-a {
+          margin: 0;
+          padding-left: 0;
+          color: var(--muted);
+          line-height: 1.75;
+          font-size: 0.94rem;
+        }
+        .cta-box {
+          margin-top: 2rem;
           padding: 1rem 1.25rem;
           background: #f0fdf4;
           border: 1px solid #bbf7d0;
@@ -156,7 +257,7 @@ export default async function BlogArticlePage({ params }: Props) {
           text-underline-offset: 3px;
         }
         .related {
-          margin-top: 2.25rem;
+          margin-top: 2rem;
           padding-top: 1.5rem;
           border-top: 1px solid var(--border);
         }
@@ -189,6 +290,19 @@ export default async function BlogArticlePage({ params }: Props) {
           font-size: 0.85rem;
           color: var(--muted);
           line-height: 1.5;
+        }
+        .article-site-nav {
+          margin-top: 1.5rem;
+          padding-top: 1rem;
+        }
+        .article-home-link {
+          font-weight: 700;
+          font-size: 0.95rem;
+          text-decoration: none;
+          color: var(--accent);
+        }
+        .article-home-link:hover {
+          text-decoration: underline;
         }
       `}</style>
     </SiteChrome>
