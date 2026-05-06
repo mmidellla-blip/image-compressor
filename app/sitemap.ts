@@ -3,7 +3,7 @@ import { getAllSlugs } from "@/lib/blog-posts";
 import { getAllToolDefinitions } from "@/lib/tools/definitions";
 import { getPublicSiteUrl } from "@/lib/site-url";
 
-/** NEXT_PUBLIC_SITE_URL 이 설정된 경우에만 절대 URL로 사이트맵을 채웁니다. */
+/** 절대 URL은 `NEXT_PUBLIC_SITE_URL` 또는 기본값(https://www.compressdeck.com) 기준입니다. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getPublicSiteUrl();
   if (!base) return [];

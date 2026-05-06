@@ -18,7 +18,7 @@
 
 ## 배포 후 사용자가 할 일 (남은 항목)
 
-- **환경 변수**: `NEXT_PUBLIC_SITE_URL`(canonical·sitemap 절대 URL), `NEXT_PUBLIC_CONTACT_EMAIL`, 필요 시 `NEXT_PUBLIC_SHOW_AD_PLACEHOLDER=true`.
+- **환경 변수**: `NEXT_PUBLIC_SITE_URL`(선택, 미설정 시 기본 `https://www.compressdeck.com`), `NEXT_PUBLIC_CONTACT_EMAIL`(선택, 기본 `mmi.dellla@gmail.com`), 필요 시 `NEXT_PUBLIC_SHOW_AD_PLACEHOLDER=true`.
 - **Search Console**: 사이트 소유권 확인 후 sitemap 제출 (`/sitemap.xml`).
 - **수동 점검**: 실제 기기에서 주요 도구 UX·색 대비·Lighthouse 한 번씩 실행.
 - **애드센스 승인 후**: placeholder 제거 또는 실제 광고 단위로 교체, `privacy-policy`의 광고 문구와 일치 확인.

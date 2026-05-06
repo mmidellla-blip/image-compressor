@@ -4,7 +4,7 @@
  */
 export function getPublicContactEmail(): string {
   const raw = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
-  return raw && raw.includes("@") ? raw : "contact@your-domain.com";
+  return raw && raw.includes("@") ? raw : "mmi.dellla@gmail.com";
 }
 
 /** 푸터·정책 페이지에 표시하는 정보 갱신일 */
