@@ -27,6 +27,10 @@ export const metadata: Metadata = {
     siteName: SITE_BRAND,
   },
   robots: { index: true, follow: true },
+  /** AdSense 사이트 연결용 (각 페이지 head에 메타로 출력됨) */
+  other: {
+    "google-adsense-account": "ca-pub-2200717713315446",
+  },
 };
 
 export default function RootLayout({
