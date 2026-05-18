@@ -35,6 +35,15 @@ export default function BlogIndexPage() {
             <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
               {post.title}
             </Link>
+            {post.datePublished && (
+              <time className="post-date" dateTime={post.datePublished}>
+                {new Date(post.datePublished).toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            )}
             <span className="post-desc">{post.description}</span>
           </li>
         ))}
@@ -72,9 +81,15 @@ export default function BlogIndexPage() {
         .post-list a:hover {
           color: var(--accent);
         }
+        .post-date {
+          display: block;
+          margin-top: 0.2rem;
+          font-size: 0.8rem;
+          color: var(--muted);
+        }
         .post-desc {
           display: block;
-          margin-top: 0.35rem;
+          margin-top: 0.2rem;
           font-size: 0.875rem;
           color: var(--muted);
         }

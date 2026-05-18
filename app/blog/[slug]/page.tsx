@@ -85,6 +85,23 @@ export default async function BlogArticlePage({ params }: Props) {
         <h1 className="article-title" itemProp="headline">
           {post.title}
         </h1>
+        <div className="article-meta">
+          <span className="article-meta-author" itemProp="author" itemScope itemType="https://schema.org/Person">
+            <span itemProp="name">CompressDeck 편집팀</span>
+          </span>
+          {post.datePublished && (
+            <>
+              <span className="article-meta-sep">·</span>
+              <time className="article-meta-date" dateTime={post.datePublished} itemProp="datePublished">
+                {new Date(post.datePublished).toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </>
+          )}
+        </div>
         <p className="article-desc" itemProp="description">
           {post.description}
         </p>
@@ -207,6 +224,17 @@ export default async function BlogArticlePage({ params }: Props) {
           font-weight: 800;
           line-height: 1.35;
           margin: 0 0 0.75rem;
+        }
+        .article-meta {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          margin: 0 0 0.85rem;
+          font-size: 0.83rem;
+          color: var(--muted);
+        }
+        .article-meta-sep {
+          color: var(--border);
         }
         .article-desc {
           color: var(--muted);

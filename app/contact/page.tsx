@@ -38,9 +38,8 @@ export default function ContactPage() {
             <a href={`mailto:${email}`}>{email}</a>
           </p>
           <p className="contact-email-note">
-            배포 시{" "}
-            <code className="inline-code">NEXT_PUBLIC_CONTACT_EMAIL</code> 환경 변수로 실제 수신함으로
-            바꿀 수 있습니다.
+            스팸 방지를 위해 문의 시 제목에 &quot;CompressDeck 문의&quot;를 포함해 주시면 빠른 확인에
+            도움이 됩니다.
           </p>
         </section>
 
@@ -55,8 +54,7 @@ export default function ContactPage() {
             해상도·용량)만 설명.
           </li>
           <li>
-            <strong>광고·제휴:</strong> 업체명·목적(배너·스폰서십 등)·희망 기간. 애드센스 승인 전후
-            정책을 검토해 회신합니다.
+            <strong>광고·제휴:</strong> 업체명·목적(배너·스폰서십 등)·희망 기간을 포함해 보내 주세요.
           </li>
         </ul>
 

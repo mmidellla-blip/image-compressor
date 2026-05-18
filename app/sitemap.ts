@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (!base) return [];
 
   const origin = base.origin;
+  const liveTools = getAllToolDefinitions().filter((t) => t.status !== "coming_soon");
   const paths = [
     "/",
     "/blog",
@@ -16,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/privacy-policy",
     "/terms",
-    ...getAllToolDefinitions().map((t) => t.path),
+    ...liveTools.map((t) => t.path),
     ...getAllSlugs().map((slug) => `/blog/${encodeURIComponent(slug)}`),
   ];
 
