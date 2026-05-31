@@ -6,6 +6,7 @@ import { getCanonicalUrl } from "@/lib/site-url";
 /** 각 도구 페이지의 Metadata 객체를 한곳에서 생성합니다. */
 export function buildToolMetadata(slug: ToolSlug): Metadata {
   const t = getToolDefinition(slug);
+  const isComingSoon = t.status === "coming_soon";
   const canonical = getCanonicalUrl(t.path);
 
   return {
@@ -21,6 +22,8 @@ export function buildToolMetadata(slug: ToolSlug): Metadata {
       type: "website",
       siteName: SITE_BRAND,
     },
-    robots: { index: true, follow: true },
+    robots: isComingSoon
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
   };
 }

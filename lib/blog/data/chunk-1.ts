@@ -139,6 +139,7 @@ export const chunk1: BlogPost[] = [
   },
   {
     slug: "png-용량-줄이기",
+    datePublished: "2026-03-14",
     title: "PNG 용량 줄이기: 투명 배경을 유지할 때와 JPEG로 넘길 때",
     description:
       "PNG 용량 줄이기의 전제 조건(투명·선명도)과 포맷 전환 판단, 웹에서의 이미지 최적화 관점을 포함했습니다.",
@@ -253,6 +254,7 @@ export const chunk1: BlogPost[] = [
   },
   {
     slug: "무료-이미지-압축-사이트",
+    datePublished: "2026-03-18",
     title: "무료 이미지 압축 사이트를 고를 때 흔히 놓치는 기준들",
     description:
       "무료 이미지 압축 사이트 비교 시 확인해야 할 보안·편의·품질 요소를 정리했습니다. 사진 용량 줄이기 도구 선택에 그대로 적용할 수 있습니다.",

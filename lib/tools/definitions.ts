@@ -230,6 +230,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "gif-compress",
     path: "/gif-compress",
+    status: "coming_soon",
     metaTitle: "GIF 압축 (준비 중) — 용량 줄이기 안내",
     metaDescription:
       "GIF 압축·이미지 용량 줄이기를 위한 안내 페이지입니다. 애니메이션 GIF는 현재 준비 중이며, 정지 이미지는 다른 무료 이미지 툴을 이용할 수 있습니다.",
