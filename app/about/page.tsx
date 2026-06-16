@@ -72,25 +72,53 @@ export default function AboutPage() {
           <Link href="/terms">이용약관</Link>의 파일 처리 안내를 참고해 주세요.
         </p>
 
-        <h2 className="legal-h2">앞으로 더하고 싶은 것</h2>
+        <h2 className="legal-h2">현재 제공 중인 도구</h2>
         <ul className="legal-ul">
           <li>
-            <strong>HEIC → JPG</strong>, <strong>PDF 용량 줄이기</strong>, 사진{" "}
-            <strong>모자이크</strong>, <strong>배경 제거</strong> 같은 기능은 브라우저에서 안전하게
-            돌릴 수 있는지 검토한 뒤 순차적으로 올릴 예정입니다. 각각 준비 중 페이지와 대체 도구
-            링크를 열어 두었습니다.
+            <Link href="/compress"><strong>이미지 용량 줄이기</strong></Link> — JPG·PNG를 JPEG 또는 WebP로 압축
           </li>
           <li>
-            블로그는 채용·공공 제출·메신저·플랫폼별로 읽을 만한 글을 꾸준히 보강합니다.
+            <Link href="/resize"><strong>이미지 크기 조절</strong></Link> — 픽셀(가로·세로) 리사이즈
+          </li>
+          <li>
+            <Link href="/passport-photo"><strong>증명사진 용량 줄이기</strong></Link> — 비율 자르기 + JPEG 압축
+          </li>
+          <li>
+            <Link href="/jpg-to-png"><strong>JPG → PNG 변환</strong></Link> — 포맷 전환
+          </li>
+          <li>
+            <Link href="/png-to-webp"><strong>PNG → WebP 변환</strong></Link> — 웹 최적화용 포맷 전환
+          </li>
+          <li>
+            <Link href="/heic-to-jpg"><strong>HEIC → JPG 변환</strong></Link> — 아이폰 HEIC 파일 JPG 변환
+          </li>
+          <li>
+            <Link href="/pdf-convert"><strong>이미지 → PDF 변환</strong></Link> — 여러 이미지를 PDF 한 파일로 묶기
+          </li>
+          <li>
+            <Link href="/gif-compress"><strong>GIF 압축 안내</strong></Link> — 움짤 용량 줄이기 가이드
           </li>
         </ul>
 
-        <h2 className="legal-h2">운영에 대해</h2>
+        <h2 className="legal-h2">앞으로 더하고 싶은 것</h2>
+        <ul className="legal-ul">
+          <li>
+            <strong>PDF 용량 줄이기</strong>, 사진 <strong>모자이크</strong>,{" "}
+            <strong>배경 제거</strong> 같은 기능은 브라우저에서 안전하게 처리할 수 있는지 검토한 뒤
+            순차적으로 공개할 예정입니다. 각 페이지에 대체 도구 링크를 열어 두었습니다.
+          </li>
+          <li>
+            블로그는 채용·공공 제출·메신저·플랫폼별로 읽을 만한 글을 꾸준히 보강합니다. 이미지 압축
+            원리부터 실전 플랫폼 제출 가이드까지 다양한 깊이의 글을 쌓아 가고 있습니다.
+          </li>
+        </ul>
+
+        <h2 className="legal-h2">콘텐츠 작성 기준</h2>
         <p>
-          CompressDeck은 이미지 최적화·웹 개발에 관심 있는 개인 운영자가 직접 기획·개발·편집합니다.
-          채용·공공 서류 제출 과정에서 반복적으로 겪은 용량 문제를 해결하려는 실사용 경험에서
-          출발했습니다. 블로그 글은 실제 도구 사용 경험과 공개 기술 문서를 바탕으로 작성하며,
-          정기적으로 검토·수정합니다.
+          블로그 글은 실제 도구 사용 경험, 각 플랫폼 공지·업로드 화면 확인, JPEG·PNG·WebP 등
+          이미지 포맷 공개 기술 문서를 바탕으로 작성합니다. 특정 플랫폼의 용량·픽셀 제한은 언제든
+          바뀔 수 있으므로, 제출 전에 해당 사이트의 최신 안내를 반드시 확인하시기 바랍니다.
+          글은 정기적으로 검토해 내용이 달라진 부분을 수정합니다.
         </p>
         <p>
           오류 제보·제안은{" "}

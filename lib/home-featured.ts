@@ -1,5 +1,6 @@
 /** 홈 화면에 노출할 대표 블로그 글 slug (순서 유지) */
 export const HOME_FEATURED_BLOG_SLUGS = [
+  "이미지-압축-완전-가이드",
   "이미지-압축-방법",
   "jpg-용량-줄이기",
   "사진-용량-줄이는-법",
@@ -14,4 +15,5 @@ export const HOME_FEATURED_BLOG_SLUGS = [
   "공공기관-제출용-이미지-용량-줄이기",
   "아이폰-heic-사진-jpg-변환-방법",
   "pdf-용량-줄이기-전-이미지-압축-이유",
+  "카카오톡-사진-용량-줄이기",
 ] as const;

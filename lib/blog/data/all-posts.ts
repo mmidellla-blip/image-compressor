@@ -8,6 +8,7 @@ import { chunk6 } from "./chunk-6";
 import { chunk7 } from "./chunk-7";
 import { chunk8 } from "./chunk-8";
 import { chunk9 } from "./chunk-9";
+import { chunk10 } from "./chunk-10";
 
 export const allPosts: BlogPost[] = [
   ...chunk1,
@@ -19,4 +20,5 @@ export const allPosts: BlogPost[] = [
   ...chunk7,
   ...chunk8,
   ...chunk9,
+  ...chunk10,
 ];
