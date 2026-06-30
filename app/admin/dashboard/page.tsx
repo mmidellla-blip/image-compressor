@@ -174,7 +174,7 @@ export default function DashboardPage() {
                   </td>
                   <td style={{ ...td, textAlign: "right" }}>
                     <Link
-                      href={`/admin/edit/${post.slug}`}
+                      href={`/admin/edit/${encodeURIComponent(post.slug)}`}
                       style={{
                         marginRight: "0.85rem",
                         color: "#3b82f6",

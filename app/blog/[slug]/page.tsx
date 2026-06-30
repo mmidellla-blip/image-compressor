@@ -272,6 +272,7 @@ export default async function BlogArticlePage({ params }: Props) {
         .prose-html code { background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; }
         .prose-html strong { font-weight: 700; }
         .prose-html em { font-style: italic; }
+        .prose-html img { max-width: 100%; height: auto; border-radius: 8px; margin: 1rem 0; display: block; }
         .article-summary {
           margin-top: 1.75rem;
           padding: 1rem 1.1rem;

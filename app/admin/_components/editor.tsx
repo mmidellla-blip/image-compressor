@@ -2,16 +2,31 @@
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect } from "react";
+import Image from "@tiptap/extension-image";
+import { useEffect, useRef } from "react";
 
 type Props = {
   content: string;
   onChange: (html: string) => void;
 };
 
+async function uploadImage(file: File): Promise<string> {
+  const form = new FormData();
+  form.append("file", file);
+  const res = await fetch("/api/admin/upload", { method: "POST", body: form });
+  const data = (await res.json()) as { url?: string; error?: string };
+  if (!res.ok || !data.url) throw new Error(data.error ?? "업로드 실패");
+  return data.url;
+}
+
 export function TiptapEditor({ content, onChange }: Props) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Image.configure({ inline: false, allowBase64: false }),
+    ],
     content,
     immediatelyRender: false,
     onUpdate: ({ editor: ed }) => {
@@ -25,13 +40,24 @@ export function TiptapEditor({ content, onChange }: Props) {
     }
   }, [content, editor]);
 
+  async function handleImageFile(file: File) {
+    if (!editor) return;
+    if (!file.type.startsWith("image/")) return;
+    try {
+      const url = await uploadImage(file);
+      editor.chain().focus().setImage({ src: url }).run();
+    } catch (err) {
+      alert(String(err));
+    }
+  }
+
+  async function handleImageButton() {
+    fileInputRef.current?.click();
+  }
+
   if (!editor) return null;
 
-  function tb(
-    label: string,
-    action: () => void,
-    active?: boolean
-  ) {
+  function tb(label: string, action: () => void, active?: boolean) {
     return (
       <button
         key={label}
@@ -56,6 +82,18 @@ export function TiptapEditor({ content, onChange }: Props) {
 
   return (
     <div style={{ border: "1px solid #e2e8f0", borderRadius: "8px", overflow: "hidden" }}>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        onChange={async (e) => {
+          const file = e.target.files?.[0];
+          if (file) await handleImageFile(file);
+          e.target.value = "";
+        }}
+      />
+
       <div
         style={{
           display: "flex",
@@ -78,10 +116,33 @@ export function TiptapEditor({ content, onChange }: Props) {
         {tb("인용", () => editor.chain().focus().toggleBlockquote().run(), editor.isActive("blockquote"))}
         {tb("코드", () => editor.chain().focus().toggleCode().run(), editor.isActive("code"))}
         <span style={{ width: "1px", background: "#e2e8f0", margin: "0 0.1rem" }} />
+        {tb("🖼 이미지", handleImageButton)}
+        <span style={{ width: "1px", background: "#e2e8f0", margin: "0 0.1rem" }} />
         {tb("↩ 되돌리기", () => editor.chain().focus().undo().run())}
         {tb("↪ 다시하기", () => editor.chain().focus().redo().run())}
       </div>
-      <EditorContent editor={editor} style={{ minHeight: "420px", padding: "1rem" }} />
+
+      <EditorContent
+        editor={editor}
+        style={{ minHeight: "420px", padding: "1rem" }}
+        onDrop={async (e) => {
+          const file = e.dataTransfer.files[0];
+          if (file?.type.startsWith("image/")) {
+            e.preventDefault();
+            await handleImageFile(file);
+          }
+        }}
+        onPaste={async (e) => {
+          const file = Array.from(e.clipboardData.items)
+            .find((i) => i.type.startsWith("image/"))
+            ?.getAsFile();
+          if (file) {
+            e.preventDefault();
+            await handleImageFile(file);
+          }
+        }}
+      />
+
       <style>{`
         .tiptap { outline: none; }
         .tiptap p { margin: 0 0 0.75rem; line-height: 1.8; font-size: 0.96rem; }
@@ -93,7 +154,8 @@ export function TiptapEditor({ content, onChange }: Props) {
         .tiptap code { background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; }
         .tiptap strong { font-weight: 700; }
         .tiptap em { font-style: italic; }
-        .tiptap p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: #a0aec0; pointer-events: none; float: left; height: 0; }
+        .tiptap img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; display: block; }
+        .tiptap img.ProseMirror-selectednode { outline: 2px solid #3b82f6; }
       `}</style>
     </div>
   );

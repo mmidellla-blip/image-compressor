@@ -11,9 +11,11 @@
   "dependencies": {
     "@notionhq/client": "^2.3.0",
     "@octokit/rest": "^22.0.1",
+    "@tiptap/extension-image": "^3.27.1",
     "@tiptap/pm": "^3.27.1",
     "@tiptap/react": "^3.27.1",
     "@tiptap/starter-kit": "^3.27.1",
+    "@vercel/blob": "^2.5.0",
     "browser-image-compression": "^2.0.2",
     "heic2any": "^0.0.4",
     "jspdf": "^4.2.1",

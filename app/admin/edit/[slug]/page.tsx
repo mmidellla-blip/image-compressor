@@ -5,7 +5,8 @@ import { PostForm } from "../../_components/post-form";
 type Props = { params: Promise<{ slug: string }> };
 
 export default async function EditPostPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug);
   const result = await getPostFile(slug);
 
   if (!result) notFound();
