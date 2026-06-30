@@ -24,6 +24,7 @@ export type PostData = {
   relatedSlugs: string[];
   sections: never[];
   closingSummary?: string;
+  faq?: { question: string; answer: string }[];
 };
 
 export async function listPostFiles(): Promise<
