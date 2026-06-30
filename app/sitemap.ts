@@ -11,14 +11,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const origin = base.origin;
   const liveTools = getAllToolDefinitions().filter((t) => t.status !== "coming_soon");
   const paths = [
-    "/",
-    "/blog",
-    "/about",
-    "/contact",
-    "/privacy-policy",
-    "/terms",
-    ...liveTools.map((t) => t.path),
-    ...getAllSlugs().map((slug) => `/blog/${encodeURIComponent(slug)}`),
+    ...new Set([
+      "/",
+      "/blog",
+      "/about",
+      "/contact",
+      "/privacy-policy",
+      "/terms",
+      ...liveTools.map((t) => t.path),
+      ...getAllSlugs().map((slug) => `/blog/${encodeURIComponent(slug)}`),
+    ]),
   ];
 
   return paths.map((path) => ({
