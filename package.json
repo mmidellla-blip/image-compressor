@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@imgly/background-removal": "^1.7.0",
     "@notionhq/client": "^2.3.0",
     "@octokit/rest": "^22.0.1",
     "@tiptap/extension-image": "^3.27.1",
