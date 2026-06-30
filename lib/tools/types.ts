@@ -10,7 +10,8 @@ export type ToolSlug =
   | "heic-to-jpg"
   | "pdf-compress"
   | "photo-mosaic"
-  | "background-remove";
+  | "background-remove"
+  | "gif-maker";
 
 export type FaqItem = {
   question: string;

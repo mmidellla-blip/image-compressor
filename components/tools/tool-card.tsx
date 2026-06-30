@@ -19,6 +19,7 @@ const CARD_VISUAL: Record<
   "pdf-compress": { emoji: "📑", category: "PDF 압축" },
   "photo-mosaic": { emoji: "🔒", category: "모자이크" },
   "background-remove": { emoji: "✂️", category: "배경 제거" },
+  "gif-maker": { emoji: "🎞", category: "GIF 만들기" },
 };
 
 type Props = {
