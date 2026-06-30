@@ -77,8 +77,12 @@ export function PhotoMosaicToolClient() {
 
     const { cx: x1, cy: y1 } = displayToCanvas(Math.min(sx, endX), Math.min(sy, endY));
     const { cx: x2, cy: y2 } = displayToCanvas(Math.max(sx, endX), Math.max(sy, endY));
-    const ctx = canvasRef.current.getContext("2d")!;
-    applyPixelate(ctx, { x: x1, y: y1, w: x2 - x1, h: y2 - y1 }, blockSize);
+    const canvas = canvasRef.current;
+    const br = canvas.getBoundingClientRect();
+    const scale = canvas.width / br.width;
+    const canvasBlockSize = Math.max(1, Math.round(blockSize * scale));
+    const ctx = canvas.getContext("2d")!;
+    applyPixelate(ctx, { x: x1, y: y1, w: x2 - x1, h: y2 - y1 }, canvasBlockSize);
     setHasChanges(true);
     dragStart.current = null;
     setDragRect(null);
@@ -198,7 +202,7 @@ export function PhotoMosaicToolClient() {
                 <span className="block-val">{blockSize}px</span>
               </div>
               <input
-                type="range" min={4} max={48} step={2} value={blockSize}
+                type="range" min={4} max={64} step={2} value={blockSize}
                 onChange={(e) => setBlockSize(Number(e.target.value))}
                 className="block-slider"
               />

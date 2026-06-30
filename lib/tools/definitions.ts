@@ -721,7 +721,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
       {
         question: "모자이크 크기는 어떻게 조절하나요?",
         answer:
-          "슬라이더로 4~48px 범위에서 조절할 수 있어요. 숫자가 클수록 픽셀이 굵게 보여요.",
+          "슬라이더로 4~64px 범위에서 조절할 수 있어요. 숫자가 클수록 픽셀이 굵게 보여요.",
       },
       {
         question: "이미지 용량도 줄이고 싶어요.",
@@ -737,7 +737,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     ],
     schemaDescription:
       "브라우저에서 이미지 영역을 드래그해 모자이크를 적용하는 무료 온라인 도구입니다. 파일이 서버로 전송되지 않아 개인정보가 안전합니다.",
-    homeGrid: "experimental",
+    homeGrid: "primary",
   },
   {
     slug: "background-remove",
