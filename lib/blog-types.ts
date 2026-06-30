@@ -16,4 +16,6 @@ export type BlogPost = {
   closingSummary?: string;
   /** Article JSON-LD용 (없으면 갱신일 기준 고정값 사용) */
   datePublished?: string;
+  /** 관리자에서 작성한 HTML 본문 (sections 대신 사용) */
+  contentHtml?: string;
 };

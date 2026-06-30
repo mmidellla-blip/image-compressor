@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteChrome } from "@/components/site-chrome";
-import { blogPosts } from "@/lib/blog-posts";
+import { getAllBlogPosts } from "@/lib/blog-posts-server";
 import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 
 export const metadata: Metadata = buildStaticPageMetadata({
@@ -30,7 +30,7 @@ export default function BlogIndexPage() {
         와 홈의 다른 무료 이미지 툴과 함께 보시면 좋습니다.
       </p>
       <ul className="post-list">
-        {blogPosts.map((post) => (
+        {getAllBlogPosts().map((post) => (
           <li key={post.slug}>
             <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
               {post.title}

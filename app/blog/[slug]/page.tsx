@@ -11,10 +11,10 @@ import {
 } from "@/lib/seo/json-ld";
 import { buildBlogPostMetadata } from "@/lib/seo/blog-metadata";
 import {
-  getAllSlugs,
-  getPostBySlug,
-  getRelatedPosts,
-} from "@/lib/blog-posts";
+  getAllSlugsServer as getAllSlugs,
+  getPostBySlugServer as getPostBySlug,
+  getRelatedPostsServer as getRelatedPosts,
+} from "@/lib/blog-posts-server";
 import { SITE_BRAND } from "@/lib/site-brand";
 import { getCanonicalUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -44,6 +44,7 @@ export default async function BlogArticlePage({ params }: Props) {
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, 3);
+
   const toolKeys: ToolSlug[] =
     blogRelatedToolSlugs[post.slug] ??
     (["compress", "heic-to-jpg", "passport-photo", "pdf-convert"] as const);
@@ -107,14 +108,21 @@ export default async function BlogArticlePage({ params }: Props) {
         </p>
 
         <div className="prose" itemProp="articleBody">
-          {post.sections.map((sec, si) => (
-            <section key={si} className="article-section">
-              <h2 className="section-h2">{sec.heading}</h2>
-              {sec.paragraphs.map((para, pi) => (
-                <p key={pi}>{para}</p>
-              ))}
-            </section>
-          ))}
+          {post.contentHtml ? (
+            <div
+              className="prose-html"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+          ) : (
+            post.sections.map((sec, si) => (
+              <section key={si} className="article-section">
+                <h2 className="section-h2">{sec.heading}</h2>
+                {sec.paragraphs.map((para, pi) => (
+                  <p key={pi}>{para}</p>
+                ))}
+              </section>
+            ))
+          )}
         </div>
 
         {post.closingSummary ? (
@@ -255,6 +263,15 @@ export default async function BlogArticlePage({ params }: Props) {
           line-height: 1.8;
           font-size: 0.96rem;
         }
+        .prose-html p { margin: 0 0 1rem; line-height: 1.8; font-size: 0.96rem; }
+        .prose-html h2 { font-size: 1.12rem; font-weight: 800; margin: 1.5rem 0 0.65rem; line-height: 1.35; }
+        .prose-html h3 { font-size: 1rem; font-weight: 700; margin: 1.25rem 0 0.5rem; }
+        .prose-html ul, .prose-html ol { padding-left: 1.5rem; margin: 0 0 1rem; }
+        .prose-html li { margin-bottom: 0.4rem; line-height: 1.75; font-size: 0.96rem; }
+        .prose-html blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--muted); margin: 1rem 0; font-style: italic; }
+        .prose-html code { background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; }
+        .prose-html strong { font-weight: 700; }
+        .prose-html em { font-style: italic; }
         .article-summary {
           margin-top: 1.75rem;
           padding: 1rem 1.1rem;
