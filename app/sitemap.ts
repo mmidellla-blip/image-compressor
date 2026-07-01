@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllSlugs } from "@/lib/blog-posts";
+import { getAllSlugsServer as getAllSlugs } from "@/lib/blog-posts-server";
 import { getAllToolDefinitions } from "@/lib/tools/definitions";
 import { getPublicSiteUrl } from "@/lib/site-url";
 
