@@ -9,22 +9,27 @@ import {
 } from "@/lib/tools/definitions";
 import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 import { SITE_BRAND, SITE_BRAND_LINE } from "@/lib/site-brand";
+import { getCanonicalUrl } from "@/lib/site-url";
 import { HOME_PAGE_FAQS } from "@/lib/home-faq";
-import { JsonLdScript, buildFaqPageLd } from "@/lib/seo/json-ld";
+import {
+  JsonLdScript,
+  buildFaqPageLd,
+  buildWebApplicationLd,
+} from "@/lib/seo/json-ld";
 
 export const metadata = buildStaticPageMetadata({
-  title: `${SITE_BRAND} — 빠른 이미지 압축·변환 (브라우저, 무료)`,
+  title: "사진 용량 줄이기 - 무료 이미지 압축",
   description:
-    "회원가입 없이 브라우저에서 JPG·PNG 압축, WebP 변환, PDF 합치기까지. 서버 저장 없이 무료로 쓰는 이미지 툴 CompressDeck.",
+    "사진 용량 줄이기, JPG·PNG 압축, WebP 변환, PDF 합치기를 브라우저에서 무료로. 회원가입·서버 저장 없이 바로 쓰는 이미지 툴.",
   path: "/",
   keywords: [
-    "이미지 압축",
-    "무료 이미지 툴",
+    "사진 용량 줄이기",
+    "이미지 용량 줄이기",
     "JPG 용량 줄이기",
+    "이미지 압축",
+    "사진 파일 크기 줄이기",
     "WebP 변환",
-    "PDF 변환",
-    "브라우저 이미지 처리",
-    "회원가입 없는 이미지 압축",
+    "PDF 합치기",
   ],
 });
 
@@ -35,9 +40,20 @@ export default function HomePage() {
     getPostBySlug(slug),
   ).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
+  const homeUrl = getCanonicalUrl("/") ?? "/";
+  const homeGraph = [
+    buildWebApplicationLd({
+      name: SITE_BRAND,
+      description:
+        "사진 용량 줄이기, JPG·PNG 압축, WebP 변환, PDF 합치기를 브라우저에서 무료로 처리하는 이미지 툴입니다.",
+      url: homeUrl,
+    }),
+    buildFaqPageLd(HOME_PAGE_FAQS),
+  ];
+
   return (
     <SiteChrome mainClassName="home-wrap">
-      <JsonLdScript id="jsonld-home-faq" data={buildFaqPageLd(HOME_PAGE_FAQS)} />
+      <JsonLdScript id="jsonld-home" data={homeGraph} />
 
       <header className="home-hero">
         <p className="home-kicker">{SITE_BRAND_LINE}</p>

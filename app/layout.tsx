@@ -9,17 +9,19 @@ const siteUrl = getPublicSiteUrl();
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: siteUrl } : {}),
   title: {
-    default: `${SITE_BRAND} | 무료 이미지 압축·변환 (브라우저)`,
+    default: `사진 용량 줄이기 - 무료 이미지 압축 | ${SITE_BRAND}`,
     template: `%s | ${SITE_BRAND}`,
   },
   description:
-    "회원가입 없이 브라우저에서 이미지 용량 줄이기, JPG·PNG·WebP 변환, 크기 조절, 증명사진·PDF까지 무료로 처리합니다. 서버 저장 없이 이용할 수 있습니다.",
+    "사진 용량 줄이기, JPG·PNG 압축, WebP 변환, PDF 합치기를 브라우저에서 무료로. 회원가입·서버 저장 없이 바로 쓰는 이미지 툴.",
   keywords: [
-    "무료 이미지 툴",
+    "사진 용량 줄이기",
     "이미지 용량 줄이기",
+    "JPG 용량 줄이기",
     "이미지 압축",
+    "사진 파일 크기 줄이기",
     "WebP 변환",
-    "PDF 변환",
+    "PDF 합치기",
   ],
   openGraph: {
     type: "website",

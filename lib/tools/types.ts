@@ -11,7 +11,8 @@ export type ToolSlug =
   | "pdf-compress"
   | "photo-mosaic"
   | "background-remove"
-  | "gif-maker";
+  | "gif-maker"
+  | "video-download";
 
 export type FaqItem = {
   question: string;

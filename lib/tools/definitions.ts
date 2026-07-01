@@ -7,7 +7,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "compress",
     path: "/compress",
-    metaTitle: "이미지 용량 줄이기 — JPG·PNG 무료 압축 (브라우저)",
+    metaTitle: "JPG·PNG 이미지 압축 - 사진 용량 줄이기",
     metaDescription:
       "회원가입 없이 이미지 용량 줄이기·이미지 압축. JPG 용량 줄이기, 사진 용량 줄이기에 맞춰 JPEG·WebP로 저장하며 브라우저에서만 처리합니다.",
     keywords: [
@@ -230,7 +230,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "gif-compress",
     path: "/gif-compress",
-    metaTitle: "GIF 압축 — 움짤 용량 줄이기 무료, 브라우저에서 바로",
+    metaTitle: "움짤 GIF 용량 줄이기 - 카톡·SNS 업로드용",
     metaDescription:
       "GIF를 올리면 색상 수·해상도·프레임 수를 조절해 용량을 줄여요. 파일이 서버로 전송되지 않고 브라우저에서만 처리됩니다.",
     keywords: [
@@ -303,7 +303,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "resize",
     path: "/resize",
-    metaTitle: "이미지 크기 조절 무료 — 가로·세로 픽셀 조정",
+    metaTitle: "사진 크기 조절 - 픽셀·비율 무료 리사이즈",
     metaDescription:
       "이미지 크기 조절·리사이즈를 브라우저에서 무료로 수행합니다. 사진 용량 줄이기·웹 썸네일 만들기에 활용하세요.",
     keywords: [
@@ -379,7 +379,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "passport-photo",
     path: "/passport-photo",
-    metaTitle: "증명사진 용량 줄이기 — 규격 맞춤 압축 (브라우저)",
+    metaTitle: "증명사진 용량 줄이기 - 여권·지원서 규격 맞춤",
     metaDescription:
       "증명사진 용량 줄이기·제출용 크기 조정을 돕는 무료 이미지 툴. 목표 용량과 픽셀 규격을 옵션으로 조절할 수 있습니다.",
     keywords: [
@@ -455,7 +455,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "pdf-convert",
     path: "/pdf-convert",
-    metaTitle: "이미지 → PDF 변환 무료 — 사진을 PDF로 저장",
+    metaTitle: "사진 PDF 변환 무료 - 이미지 여러장 합치기",
     metaDescription:
       "JPG·PNG 이미지를 PDF로 합치는 무료 이미지 툴. PDF 변환·스캔 복사본 제출에 활용하고, 이미지 용량 줄이기는 압축 도구와 함께 쓰면 좋습니다.",
     keywords: [
@@ -531,7 +531,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     slug: "heic-to-jpg",
     path: "/heic-to-jpg",
-    metaTitle: "HEIC → JPG 변환 — 아이폰 사진 업로드 오류 해결",
+    metaTitle: "아이폰 HEIC JPG 변환 무료 - 사진 용량까지 한번에",
     metaDescription:
       "아이폰 HEIC 사진이 업로드되지 않을 때 JPG로 바꿔 보세요. 사람인·잡코리아·공공기관 제출 전 브라우저에서 여러 파일을 변환할 수 있습니다.",
     keywords: [
@@ -887,6 +887,77 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     schemaDescription:
       "여러 장의 이미지를 브라우저에서 애니메이션 GIF로 만드는 무료 온라인 도구입니다. 서버로 파일이 전송되지 않아 안전합니다.",
     homeGrid: "primary",
+  },
+  {
+    slug: "video-download",
+    path: "/video-download",
+    metaTitle: "소홍서 동영상 다운로드 — 워터마크 없이 저장",
+    metaDescription:
+      "소홍서(小红书) 영상 링크를 붙여넣으면 워터마크 없이 원본 화질로 다운로드할 수 있어요. xhslink.com 단축 링크도 지원합니다.",
+    keywords: [
+      "소홍서 동영상 다운로드",
+      "xiaohongshu 동영상 저장",
+      "xhs 영상 다운로드",
+      "소홍서 워터마크 제거",
+      "소홍서 영상 저장",
+    ],
+    h1: "소홍서 동영상 다운로드",
+    intro:
+      "소홍서(小红书·샤오홍수) 영상 링크를 붙여넣으면 워터마크 없이 원본 화질로 저장할 수 있어요. 앱에서 '링크 복사'로 가져온 xhslink.com 단축 링크도 지원합니다.",
+    howToTitle: "사용 방법",
+    howToSteps: [
+      {
+        title: "1. 소홍서 앱에서 링크 복사",
+        body: "동영상 게시물을 열고 공유 버튼 → '링크 복사'를 누르세요.",
+      },
+      {
+        title: "2. 링크 붙여넣기",
+        body: "복사한 링크(또는 공유 텍스트 전체)를 아래 입력란에 붙여넣고 '동영상 찾기'를 누르세요.",
+      },
+      {
+        title: "3. 다운로드",
+        body: "동영상이 확인되면 '다운로드' 버튼을 눌러 MP4 파일로 저장하세요.",
+      },
+    ],
+    useCasesTitle: "이럴 때 사용하세요",
+    useCases: [
+      "내가 올린 소홍서 영상을 원본 화질로 백업하고 싶을 때",
+      "마음에 드는 레시피·튜토리얼 영상을 오프라인으로 저장하고 싶을 때",
+      "워터마크 없이 영상을 보관하고 싶을 때",
+    ],
+    warningsTitle: "사용 전 확인하세요",
+    warnings: [
+      "본인이 저작권을 가진 콘텐츠 또는 저작권자의 허락을 받은 콘텐츠만 다운로드하세요.",
+      "소홍서 비공개 게시물이나 이미지 게시물은 지원되지 않아요.",
+      "소홍서 서버 상황에 따라 일시적으로 동작하지 않을 수 있어요.",
+    ],
+    faqs: [
+      {
+        question: "워터마크가 없는 이유는 무엇인가요?",
+        answer:
+          "이 도구는 소홍서 CDN의 원본 영상 URL을 직접 추출해요. 제3자 앱이 붙이는 워터마크를 거치지 않기 때문에 원본 화질로 저장됩니다.",
+      },
+      {
+        question: "xhslink.com 단축 링크도 되나요?",
+        answer:
+          "네. 앱 공유 텍스트 전체를 그대로 붙여넣어도 링크를 자동으로 인식해요.",
+      },
+      {
+        question: "동영상을 찾지 못했다고 나와요.",
+        answer:
+          "이미지 게시물이거나 비공개 게시물이면 지원되지 않아요. 소홍서 앱에서 해당 게시물이 동영상인지 확인하고, 공개 설정인지 확인해 주세요.",
+      },
+      {
+        question: "다운로드 속도가 느려요.",
+        answer:
+          "영상이 서버를 거쳐 전달되기 때문에 파일 크기에 따라 시간이 걸릴 수 있어요. 잠시 기다려 주세요.",
+      },
+    ],
+    relatedToolSlugs: ["gif-compress", "gif-maker", "compress", "resize"],
+    relatedBlogSlugs: [],
+    schemaDescription:
+      "소홍서(小红书) 동영상 링크를 입력하면 워터마크 없이 원본 MP4로 다운로드하는 무료 온라인 도구입니다.",
+    homeGrid: "omit",
   },
 ];
 
