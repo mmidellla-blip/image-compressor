@@ -12,7 +12,8 @@ export type ToolSlug =
   | "photo-mosaic"
   | "background-remove"
   | "gif-maker"
-  | "video-download";
+  | "video-download"
+  | "preset";
 
 export type FaqItem = {
   question: string;
@@ -49,6 +50,8 @@ export type ToolDefinition = {
   relatedToolSlugs: ToolSlug[];
   /** 관련 블로그 글 slug */
   relatedBlogSlugs: string[];
+  /** 관련 블로그 글 섹션 제목(미지정 시 "관련 블로그 글") */
+  relatedArticlesTitle?: string;
   /** schema.org WebApplication.description */
   schemaDescription: string;
   /**

@@ -127,7 +127,7 @@ export function ToolLayout({ slug, children }: Props) {
 
         <RelatedTools currentSlug={slug} />
 
-        <RelatedArticles slugs={t.relatedBlogSlugs} />
+        <RelatedArticles slugs={t.relatedBlogSlugs} title={t.relatedArticlesTitle} />
 
         <nav className="tool-end-nav" aria-label="관련 페이지">
           <Link href="/" className="tool-end-link">

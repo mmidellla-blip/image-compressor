@@ -1,16 +1,15 @@
-"use client";
-
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlugServer } from "@/lib/blog-posts-server";
 import Link from "next/link";
 
 type Props = {
   slugs: string[];
+  title?: string;
 };
 
 /** 블로그 글 slug 목록으로 카드형 내부 링크를 만듭니다. */
-export function RelatedArticles({ slugs }: Props) {
+export function RelatedArticles({ slugs, title = "관련 블로그 글" }: Props) {
   const posts = slugs
-    .map((s) => getPostBySlug(s))
+    .map((s) => getPostBySlugServer(s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   if (posts.length === 0) return null;
@@ -18,7 +17,7 @@ export function RelatedArticles({ slugs }: Props) {
   return (
     <nav className="rel-art" aria-labelledby="rel-art-h">
       <h2 id="rel-art-h" className="rel-art-title">
-        관련 블로그 글
+        {title}
       </h2>
       <ul className="rel-art-ul">
         {posts.map((p) => (
@@ -28,7 +27,7 @@ export function RelatedArticles({ slugs }: Props) {
           </li>
         ))}
       </ul>
-      <style jsx>{`
+      <style>{`
         .rel-art {
           margin-top: 2rem;
           padding-top: 1.5rem;

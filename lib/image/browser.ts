@@ -60,7 +60,7 @@ export function resizeImageToCanvas(
 
 /** 정확한 가로·세로(픽셀)로 스트레치/축소합니다. 비율 유지가 아닐 수 있습니다. */
 export function stretchImageToCanvas(
-  img: HTMLImageElement,
+  img: CanvasImageSource,
   width: number,
   height: number,
 ): HTMLCanvasElement {

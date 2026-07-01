@@ -21,6 +21,7 @@ const CARD_VISUAL: Record<
   "background-remove": { emoji: "✂️", category: "배경 제거" },
   "gif-maker": { emoji: "🎞", category: "GIF 만들기" },
   "video-download": { emoji: "⬇️", category: "동영상 다운로드" },
+  preset: { emoji: "🎯", category: "규격 완성" },
 };
 
 type Props = {
