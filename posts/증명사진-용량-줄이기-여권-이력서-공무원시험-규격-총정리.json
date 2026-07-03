@@ -1,0 +1,34 @@
+{
+  "slug": "증명사진-용량-줄이기-여권-이력서-공무원시험-규격-총정리",
+  "title": "증명사진 용량 줄이기 (여권·이력서·공무원 시험 규격 총정리)",
+  "description": "증명사진 용량 줄이기, 상황별로 다 다릅니다. 이력서 300x400px·공무원 시험 350x450px·여권 413x531px, 200KB~5MB 용량 기준까지 한 번에 정리했습니다.",
+  "datePublished": "2026-07-03",
+  "contentHtml": "<p><strong>증명사진은 제출처마다 픽셀 규격과 용량 제한이 다릅니다. 이력서·자소서는 보통 300x400px·5MB 이하, 공무원 시험 응시원서는 350x450px·1MB 이하, 여권은 413x531px·흰 배경 필수, 일부 자격증·협회 신청서는 600x700px·200KB 이하처럼 더 엄격한 경우도 있습니다.</strong> 어디에 내는 사진이든 순서는 같습니다 — 비율 자르기 → 픽셀 리사이즈 → 용량 압축. 이 글 하나로 상황별 숫자와 순서를 한 번에 확인하세요.</p><h2>왜 용량부터 막히는가</h2><p>스마트폰 카메라로 찍은 원본은 보통 3~10MB에 달합니다. 반면 온라인 접수 시스템은 200KB, 500KB, 1MB처럼 훨씬 작은 상한을 두는 경우가 많아서, 규격(픽셀)을 맞췄어도 용량 때문에 업로드가 거절되는 일이 흔합니다. 반대로 용량만 줄이고 픽셀이 요구 규격과 다르면 '해상도 오류'가 납니다. 두 조건은 별개로 확인해야 합니다.</p><h2>상황별 규격 한눈에 보기</h2><p>제출처픽셀비율용량 기준배경이력서·자소서(사람인·잡코리아 등)300x400px3:4보통 5MB 이하무관공무원 시험 응시원서350x450px약 3.5:4.5보통 1MB 이하무관(공고 확인)여권413x531px(3.5x4.5cm)약 3.5:4.5보통 1~5MB 이하흰색 필수자격증·협회 등 각종 신청서600x700px 등 제각각4:4.67 등 제각각200KB 이하인 경우도 흔함무관(공고 확인)</p><p>같은 정면 사진이라도 제출처마다 자르는 비율과 리사이즈 픽셀, 압축 목표 용량만 다르게 적용하면 되는 구조입니다. 다만 표의 수치는 일반적으로 자주 쓰이는 기준이며, 최종 확인은 반드시 접수처 공고문으로 하세요.</p><h2>순서대로 맞추기</h2><ol><li><p><strong>공고문 숫자부터 메모한다</strong> — 픽셀(가로x세로), 용량 상한(KB/MB), 허용 포맷(대부분 JPG), 배경색 규정을 먼저 확인합니다.</p></li><li><p><strong>비율로 자른다</strong> — 정면·어깨까지 나온 원본에서 요구 비율(3:4 또는 3.5:4.5 등)로 먼저 크롭합니다. 순서를 바꿔 픽셀부터 늘리면 얼굴이 눌리거나 늘어납니다.</p></li><li><p><strong>픽셀로 리사이즈한다</strong> — 비율이 맞춰진 상태에서 요구 픽셀(300x400px, 350x450px, 413x531px, 600x700px 등)로 리사이즈합니다.</p></li><li><p><strong>용량을 압축한다</strong> — JPEG 품질을 조절해 목표 KB 이하로 맞춥니다. 200KB처럼 엄격한 기준은 픽셀을 함께 낮춰야 화질이 덜 깨집니다.</p></li><li><p><strong>여권 등 흰 배경이 필요하면 배경을 정리한다</strong> — 흰 벽 앞에서 찍은 원본이 아니라면 배경 정리 단계를 추가합니다.</p></li></ol><h2>브라우저에서 한 번에 처리하기</h2><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"underline underline underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://www.compressdeck.com/preset\">사진 규격 완성</a>에서 이력서용·공무원 시험 응시원서용·여권용 중 하나를 고르면 그에 맞는 비율로 자르기 화면이 뜨고, 리사이즈와 배경 흰색 정리까지 순서대로 진행됩니다. 규격을 이미 맞춘 사진의 용량만 더 줄여야 한다면 <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"underline underline underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://www.compressdeck.com/passport-photo\">증명사진 용량 줄이기</a>에서 목표 KB와 픽셀을 직접 입력해 조정할 수 있습니다. 두 도구 모두 사진이 서버로 전송되지 않고 브라우저 안에서만 처리됩니다.</p><h2>상황별 자세히 보기</h2><p>규격별로 더 자세한 순서와 자주 헷갈리는 부분은 아래 글에 정리했습니다.</p><ul><li><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"underline underline underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://www.compressdeck.com/blog/%EC%A6%9D%EB%AA%85%EC%82%AC%EC%A7%84-300x400-%ED%94%BD%EC%85%80-%EB%B9%84%EC%9C%A8-%EB%A7%9E%EC%B6%94%EB%8A%94%EB%B2%95\">증명사진 300x400 픽셀 비율 안 깨지게 맞추는법</a> — 이력서·자소서용</p></li><li><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"underline underline underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://www.compressdeck.com/blog/%EA%B3%B5%EB%AC%B4%EC%9B%90-%EC%8B%9C%ED%97%98-%EC%9D%91%EC%8B%9C%EC%9B%90%EC%84%9C-%EC%82%AC%EC%A7%84-350x450-%EA%B7%9C%EA%B2%A9-%EB%A7%9E%EC%B6%94%EB%8A%94%EB%B2%95\">공무원 시험 응시원서 사진 350x450 규격 맞추는법</a></p></li><li><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"underline underline underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://www.compressdeck.com/blog/%EC%97%AC%EA%B6%8C%EC%82%AC%EC%A7%84-%EA%B7%9C%EA%B2%A9-%EC%A7%91%EC%97%90%EC%84%9C-%EB%94%B1-%EB%A7%9E%EA%B2%8C-%EB%A7%8C%EB%93%9C%EB%8A%94%EB%B2%95\">여권사진 규격 집에서 딱 맞게 만드는법</a></p></li><li><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"underline underline underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://www.compressdeck.com/blog/%EC%A6%9D%EB%AA%85%EC%82%AC%EC%A7%84-%ED%95%98%EB%82%98%EB%A1%9C-%EC%9D%B4%EB%A0%A5%EC%84%9C-%EA%B3%B5%EB%AC%B4%EC%9B%90%EC%8B%9C%ED%97%98-%EC%97%AC%EA%B6%8C-%EA%B0%99%EC%9D%B4-%EC%93%B0%EA%B8%B0\">증명사진 한 장으로 이력서·공무원 시험·여권 같이 쓰기</a> — 사진을 여러 번 안 찍어도 되는 이유</p></li></ul>",
+  "published": true,
+  "relatedSlugs": [
+    "증명사진-하나로-이력서-공무원시험-여권-같이-쓰기",
+    "공무원-시험-응시원서-사진-350x450-규격-맞추는법",
+    "여권사진-규격-집에서-딱-맞게-만드는법",
+    "증명사진-300x400-픽셀-비율-맞추는법"
+  ],
+  "sections": [],
+  "closingSummary": "증명사진 용량 줄이기는 제출처마다 픽셀·용량 기준이 다르지만 '비율 자르기 → 픽셀 리사이즈 → 용량 압축' 순서는 동일합니다. 이력서 300x400px·공무원 시험 350x450px·여권 413x531px처럼 규격 숫자만 바꿔 적용하면 됩니다.",
+  "faq": [
+    {
+      "question": "용량 제한이 200KB로 너무 엄격한데 화질이 너무 나빠져요.",
+      "answer": "품질만 낮추지 말고 픽셀부터 줄이세요. 예를 들어 600x700px 요구에서도 화질이 안 나오면 접수처가 허용하는 최소 픽셀까지 낮춘 뒤 품질을 60~70%로 맞추면 200KB 이하에서도 얼굴 윤곽이 유지됩니다."
+    },
+    {
+      "question": "이력서용 사진을 공무원 시험 응시원서에 그대로 써도 되나요?",
+      "answer": "비율(3:4 vs 3.5:4.5)과 픽셀(300x400 vs 350x450)이 달라 그대로 제출하면 규격 오류가 날 수 있습니다. 같은 원본에서 다시 자르고 리사이즈하면 재촬영 없이 재사용할 수 있습니다."
+    },
+    {
+      "question": "여권사진만 배경이 흰색이어야 하는 이유가 뭔가요?",
+      "answer": "여권은 국제 규격(ICAO 기준)을 따르는 경우가 많아 흰색 또는 밝은 단색 배경을 요구합니다. 이력서·공무원 시험 응시원서는 대부분 배경색을 별도로 규정하지 않지만, 접수처 공고문에 규정이 있다면 그 기준을 따르세요."
+    },
+    {
+      "question": "용량과 픽셀 중 뭐부터 맞춰야 하나요?",
+      "answer": "픽셀(리사이즈)을 먼저 맞추고 그다음 용량(압축)을 조정하세요. 픽셀을 줄이면 용량도 함께 줄어들기 때문에, 반대 순서로 하면 압축 후 화질이 더 나빠질 수 있습니다."
+    }
+  ]
+}
