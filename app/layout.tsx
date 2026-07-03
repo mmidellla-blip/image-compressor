@@ -9,19 +9,19 @@ const siteUrl = getPublicSiteUrl();
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: siteUrl } : {}),
   title: {
-    default: `사진 용량 줄이기 - 무료 이미지 압축 | ${SITE_BRAND}`,
+    default: `${SITE_BRAND} - 경제 완전 초보를 위한 돈 이야기`,
     template: `%s | ${SITE_BRAND}`,
   },
   description:
-    "사진 용량 줄이기, JPG·PNG 압축, WebP 변환, PDF 합치기를 브라우저에서 무료로. 회원가입·서버 저장 없이 바로 쓰는 이미지 툴.",
+    "청약 가점 계산기, 연말정산 환급액 계산기, 신용점수 시뮬레이터 등 실생활 경제 계산기와 쉬운 경제 용어 설명을 무료로 제공합니다.",
   keywords: [
-    "사진 용량 줄이기",
-    "이미지 용량 줄이기",
-    "JPG 용량 줄이기",
-    "이미지 압축",
-    "사진 파일 크기 줄이기",
-    "WebP 변환",
-    "PDF 합치기",
+    "머니깨비",
+    "청약 가점 계산기",
+    "연말정산 환급액 계산기",
+    "신용점수 시뮬레이터",
+    "적금 이자 계산기",
+    "경제 용어 사전",
+    "경제 초보",
   ],
   openGraph: {
     type: "website",

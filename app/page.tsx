@@ -3,6 +3,9 @@ import { ToolCard } from "@/components/tools/tool-card";
 import { SiteChrome } from "@/components/site-chrome";
 import { HOME_FEATURED_BLOG_SLUGS } from "@/lib/home-featured";
 import { getPostBySlug } from "@/lib/blog-posts";
+import { getAllArticles } from "@/lib/articles";
+import { CALCULATORS } from "@/lib/calculators/registry";
+import { getAllGlossaryTerms } from "@/lib/glossary";
 import {
   getHomeExperimentalTools,
   getHomePrimaryTools,
@@ -18,18 +21,22 @@ import {
 } from "@/lib/seo/json-ld";
 
 export const metadata = buildStaticPageMetadata({
-  title: "사진 용량 줄이기 - 무료 이미지 압축",
+  title: "머니깨비 - 청약 가점·신용점수·연말정산·적금 계산기 | 경제 용어사전",
   description:
-    "사진 용량 줄이기, JPG·PNG 압축, WebP 변환, PDF 합치기를 브라우저에서 무료로. 회원가입·서버 저장 없이 바로 쓰는 이미지 툴.",
+    "청약 가점 계산기, 신용점수 시뮬레이터, 연말정산 환급액 계산기, 적금 이자 계산기를 무료로 제공합니다. 무주택기간, 뱅크런, 소득공제, 세액공제 같은 경제 용어도 쉽게 찾아볼 수 있습니다.",
   path: "/",
   keywords: [
-    "사진 용량 줄이기",
-    "이미지 용량 줄이기",
-    "JPG 용량 줄이기",
-    "이미지 압축",
-    "사진 파일 크기 줄이기",
-    "WebP 변환",
-    "PDF 합치기",
+    "머니깨비",
+    "청약 가점 계산기",
+    "신용점수 시뮬레이터",
+    "연말정산 환급액 계산기",
+    "적금 이자 계산기",
+    "무주택기간",
+    "뱅크런",
+    "소득공제",
+    "세액공제",
+    "경제 용어사전",
+    "경제 초보",
   ],
 });
 
@@ -39,13 +46,15 @@ export default function HomePage() {
   const featuredPosts = HOME_FEATURED_BLOG_SLUGS.map((slug) =>
     getPostBySlug(slug),
   ).filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const articles = getAllArticles().slice(0, 5);
+  const glossaryTerms = getAllGlossaryTerms().slice(0, 6);
 
   const homeUrl = getCanonicalUrl("/") ?? "/";
   const homeGraph = [
     buildWebApplicationLd({
       name: SITE_BRAND,
       description:
-        "사진 용량 줄이기, JPG·PNG 압축, WebP 변환, PDF 합치기를 브라우저에서 무료로 처리하는 이미지 툴입니다.",
+        "청약 가점 계산기, 신용점수 시뮬레이터, 연말정산 환급액 계산기, 적금 이자 계산기를 무료로 제공합니다. 무주택기간, 뱅크런, 소득공제, 세액공제 같은 경제 용어도 쉽게 찾아볼 수 있습니다.",
       url: homeUrl,
     }),
     buildFaqPageLd(HOME_PAGE_FAQS),
@@ -57,40 +66,98 @@ export default function HomePage() {
 
       <header className="home-hero">
         <p className="home-kicker">{SITE_BRAND_LINE}</p>
-        <h1 className="home-h1">빠른 이미지 압축과 변환</h1>
+        <h1 className="home-h1">경제 완전 초보를 위한 돈 이야기</h1>
         <p className="home-lead">
-          채용 사이트·공공 제출·메일 첨부 전에 걸리는 용량 제한을, 설치 없이 브라우저에서
-          바로 맞춰 보세요.
+          청약·신용점수·연말정산·적금처럼 매일 마주치지만 막상 알아보려면 어려운 돈 이야기를,
+          계산기와 쉬운 설명으로 바로 확인해 보세요.
         </p>
         <p className="home-problem-lead">
-          사람인·잡코리아·공공기관 업로드 오류, 아이폰 HEIC 사진 문제, PDF 제출 전 이미지
-          최적화, 메일 첨부용 압축 같은 실사용 이슈를 바로 해결하는 데 초점을 맞췄습니다.
+          머니깨비 유튜브·인스타그램 채널 내용을 계산기로 바로 확인해보세요.
         </p>
         <ul className="home-pill-list" aria-label="서비스 특징">
           <li>회원가입 없이 사용</li>
-          <li>브라우저에서 처리</li>
-          <li>서버 저장 없음</li>
-          <li>무료 이용</li>
-          <li>빠른 이미지 압축</li>
+          <li>무료 계산기</li>
+          <li>쉬운 경제 용어 설명</li>
+          <li>사회초년생 눈높이</li>
         </ul>
         <div className="home-cta-row">
-          <Link href="/compress" className="home-cta home-cta--primary">
-            이미지 압축 시작하기
+          <Link href="/calculators/subscription-score" className="home-cta home-cta--primary">
+            청약 가점 계산기 보기
           </Link>
-          <Link href="/jpg-to-png" className="home-cta">
-            JPG → PNG 변환
-          </Link>
-          <Link href="/pdf-convert" className="home-cta">
-            PDF 변환 바로가기
+          <Link href="/glossary" className="home-cta">
+            경제 용어사전 보기
           </Link>
         </div>
         <ul className="home-trust-badges" aria-label="신뢰 안내">
-          <li>개인정보 별도 저장 없음</li>
-          <li>무료 사용</li>
-          <li>설치 필요 없음</li>
-          <li>모바일 지원</li>
+          <li>청약 가점 84점 만점 기준</li>
+          <li>숫자만 입력하면 바로 결과</li>
+          <li>용어 12개 검색 가능</li>
+          <li>PC·모바일 브라우저 지원</li>
         </ul>
       </header>
+
+      <section id="calculators" className="home-money-section" aria-labelledby="calculators-heading">
+        <h2 id="calculators-heading" className="home-h2">
+          경제 계산기
+        </h2>
+        <p className="home-money-desc">
+          복잡한 계산을 숫자만 입력하면 바로 확인할 수 있습니다.
+        </p>
+        <div className="money-card-grid">
+          {CALCULATORS.map((c) => (
+            <Link key={c.slug} href={c.path} className="money-card money-card--live">
+              <strong>{c.title}</strong>
+              <span>{c.description} →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section id="articles" className="home-money-section" aria-labelledby="articles-heading">
+        <h2 id="articles-heading" className="home-h2">
+          아티클
+        </h2>
+        <p className="home-money-desc">
+          계산기와 관련된 경제 개념을 사회초년생 눈높이로 쉽게 풀어 썼습니다.
+        </p>
+        <ul className="article-teaser-list">
+          {articles.map((article) => (
+            <li key={article.slug}>
+              <Link href={`/articles/${encodeURIComponent(article.slug)}`}>
+                {article.title}
+              </Link>
+              <span className="article-teaser-category">{article.category}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="home-money-more">
+          <Link href="/articles">아티클 전체 보기 →</Link>
+        </p>
+      </section>
+
+      <section id="glossary" className="home-money-section" aria-labelledby="glossary-heading">
+        <h2 id="glossary-heading" className="home-h2">
+          머니깨비 용어사전
+        </h2>
+        <p className="home-money-desc">
+          신용창조·지급준비율·뱅크런처럼 자주 듣지만 헷갈리는 경제 용어를 검색해서 바로
+          확인할 수 있습니다.
+        </p>
+        <ul className="article-teaser-list">
+          {glossaryTerms.map((t) => (
+            <li key={t.slug}>
+              <Link href="/glossary">{t.term}</Link>
+            </li>
+          ))}
+        </ul>
+        <p className="home-money-more">
+          <Link href="/glossary">용어사전 전체 보기 →</Link>
+        </p>
+      </section>
+
+      <p className="home-legacy-divider" aria-hidden="true">
+        — 아래는 기존 이미지 도구 서비스입니다 —
+      </p>
 
       <section className="home-compare" aria-labelledby="compare-heading">
         <h2 id="compare-heading" className="home-h2">
@@ -141,11 +208,12 @@ export default function HomePage() {
       <section id="tools" className="home-tools" aria-labelledby="tools-heading">
         <div className="home-tools-inner">
           <h2 id="tools-heading" className="home-h2">
-            도구 바로가기
+            이미지 도구 (레거시 서비스)
           </h2>
           <p className="home-tools-desc">
-            원하는 작업을 고른 뒤 카드를 누르면 해당 페이지로 이동합니다.{" "}
-            <strong>브라우저에서 처리</strong>되며, 별도 프로그램 설치가 필요 없습니다.
+            사진 압축·변환 같은 기존 이미지 도구는 계속 운영합니다. 원하는 작업을 고른 뒤
+            카드를 누르면 해당 페이지로 이동합니다. <strong>브라우저에서 처리</strong>되며,
+            별도 프로그램 설치가 필요 없습니다.
           </p>
           <div className="tool-grid">
             {primaryTools.map((t) => (
@@ -202,7 +270,7 @@ export default function HomePage() {
 
       <section className="home-why" id="why" aria-labelledby="why-heading">
         <h2 id="why-heading" className="home-h2">
-          왜 {SITE_BRAND}를 사용하나요?
+          왜 이 이미지 도구를 계속 쓰나요?
         </h2>
         <ul className="home-why-ul">
           <li>파일을 서버에 쌓아 두지 않는 브라우저 중심 처리</li>
@@ -354,6 +422,105 @@ export default function HomePage() {
           content: "✓ ";
           color: #059669;
           font-weight: 800;
+        }
+        .home-money-section {
+          margin-bottom: 1.75rem;
+          padding: 1.15rem 1rem;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 18px;
+        }
+        .home-money-desc {
+          margin: 0 0 1rem;
+          font-size: 0.88rem;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+        .money-card-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0.7rem;
+        }
+        @media (min-width: 640px) {
+          .money-card-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        .money-card {
+          display: grid;
+          gap: 0.25rem;
+          padding: 0.85rem 0.9rem;
+          border-radius: 12px;
+          border: 1px solid var(--border);
+          background: #fff;
+          text-decoration: none;
+        }
+        .money-card strong {
+          font-size: 0.92rem;
+          color: #0f172a;
+        }
+        .money-card span {
+          font-size: 0.78rem;
+          color: var(--muted);
+          line-height: 1.5;
+        }
+        .money-card--soon {
+          opacity: 0.85;
+        }
+        .money-card--live {
+          border-color: #d69e2e;
+          background: #fffbeb;
+        }
+        .money-card--live span {
+          color: #92702a;
+          font-weight: 600;
+        }
+        .money-card--live:hover {
+          border-color: #b7791f;
+          background: #fef3c7;
+        }
+        .article-teaser-list {
+          list-style: none;
+          margin: 0 0 0.9rem;
+          padding: 0;
+          display: grid;
+          gap: 0.55rem;
+        }
+        .article-teaser-list li {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          padding: 0.6rem 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .article-teaser-list a {
+          font-weight: 600;
+          text-decoration: none;
+          color: var(--fg);
+          font-size: 0.9rem;
+        }
+        .article-teaser-list a:hover {
+          color: #d69e2e;
+        }
+        .article-teaser-category {
+          font-size: 0.7rem;
+          font-weight: 700;
+          color: #92702a;
+          background: #fffbeb;
+          border: 1px solid #f5c344;
+          border-radius: 999px;
+          padding: 0.1rem 0.5rem;
+        }
+        .home-money-more {
+          margin: 0;
+          font-size: 0.9rem;
+        }
+        .home-legacy-divider {
+          text-align: center;
+          font-size: 0.78rem;
+          color: var(--muted);
+          margin: 0 0 1.5rem;
         }
         .home-compare {
           margin-bottom: 1.5rem;

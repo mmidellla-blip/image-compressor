@@ -3,7 +3,7 @@ import { SITE_BRAND } from "@/lib/site-brand";
 
 export const runtime = "edge";
 
-export const alt = `${SITE_BRAND} — 압축 · 변환 · 크기조절 · PDF`;
+export const alt = `${SITE_BRAND} — 경제 완전 초보를 위한 돈 이야기`;
 
 export const size = {
   width: 1200,
@@ -23,7 +23,7 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(145deg, #ecfdf5 0%, #ffffff 42%, #f0fdf4 100%)",
+          background: "linear-gradient(145deg, #0f1f3d 0%, #16244a 55%, #0f1f3d 100%)",
           fontFamily:
             'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif',
         }}
@@ -40,15 +40,15 @@ export default function OpenGraphImage() {
             style={{
               width: 56,
               height: 56,
-              borderRadius: 14,
-              background: "linear-gradient(180deg, #34d399 0%, #059669 100%)",
+              borderRadius: 28,
+              background: "linear-gradient(180deg, #f5c344 0%, #d69e2e 100%)",
             }}
           />
           <div
             style={{
               fontSize: 46,
               fontWeight: 800,
-              color: "#065f46",
+              color: "#f5c344",
               letterSpacing: "-0.02em",
             }}
           >
@@ -59,14 +59,14 @@ export default function OpenGraphImage() {
           style={{
             fontSize: 30,
             fontWeight: 600,
-            color: "#047857",
+            color: "#ffffff",
             letterSpacing: "0.02em",
           }}
         >
-          압축 · 변환 · 크기조절 · PDF
+          경제 완전 초보를 위한 돈 이야기
         </div>
-        <div style={{ fontSize: 18, color: "#64748b", marginTop: 28 }}>
-          브라우저에서 처리 · 회원가입 불필요
+        <div style={{ fontSize: 18, color: "#94a3b8", marginTop: 28 }}>
+          청약 · 신용점수 · 연말정산 · 적금 계산기
         </div>
       </div>
     ),

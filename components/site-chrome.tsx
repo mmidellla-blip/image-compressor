@@ -5,7 +5,6 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { SITE_INFO_LAST_UPDATED } from "@/lib/site-config";
 import { SITE_BRAND } from "@/lib/site-brand";
-import { getAllToolDefinitions } from "@/lib/tools/definitions";
 
 export function SiteChrome({
   children,
@@ -14,7 +13,6 @@ export function SiteChrome({
   children: ReactNode;
   mainClassName?: string;
 }) {
-  const tools = getAllToolDefinitions();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -22,8 +20,17 @@ export function SiteChrome({
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo" aria-label={`${SITE_BRAND} 홈`}>
-            <span className="logo-name">{SITE_BRAND}</span>
-            <span className="logo-tag">브라우저 처리 · 무료 이미지 툴</span>
+            <img
+              src="/moneygaebi-logo.png"
+              alt=""
+              width={32}
+              height={32}
+              className="logo-img"
+            />
+            <span className="logo-text">
+              <span className="logo-name">{SITE_BRAND}</span>
+              <span className="logo-tag">경제 완전 초보를 위한 돈 이야기</span>
+            </span>
           </Link>
           <button
             type="button"
@@ -45,11 +52,23 @@ export function SiteChrome({
             <Link href="/" onClick={() => setMenuOpen(false)}>
               홈
             </Link>
+            <Link href="/calculators" onClick={() => setMenuOpen(false)}>
+              계산기
+            </Link>
+            <Link href="/articles" onClick={() => setMenuOpen(false)}>
+              아티클
+            </Link>
+            <Link href="/glossary" onClick={() => setMenuOpen(false)}>
+              용어사전
+            </Link>
+            <span className="nav-sep" aria-hidden>
+              |
+            </span>
             <Link href="/#tools" onClick={() => setMenuOpen(false)}>
               도구
             </Link>
             <Link href="/blog" onClick={() => setMenuOpen(false)}>
-              블로그
+              아카이브
             </Link>
             <Link href="/about" onClick={() => setMenuOpen(false)}>
               소개
@@ -70,25 +89,32 @@ export function SiteChrome({
           <div>
             <p className="footer-brand">{SITE_BRAND}</p>
             <p className="footer-tag">
-              이미지 압축·포맷 변환·크기 조절·PDF 변환 등을 회원가입 없이 브라우저에서 처리할 수
-              있도록 구성했습니다.
+              경제 완전 초보를 위한 계산기·아티클·용어사전. 어려운 돈 이야기를 쉽고 재밌게
+              풀어드립니다.
             </p>
           </div>
           <div>
-            <p className="footer-col-title">도구</p>
+            <p className="footer-col-title">경제 콘텐츠</p>
             <ul className="footer-links">
-              {tools.map((t) => (
-                <li key={t.slug}>
-                  <Link href={t.path}>{t.h1}</Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/calculators">계산기</Link>
+              </li>
+              <li>
+                <Link href="/articles">아티클</Link>
+              </li>
+              <li>
+                <Link href="/glossary">용어사전</Link>
+              </li>
             </ul>
           </div>
           <div>
             <p className="footer-col-title">사이트</p>
             <ul className="footer-links">
               <li>
-                <Link href="/blog">블로그</Link>
+                <Link href="/#tools">이미지 도구</Link>
+              </li>
+              <li>
+                <Link href="/blog">아카이브</Link>
               </li>
               <li>
                 <Link href="/about">소개</Link>
@@ -148,12 +174,21 @@ export function SiteChrome({
         }
         .logo {
           display: flex;
-          flex-direction: column;
-          gap: 0.08rem;
+          align-items: center;
+          gap: 0.5rem;
           font-weight: 800;
           text-decoration: none;
           color: var(--fg);
           line-height: 1.2;
+        }
+        .logo-img {
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+        .logo-text {
+          display: flex;
+          flex-direction: column;
+          gap: 0.08rem;
         }
         .logo-name {
           font-size: 1.02rem;
@@ -166,8 +201,18 @@ export function SiteChrome({
         }
         .nav {
           display: flex;
+          align-items: center;
           flex-wrap: nowrap;
           gap: 0.75rem 1.1rem;
+        }
+        .nav-sep {
+          color: var(--border);
+          font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+          .nav-sep {
+            display: none;
+          }
         }
         .menu-toggle {
           display: none;

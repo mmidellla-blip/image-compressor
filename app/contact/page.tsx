@@ -38,7 +38,7 @@ export default function ContactPage() {
             <a href={`mailto:${email}`}>{email}</a>
           </p>
           <p className="contact-email-note">
-            스팸 방지를 위해 문의 시 제목에 &quot;CompressDeck 문의&quot;를 포함해 주시면 빠른 확인에
+            스팸 방지를 위해 문의 시 제목에 &quot;머니깨비 문의&quot;를 포함해 주시면 빠른 확인에
             도움이 됩니다.
           </p>
         </section>

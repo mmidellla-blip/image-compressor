@@ -98,6 +98,28 @@ export function buildHowToLd(args: {
   };
 }
 
+/** 용어사전 — 검색 결과의 용어 정의 노출용 */
+export function buildDefinedTermSetLd(args: {
+  name: string;
+  description: string;
+  url: string;
+  terms: { name: string; description: string; url?: string }[];
+}): Record<string, unknown> {
+  return {
+    "@type": "DefinedTermSet",
+    name: args.name,
+    description: args.description,
+    url: args.url,
+    hasDefinedTerm: args.terms.map((t) => ({
+      "@type": "DefinedTerm",
+      name: t.name,
+      description: t.description,
+      inDefinedTermSet: args.url,
+      ...(t.url ? { url: t.url } : {}),
+    })),
+  };
+}
+
 /** 블로그 글 — 검색·소셜 미리보기 보조 */
 export function buildArticleLd(args: {
   headline: string;
