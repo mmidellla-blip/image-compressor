@@ -7,9 +7,9 @@ import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 export const metadata: Metadata = buildStaticPageMetadata({
   title: "이용약관",
   description:
-    "무료 온라인 이미지 툴 모음 이용약관 — 서비스 범위, 파일 처리, 면책, 저작권, 광고, 준거법.",
+    "머니깨비 이용약관 — 계산기·아티클·용어사전·이미지 툴 서비스 범위, 파일 처리, 면책, 저작권, 광고, 준거법.",
   path: "/terms",
-  keywords: ["이용약관", "무료 이미지 툴", "파일 처리", "면책"],
+  keywords: ["이용약관", "머니깨비", "파일 처리", "면책"],
 });
 
 export default function TermsPage() {
@@ -29,8 +29,8 @@ export default function TermsPage() {
         <h2 className="legal-h2">제2조 (용어의 정의)</h2>
         <ul className="legal-ul">
           <li>
-            &quot;서비스&quot;라 함은 사이트에서 제공하는 정보성 콘텐츠, 이미지 압축 기능 등 일체를
-            말합니다.
+            &quot;서비스&quot;라 함은 사이트에서 제공하는 계산기·아티클·용어사전 등 정보성
+            콘텐츠와 이미지 압축 기능 등 일체를 말합니다.
           </li>
           <li>
             &quot;이용자&quot;라 함은 사이트에 접속하여 서비스를 이용하는 자를 말합니다.
@@ -45,7 +45,8 @@ export default function TermsPage() {
 
         <h2 className="legal-h2">제4조 (서비스의 제공)</h2>
         <p>
-          사이트는 이미지 관련 정보 제공 및 도구 기능을 제공합니다. 서비스의 구성·기능·UI는
+          사이트는 경제 계산기·아티클·용어사전과 이미지 관련 정보·도구 기능을 제공합니다.
+          서비스의 구성·기능·UI는
           운영상·기술상·정책상의 이유로 예고 없이 변경되거나 일시 중단될 수 있습니다. 이에 대해
           별도의 손해배상 의무를 지지 않으며(법령상 의무가 있는 경우 제외), 중요한 변경은 사이트
           공지 등 이용자가 확인할 수 있는 방법으로 고지하는 것을 원칙으로 합니다.

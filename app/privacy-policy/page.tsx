@@ -7,11 +7,11 @@ import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 export const metadata: Metadata = buildStaticPageMetadata({
   title: "개인정보처리방침",
   description:
-    "무료 온라인 이미지 툴 모음의 개인정보 처리, 업로드 파일 비저장 원칙, 브라우저 처리, 쿠키·Google 애드센스·Google 애널리틱스 가능성, 문의처 안내.",
+    "머니깨비 계산기·아티클·용어사전과 이미지 툴의 개인정보 처리, 업로드 파일 비저장 원칙, 브라우저 처리, 쿠키·Google 애드센스·Google 애널리틱스 가능성, 문의처 안내.",
   path: "/privacy-policy",
   keywords: [
     "개인정보처리방침",
-    "이미지 툴",
+    "머니깨비",
     "파일 저장",
     "쿠키",
     "Google 애드센스",
@@ -30,13 +30,17 @@ export default function PrivacyPolicyPage() {
         <p className="legal-updated">최종 수정일: {updated}</p>
 
         <p className="legal-lead">
-          무료 온라인 이미지 툴 모음(이하 &quot;사이트&quot;)은 이용자가 회원가입 없이 도구를 쓸 수 있도록
-          설계하였습니다. 개인정보 보호법 등 관련 법령을 준수하며, 아래와 같이 개인정보 및
-          이용자 데이터를 처리합니다.
+          머니깨비(이하 &quot;사이트&quot;)는 이용자가 회원가입 없이 계산기·아티클·용어사전과
+          이미지 툴을 쓸 수 있도록 설계하였습니다. 개인정보 보호법 등 관련 법령을 준수하며,
+          아래와 같이 개인정보 및 이용자 데이터를 처리합니다.
         </p>
 
         <h2 className="legal-h2">1. 수집·처리할 수 있는 정보의 종류</h2>
         <ul className="legal-ul">
+          <li>
+            <strong>계산기 입력값:</strong> 청약 가점·신용점수·연말정산·적금 계산기에 입력한
+            숫자는 서버로 전송되지 않고 이용자 브라우저 안에서만 계산·표시됩니다.
+          </li>
           <li>
             <strong>도구 이용 시 이미지·파일:</strong> 원칙적으로 이용자 단말의 브라우저 메모리에서만
             처리하며, 운영 정책상 회사 서버에 업로드 파일을 저장하거나 데이터베이스에 보관하지
@@ -76,7 +80,7 @@ export default function PrivacyPolicyPage() {
 
         <h2 className="legal-h2">4. 처리 목적</h2>
         <ul className="legal-ul">
-          <li>무료 이미지 툴 기능 제공·품질 개선·오류 대응</li>
+          <li>계산기·아티클·용어사전·이미지 툴 기능 제공·품질 개선·오류 대응</li>
           <li>문의 접수 및 회신</li>
           <li>부정 이용 방지, 보안 사고 대응</li>
           <li>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SiteChrome } from "@/components/site-chrome";
+import { FAQSection } from "@/components/tools/faq-section";
 import { getAllArticles } from "@/lib/articles";
 import { CALCULATORS } from "@/lib/calculators/registry";
 import { getAllGlossaryTerms } from "@/lib/glossary";
@@ -142,6 +143,8 @@ export default function HomePage() {
           <Link href="/glossary">용어사전 전체 보기 →</Link>
         </p>
       </section>
+
+      <FAQSection title="자주 묻는 질문" items={HOME_PAGE_FAQS} />
 
       <style>{`
         .home-wrap {

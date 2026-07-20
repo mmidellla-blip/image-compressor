@@ -8,9 +8,9 @@ import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 export const metadata: Metadata = buildStaticPageMetadata({
   title: "문의 · 오류 제보 · 기능 제안",
   description:
-    "무료 이미지 툴 운영자에게 연락하는 방법. 오류 재현, 기능 제안, 광고·제휴 문의. 메일 앱 연동 폼.",
+    "머니깨비 운영자에게 연락하는 방법. 계산기 오류 제보, 콘텐츠 정정, 기능 제안, 광고·제휴 문의. 메일 앱 연동 폼.",
   path: "/contact",
-  keywords: ["문의", "무료 이미지 툴", "이메일", "개인정보", "오류 제보"],
+  keywords: ["문의", "머니깨비", "이메일", "개인정보", "오류 제보"],
 });
 
 export default function ContactPage() {
@@ -46,8 +46,8 @@ export default function ContactPage() {
         <h2 className="legal-h2">이렇게 보내 주시면 빠릅니다</h2>
         <ul className="legal-ul">
           <li>
-            <strong>오류 제보:</strong> 어떤 도구(`/compress` 등)·브라우저·OS·재현 순서(파일 선택 →
-            버튼 클릭 등)·화면 메시지.
+            <strong>오류 제보:</strong> 어떤 페이지(`/calculators/subscription-score` 등)·브라우저·OS·
+            재현 순서(입력값 → 버튼 클릭 등)·화면 메시지.
           </li>
           <li>
             <strong>기능 제안:</strong> 어떤 상황에서 어떤 결과를 기대했는지, 가능하면 예시 파일 특성(대략
