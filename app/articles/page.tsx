@@ -50,6 +50,23 @@ export default function ArticlesIndexPage() {
         ))}
       </ul>
 
+      <section className="article-about">
+        <h2 className="article-about-h2">아티클은 어떻게 쓰나요?</h2>
+        <p className="article-about-p">
+          청약·신용점수·연말정산·적금 계산기를 만들면서 &quot;계산 결과는 나왔는데 이 항목이
+          왜 이렇게 계산되는지 모르겠다&quot;는 질문에 답하려고 아티클을 씁니다. 각 글은 법령·
+          공식 산정 방식을 근거로 하되, 법령 문구를 그대로 옮기지 않고 사회초년생이 실제로
+          헷갈리는 지점(무주택기간 기산일, 소득공제와 세액공제 차이, DSR과 신용점수 차이 등)을
+          중심으로 다시 씁니다.
+        </p>
+        <p className="article-about-p">
+          각 글 끝에는 자주 묻는 질문과 요약, 관련 아티클 링크를 붙여 계산기 → 아티클 →
+          <Link href="/glossary">용어사전</Link>으로 자연스럽게 이어볼 수 있게 했습니다. 제도·세율이
+          바뀌면 관련 글을 순차적으로 검토해 갱신하며, 오류를 발견하면{" "}
+          <Link href="/contact">문의 페이지</Link>로 알려주세요.
+        </p>
+      </section>
+
       <style>{`
         .page-title {
           font-size: 1.75rem;
@@ -102,6 +119,22 @@ export default function ArticlesIndexPage() {
           margin-top: 0.2rem;
           font-size: 0.875rem;
           color: var(--muted);
+        }
+        .article-about {
+          margin-top: 2rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--border);
+        }
+        .article-about-h2 {
+          font-size: 1.1rem;
+          font-weight: 800;
+          margin: 0 0 0.75rem;
+        }
+        .article-about-p {
+          margin: 0 0 1rem;
+          font-size: 0.92rem;
+          line-height: 1.75;
+          color: var(--fg);
         }
       `}</style>
     </SiteChrome>
