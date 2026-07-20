@@ -64,12 +64,6 @@ export function SiteChrome({
             <span className="nav-sep" aria-hidden>
               |
             </span>
-            <Link href="/#tools" onClick={() => setMenuOpen(false)}>
-              도구
-            </Link>
-            <Link href="/blog" onClick={() => setMenuOpen(false)}>
-              아카이브
-            </Link>
             <Link href="/about" onClick={() => setMenuOpen(false)}>
               소개
             </Link>
@@ -110,12 +104,6 @@ export function SiteChrome({
           <div>
             <p className="footer-col-title">사이트</p>
             <ul className="footer-links">
-              <li>
-                <Link href="/#tools">이미지 도구</Link>
-              </li>
-              <li>
-                <Link href="/blog">아카이브</Link>
-              </li>
               <li>
                 <Link href="/about">소개</Link>
               </li>

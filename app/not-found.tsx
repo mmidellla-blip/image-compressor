@@ -7,7 +7,7 @@ export default function NotFound() {
       <h1 className="nf-title">페이지를 찾을 수 없습니다</h1>
       <p className="nf-text">
         <Link href="/">홈으로 돌아가기</Link> 또는{" "}
-        <Link href="/blog">블로그 목록</Link>을 이용해 주세요.
+        <Link href="/calculators">계산기 목록</Link>을 이용해 주세요.
       </p>
       <style>{`
         .nf-title {

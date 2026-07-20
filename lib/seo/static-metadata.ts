@@ -8,6 +8,7 @@ export function buildStaticPageMetadata(opts: {
   description: string;
   path: string;
   keywords?: string[];
+  noindex?: boolean;
 }): Metadata {
   const canonical = getCanonicalUrl(opts.path);
 
@@ -24,6 +25,8 @@ export function buildStaticPageMetadata(opts: {
       type: "website",
       siteName: SITE_BRAND,
     },
-    robots: { index: true, follow: true },
+    robots: opts.noindex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
   };
 }

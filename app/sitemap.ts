@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { getAllSlugsServer as getAllSlugs } from "@/lib/blog-posts-server";
 import { getAllToolDefinitions } from "@/lib/tools/definitions";
 import { CALCULATOR_PATHS } from "@/lib/calculators/registry";
 import { getAllArticleSlugs } from "@/lib/articles";
@@ -11,11 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (!base) return [];
 
   const origin = base.origin;
-  const liveTools = getAllToolDefinitions().filter((t) => t.status !== "coming_soon");
+  // 이미지 도구·이미지 압축 블로그 글은 저품질 콘텐츠 정책 대응을 위해 사이트맵에서 제외합니다.
+  const liveNonImageTools = getAllToolDefinitions().filter(
+    (t) => t.status !== "coming_soon" && t.slug === "video-download",
+  );
   const paths = [
     ...new Set([
       "/",
-      "/blog",
       "/about",
       "/contact",
       "/privacy-policy",
@@ -24,8 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/calculators",
       "/glossary",
       ...CALCULATOR_PATHS,
-      ...liveTools.map((t) => t.path),
-      ...getAllSlugs().map((slug) => `/blog/${encodeURIComponent(slug)}`),
+      ...liveNonImageTools.map((t) => t.path),
       ...getAllArticleSlugs().map((slug) => `/articles/${encodeURIComponent(slug)}`),
     ]),
   ];

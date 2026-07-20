@@ -16,6 +16,8 @@ export const metadata: Metadata = buildStaticPageMetadata({
     "이미지 압축",
     "무료 이미지 툴",
   ],
+  // 이미지 압축 관련 아카이브는 저품질 콘텐츠 정책 대응을 위해 당분간 검색 노출을 막습니다.
+  noindex: true,
 });
 
 export default function BlogIndexPage() {

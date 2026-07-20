@@ -82,16 +82,6 @@ export default function AboutPage() {
           <Link href="/contact">문의 페이지</Link>로 보내 주시면 확인 후 반영합니다.
         </p>
 
-        <h2 className="legal-h2">이미지 도구도 계속 운영합니다</h2>
-        <p>
-          이 사이트는 원래 이미지 압축·변환 도구로 시작했습니다. 지금은 경제 콘텐츠가
-          중심이지만, 이력서·증명사진 용량을 줄이거나 HEIC를 JPG로 바꾸는 등{" "}
-          <Link href="/#tools">기존 이미지 도구</Link>도 그대로 무료로 제공합니다. 선택한
-          이미지는 가능한 한 브라우저 안에서만 처리하고 서버에 저장하지 않는 것을 원칙으로
-          합니다. 자세한 내용은 <Link href="/privacy-policy">개인정보처리방침</Link>을
-          참고해 주세요.
-        </p>
-
         <h2 className="legal-h2">면책</h2>
         <p>
           이 사이트의 계산기와 글은 투자·세무·법률 자문이 아니라 이해를 돕기 위한 참고 자료입니다.

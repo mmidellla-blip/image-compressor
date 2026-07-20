@@ -28,6 +28,7 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       type: "article",
       siteName: SITE_BRAND,
     },
-    robots: { index: true, follow: true },
+    // 이미지 압축 관련 블로그 글은 저품질 콘텐츠 정책 대응을 위해 당분간 검색 노출을 막습니다.
+    robots: { index: false, follow: false },
   };
 }
