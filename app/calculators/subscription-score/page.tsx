@@ -111,6 +111,72 @@ export default function SubscriptionScorePage() {
           </p>
         </section>
 
+        <section className="calc-sec" aria-labelledby="table-heading">
+          <h2 id="table-heading" className="calc-h2">
+            항목별 배점 기준
+          </h2>
+          <ul className="calc-ul">
+            <li>
+              <strong>무주택기간 (32점)</strong> — 1년 미만이면 2점부터 시작해 1년이
+              지날 때마다 2점씩 늘어나고, 15년 이상이면 만점인 32점입니다.
+            </li>
+            <li>
+              <strong>부양가족수 (35점)</strong> — 부양가족이 0명이어도 기본 5점이
+              주어지고, 1명씩 늘어날 때마다 5점씩 추가되어 6명 이상이면 만점인
+              35점입니다.
+            </li>
+            <li>
+              <strong>청약통장 가입기간 (17점)</strong> — 6개월 미만이면 1점, 6개월
+              이상 1년 미만이면 2점이고, 이후 1년이 지날 때마다 1점씩 늘어나 15년
+              이상이면 만점인 17점입니다.
+            </li>
+          </ul>
+        </section>
+
+        <section className="calc-sec" aria-labelledby="example-heading">
+          <h2 id="example-heading" className="calc-h2">
+            예시로 계산해보기
+          </h2>
+          <p className="calc-p">
+            무주택기간 10년, 부양가족 3명, 청약통장 가입기간 8년인 경우를 계산해
+            보겠습니다.
+          </p>
+          <ul className="calc-ul">
+            <li>무주택기간 10년 → 2×10+2 = <strong>22점</strong></li>
+            <li>부양가족 3명 → 5×3+5 = <strong>20점</strong></li>
+            <li>가입기간 8년 → 8+2 = <strong>10점</strong></li>
+            <li>합계 → <strong>52점</strong> (84점 만점)</li>
+          </ul>
+          <p className="calc-p">
+            같은 방식으로 위 계산기에 본인 조건을 입력하면 항목별 점수와 합계를 바로
+            확인할 수 있습니다.
+          </p>
+        </section>
+
+        <section className="calc-sec" aria-labelledby="mistakes-heading">
+          <h2 id="mistakes-heading" className="calc-h2">
+            가점 계산할 때 자주 하는 실수
+          </h2>
+          <ul className="calc-ul">
+            <li>
+              <strong>무주택기간 기산일 착각</strong> — 원칙적으로 만 30세가 되는
+              날부터 계산하지만, 30세 이전에 혼인했다면 혼인신고일부터 계산합니다.
+              과거 주택을 소유했던 적이 있다면 처분일 이후부터 다시 계산됩니다.
+            </li>
+            <li>
+              <strong>부양가족 범위 오해</strong> — 본인과 같은 세대별 주민등록표에
+              등재된 배우자·직계존속·직계비속만 인정되며, 신청자 본인은 부양가족
+              수에서 제외됩니다.
+            </li>
+            <li>
+              <strong>청약통장 전환 시 가입기간 통산 여부</strong> — 청약저축·예금·
+              부금에서 주택청약종합저축으로 전환한 경우 등 일부는 가입기간이
+              통산되지만 예외 조건이 있어, 통장 발급 은행에서 가입 이력을 확인하는
+              것이 안전합니다.
+            </li>
+          </ul>
+        </section>
+
         <FAQSection items={FAQS} />
 
         <nav className="calc-end-nav" aria-label="관련 페이지">
@@ -193,6 +259,22 @@ export default function SubscriptionScorePage() {
           font-size: 0.95rem;
           line-height: 1.75;
           color: var(--fg);
+        }
+        .calc-p + .calc-p {
+          margin-top: 0.75rem;
+        }
+        .calc-ul {
+          margin: 0;
+          padding-left: 1.15rem;
+          font-size: 0.95rem;
+          line-height: 1.75;
+          color: var(--fg);
+        }
+        .calc-ul li {
+          margin-bottom: 0.5rem;
+        }
+        .calc-ul + .calc-p {
+          margin-top: 0.75rem;
         }
         .calc-end-nav {
           display: flex;

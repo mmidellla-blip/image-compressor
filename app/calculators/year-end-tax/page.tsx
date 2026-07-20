@@ -105,6 +105,62 @@ export default function YearEndTaxPage() {
           </p>
         </section>
 
+        <section className="calc-sec" aria-labelledby="steps-heading">
+          <h2 id="steps-heading" className="calc-h2">
+            계산 구조 한눈에 보기
+          </h2>
+          <ul className="calc-ul">
+            <li><strong>① 근로소득공제</strong> — 총급여 구간별 공제율을 적용해 근로소득금액을 구합니다.</li>
+            <li><strong>② 소득공제</strong> — 부양가족 1인당 150만 원 인적공제와 신용카드 등 사용액 소득공제를 반영해 과세표준을 구합니다.</li>
+            <li><strong>③ 산출세액</strong> — 과세표준에 6~45% 누진세율을 적용합니다.</li>
+            <li><strong>④ 세액공제</strong> — 근로소득세액공제, 연금저축·IRP 세액공제(최대 15%), 월세 세액공제(최대 15%)를 차감해 결정세액을 구합니다.</li>
+            <li><strong>⑤ 환급/추징</strong> — 기납부세액(원천징수액)에서 결정세액(지방소득세 10% 포함)을 뺀 만큼 환급받거나 추가로 납부합니다.</li>
+          </ul>
+        </section>
+
+        <section className="calc-sec" aria-labelledby="example-heading">
+          <h2 id="example-heading" className="calc-h2">
+            예시로 계산해보기
+          </h2>
+          <p className="calc-p">
+            총급여 4,000만 원, 기납부세액 180만 원, 부양가족 2명, 신용카드 사용액 1,500만
+            원, 연금저축 300만 원, 월세 없음인 경우입니다.
+          </p>
+          <ul className="calc-ul">
+            <li>근로소득공제 후 근로소득금액 → 약 2,875만 원</li>
+            <li>인적공제(300만 원) + 신용카드공제(75만 원) → 과세표준 약 2,500만 원</li>
+            <li>산출세액(누진세율 적용) → 약 249만 원</li>
+            <li>근로소득세액공제(68.4만 원) + 연금저축세액공제(45만 원) → 결정세액 약 135.6만 원</li>
+            <li>지방소득세(10%) 포함 총 세부담 약 149.2만 원</li>
+            <li>기납부세액 180만 원 - 149.2만 원 → 약 <strong>30.8만 원 환급</strong></li>
+          </ul>
+        </section>
+
+        <section className="calc-sec" aria-labelledby="tips-heading">
+          <h2 id="tips-heading" className="calc-h2">
+            환급을 늘리는 방법
+          </h2>
+          <ul className="calc-ul">
+            <li>
+              <strong>연금저축·IRP 납입</strong> — 연 600만 원 한도까지 총급여
+              5,500만 원 이하는 15%, 초과는 12%가 세액공제되어 절세 효과가 큰
+              편입니다.
+            </li>
+            <li>
+              <strong>신용카드보다 체크카드·현금영수증</strong> — 신용카드 등 사용액
+              소득공제는 사용처·수단별로 공제율이 달라, 이미 신용카드로 총급여의
+              25%를 채웠다면 남은 지출은 공제율이 더 높은 체크카드나 현금영수증으로
+              돌리는 것이 유리할 수 있습니다.
+            </li>
+            <li>
+              <strong>월세 세액공제 요건 확인</strong> — 무주택 세대주이면서 총급여
+              요건을 충족하면 연 750만 원 한도까지 12~15% 세액공제를 받을 수
+              있으니, 임대차계약서·주민등록등본 등 요건을 놓치지 않았는지
+              확인해보세요.
+            </li>
+          </ul>
+        </section>
+
         <FAQSection items={FAQS} />
 
         <nav className="calc-end-nav" aria-label="관련 페이지">
@@ -187,6 +243,22 @@ export default function YearEndTaxPage() {
           font-size: 0.95rem;
           line-height: 1.75;
           color: var(--fg);
+        }
+        .calc-p + .calc-p {
+          margin-top: 0.75rem;
+        }
+        .calc-ul {
+          margin: 0;
+          padding-left: 1.15rem;
+          font-size: 0.95rem;
+          line-height: 1.75;
+          color: var(--fg);
+        }
+        .calc-ul li {
+          margin-bottom: 0.5rem;
+        }
+        .calc-ul + .calc-p {
+          margin-top: 0.75rem;
         }
         .calc-end-nav {
           display: flex;

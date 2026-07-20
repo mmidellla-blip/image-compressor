@@ -105,6 +105,50 @@ export default function SavingsInterestPage() {
           </p>
         </section>
 
+        <section className="calc-sec" aria-labelledby="example-heading">
+          <h2 id="example-heading" className="calc-h2">
+            예시로 계산해보기
+          </h2>
+          <p className="calc-p">
+            매달 50만 원씩 12개월, 연 이자율 4%인 적금에 가입했다고 가정해 보겠습니다.
+          </p>
+          <ul className="calc-ul">
+            <li>원금(12개월 납입 합계) → <strong>600만 원</strong></li>
+            <li>세전 이자(단리) → 약 <strong>13만 원</strong></li>
+            <li>세전 이자(월복리) → 약 <strong>13.1만 원</strong></li>
+            <li>이자소득세(15.4%) 공제 후 세후 이자 → 단리 약 11만 원, 복리 약 11.1만 원</li>
+          </ul>
+          <p className="calc-p">
+            1년 만기 기준으로는 단리와 복리의 세후 이자 차이가 약 1천 원 안팎으로,
+            체감하기 어려운 수준입니다. 기간이 길어지고 금액이 커질수록 차이가 조금씩
+            벌어지지만, 그래도 우대금리 조건 하나를 더 채우는 것이 이자 방식 선택보다
+            효과가 큰 경우가 많습니다.
+          </p>
+        </section>
+
+        <section className="calc-sec" aria-labelledby="tips-heading">
+          <h2 id="tips-heading" className="calc-h2">
+            적금 고를 때 이자율보다 먼저 볼 것
+          </h2>
+          <ul className="calc-ul">
+            <li>
+              <strong>우대금리 조건</strong> — 광고에 나온 최고 금리는 급여이체·자동이체·
+              카드 실적 등 조건을 모두 채웠을 때 기준인 경우가 많습니다. 기본금리와
+              최고금리 차이, 조건 충족 난이도를 함께 확인해야 합니다.
+            </li>
+            <li>
+              <strong>월 납입 한도</strong> — 고금리 특판 적금은 월 납입 한도가 낮게
+              걸려 있는 경우가 많아, 실제로 받는 이자 총액은 금리만큼 크지 않을 수
+              있습니다.
+            </li>
+            <li>
+              <strong>중도해지 이율</strong> — 만기 전 해지하면 약정 금리 대신 훨씬
+              낮은 중도해지 이율이 적용되므로, 납입 기간을 채울 수 있는지 미리 가늠해
+              보는 것이 좋습니다.
+            </li>
+          </ul>
+        </section>
+
         <FAQSection items={FAQS} />
 
         <nav className="calc-end-nav" aria-label="관련 페이지">
@@ -187,6 +231,22 @@ export default function SavingsInterestPage() {
           font-size: 0.95rem;
           line-height: 1.75;
           color: var(--fg);
+        }
+        .calc-p + .calc-p {
+          margin-top: 0.75rem;
+        }
+        .calc-ul {
+          margin: 0;
+          padding-left: 1.15rem;
+          font-size: 0.95rem;
+          line-height: 1.75;
+          color: var(--fg);
+        }
+        .calc-ul li {
+          margin-bottom: 0.5rem;
+        }
+        .calc-ul + .calc-p {
+          margin-top: 0.75rem;
         }
         .calc-end-nav {
           display: flex;

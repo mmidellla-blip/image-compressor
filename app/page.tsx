@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       <p className="home-legacy-divider" aria-hidden="true">
-        — 아래는 기존 이미지 도구 서비스입니다 —
+        — 이미지 도구도 계속 무료로 제공합니다 —
       </p>
 
       <section className="home-compare" aria-labelledby="compare-heading">
@@ -208,10 +208,10 @@ export default function HomePage() {
       <section id="tools" className="home-tools" aria-labelledby="tools-heading">
         <div className="home-tools-inner">
           <h2 id="tools-heading" className="home-h2">
-            이미지 도구 (레거시 서비스)
+            이미지 도구
           </h2>
           <p className="home-tools-desc">
-            사진 압축·변환 같은 기존 이미지 도구는 계속 운영합니다. 원하는 작업을 고른 뒤
+            사진 압축·변환 같은 이미지 도구도 함께 운영합니다. 원하는 작업을 고른 뒤
             카드를 누르면 해당 페이지로 이동합니다. <strong>브라우저에서 처리</strong>되며,
             별도 프로그램 설치가 필요 없습니다.
           </p>

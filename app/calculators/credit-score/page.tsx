@@ -106,6 +106,49 @@ export default function CreditScorePage() {
           </p>
         </section>
 
+        <section className="calc-sec" aria-labelledby="factors-heading">
+          <h2 id="factors-heading" className="calc-h2">
+            시나리오별 예상 영향 폭
+          </h2>
+          <ul className="calc-ul">
+            <li>
+              <strong>연체</strong> — 단기 연체(10만원 이상, 5일~1개월 지속)는 대략
+              -70~-20점, 장기 연체(수개월 이상)는 -200~-70점 정도로 알려져 있습니다.
+              등록 전 며칠 내 상환한 단기 연체는 일반적으로 영향이 거의 없습니다.
+            </li>
+            <li>
+              <strong>신규 대출·카드</strong> — 신용대출 1건 추가는 -30~-5점, 단기간
+              여러 건의 신규 대출·카드 개설이나 잦은 조회는 -60~-15점 정도 영향을 줄
+              수 있다고 알려져 있습니다.
+            </li>
+            <li>
+              <strong>카드 한도 사용률</strong> — 사용률 30% 미만이면 오히려 0~+10점
+              긍정적으로, 30~70%면 -10~0점, 70% 이상이면 -40~-10점 정도 부정적으로
+              작용하는 경향이 있습니다.
+            </li>
+          </ul>
+          <p className="calc-p">
+            예를 들어 기준 점수 750점에서 장기 연체 + 여러 건 신규 대출 + 사용률
+            70% 이상이 겹치면, 대략 <strong>450~655점</strong> 범위까지 낮아질 수
+            있다고 추정됩니다. 반대로 연체 없이 사용률만 30% 미만으로 관리하면 소폭
+            상승하는 방향으로 움직일 수 있습니다.
+          </p>
+        </section>
+
+        <section className="calc-sec" aria-labelledby="band-heading">
+          <h2 id="band-heading" className="calc-h2">
+            점수 구간별 의미
+          </h2>
+          <ul className="calc-ul">
+            <li><strong>900점 이상</strong> — 매우 우수, 대체로 우량 등급으로 분류되는 구간</li>
+            <li><strong>800~899점</strong> — 우수, 안정적인 신용 이력을 가진 구간</li>
+            <li><strong>700~799점</strong> — 양호, 무난하지만 금융사별 우대 조건은 차이</li>
+            <li><strong>600~699점</strong> — 보통, 대출·카드 심사에서 조건이 다소 불리해질 수 있음</li>
+            <li><strong>500~599점</strong> — 주의, 심사 시 한도·금리에서 불리하게 작용할 가능성</li>
+            <li><strong>500점 미만</strong> — 위험, 신용 거래에 상당한 제약이 있을 수 있음</li>
+          </ul>
+        </section>
+
         <FAQSection items={FAQS} />
 
         <nav className="calc-end-nav" aria-label="관련 페이지">
@@ -188,6 +231,22 @@ export default function CreditScorePage() {
           font-size: 0.95rem;
           line-height: 1.75;
           color: var(--fg);
+        }
+        .calc-p + .calc-p {
+          margin-top: 0.75rem;
+        }
+        .calc-ul {
+          margin: 0;
+          padding-left: 1.15rem;
+          font-size: 0.95rem;
+          line-height: 1.75;
+          color: var(--fg);
+        }
+        .calc-ul li {
+          margin-bottom: 0.5rem;
+        }
+        .calc-ul + .calc-p {
+          margin-top: 0.75rem;
         }
         .calc-end-nav {
           display: flex;
