@@ -12,7 +12,6 @@ export type ToolSlug =
   | "photo-mosaic"
   | "background-remove"
   | "gif-maker"
-  | "video-download"
   | "preset";
 
 export type FaqItem = {
