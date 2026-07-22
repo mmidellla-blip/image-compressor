@@ -11,10 +11,19 @@ import {
   getArticleBySlug,
   getRelatedArticles,
 } from "@/lib/articles";
+import { CALCULATORS } from "@/lib/calculators/registry";
 import { getCanonicalUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+/** 아티클 카테고리별로 이어줄 계산기. 대응하는 계산기가 없으면(경제용어 등) 용어사전으로 안내합니다. */
+const CATEGORY_CALCULATOR_SLUG: Record<string, string> = {
+  청약: "subscription-score",
+  신용점수: "credit-score",
+  연말정산: "year-end-tax",
+  적금: "savings-interest",
+};
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -43,6 +52,9 @@ export default async function ArticleDetailPage({ params }: Props) {
   if (!article) notFound();
 
   const related = getRelatedArticles(slug, 3);
+  const ctaCalculator = CALCULATORS.find(
+    (c) => c.slug === CATEGORY_CALCULATOR_SLUG[article.category]
+  );
 
   const path = `/articles/${encodeURIComponent(article.slug)}`;
   const canonical = getCanonicalUrl(path) ?? path;
@@ -146,13 +158,23 @@ export default async function ArticleDetailPage({ params }: Props) {
         ) : null}
 
         <aside className="cta-box" aria-label="계산기 안내">
-          <p>
-            직접 계산해보고 싶다면{" "}
-            <Link href="/calculators/subscription-score" className="cta-link">
-              청약 가점 계산기
-            </Link>
-            를 사용해보세요.
-          </p>
+          {ctaCalculator ? (
+            <p>
+              직접 계산해보고 싶다면{" "}
+              <Link href={ctaCalculator.path} className="cta-link">
+                {ctaCalculator.title}
+              </Link>
+              를 사용해보세요.
+            </p>
+          ) : (
+            <p>
+              헷갈리는 용어가 더 있다면{" "}
+              <Link href="/glossary" className="cta-link">
+                머니깨비 용어사전
+              </Link>
+              에서 바로 찾아보세요.
+            </p>
+          )}
         </aside>
 
         {related.length > 0 ? (
