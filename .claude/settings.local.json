@@ -1,22 +1,14 @@
 {
   "permissions": {
     "allow": [
+      "Bash(rm -rf .next)",
       "Bash(npx next *)",
+      "Bash(npx eslint *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "PowerShell(Get-ChildItem \"C:\\\\image-compressor\" | Where-Object { $_.Name -ne \"node_modules\" } | Select-Object Name, PSIsContainer)",
-      "Bash(npx tsc *)",
-      "PowerShell(npm install *)",
-      "Bash(npm install *)",
-      "Bash(npm config *)",
-      "Bash(npm run *)",
-      "Bash(curl *)",
-      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['errors'][0] if d['errors'] else 'no errors'\\)\")",
-      "Bash(node *)",
       "Bash(git push *)",
-      "Bash(git pull *)",
-      "Bash(git stash *)",
-      "Bash(git commit *)"
+      "Bash(grep -n \"^  {$\\\\|slug: \\\\\"\" lib/blog/data/chunk-9.ts)",
+      "Bash(npx tsc *)"
     ]
   }
 }
