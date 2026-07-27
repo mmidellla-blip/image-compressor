@@ -5,6 +5,11 @@ import { getPublicSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const siteUrl = getPublicSiteUrl();
+const rawPublisherId =
+  process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || "pub-2200717713315446";
+const publisherId = rawPublisherId.startsWith("ca-")
+  ? rawPublisherId
+  : `ca-${rawPublisherId}`;
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: siteUrl } : {}),
@@ -31,7 +36,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   /** AdSense 사이트 연결용 (각 페이지 head에 메타로 출력됨) */
   other: {
-    "google-adsense-account": "ca-pub-2200717713315446",
+    "google-adsense-account": publisherId,
   },
 };
 
@@ -46,7 +51,7 @@ export default function RootLayout({
         <Script
           id="adsense-script"
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200717713315446"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisherId}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
