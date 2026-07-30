@@ -8,4 +8,4 @@ export function getPublicContactEmail(): string {
 }
 
 /** 푸터·정책 페이지에 표시하는 정보 갱신일 */
-export const SITE_INFO_LAST_UPDATED = "2026년 5월 6일";
+export const SITE_INFO_LAST_UPDATED = "2026년 7월 30일";

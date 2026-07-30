@@ -120,7 +120,7 @@ export function SiteChrome({
           </div>
         </div>
         <p className="footer-trust">
-          선택한 파일은 가능한 한 브라우저에서 처리되며 서버에 저장되지 않습니다.
+          입력하신 데이터와 파일은 서버로 전송되거나 저장되지 않으며, 브라우저 내에서만 안전하게 처리됩니다.
         </p>
         <p className="footer-links-row">
           <Link href="/contact">문의</Link>
