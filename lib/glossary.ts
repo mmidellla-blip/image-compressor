@@ -10,3 +10,7 @@ export function getAllGlossaryTerms(): GlossaryTerm[] {
 export function getGlossaryTermBySlug(slug: string): GlossaryTerm | undefined {
   return getAllGlossaryTerms().find((t) => t.slug === slug);
 }
+
+export function getAllGlossarySlugs(): string[] {
+  return getAllGlossaryTerms().map((t) => t.slug);
+}

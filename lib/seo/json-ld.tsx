@@ -120,6 +120,22 @@ export function buildDefinedTermSetLd(args: {
   };
 }
 
+/** 개별 용어 페이지 */
+export function buildDefinedTermLd(args: {
+  name: string;
+  description: string;
+  url: string;
+  termSetUrl: string;
+}): Record<string, unknown> {
+  return {
+    "@type": "DefinedTerm",
+    name: args.name,
+    description: args.description,
+    url: args.url,
+    inDefinedTermSet: args.termSetUrl,
+  };
+}
+
 /** 블로그 글 — 검색·소셜 미리보기 보조 */
 export function buildArticleLd(args: {
   headline: string;
@@ -127,9 +143,11 @@ export function buildArticleLd(args: {
   url: string;
   datePublished?: string;
   dateModified?: string;
+  authorName?: string;
 }): Record<string, unknown> {
   const pub = args.datePublished ?? "2026-05-06";
   const mod = args.dateModified ?? pub;
+  const author = args.authorName ?? SITE_BRAND;
   return {
     "@type": "Article",
     headline: args.headline,
@@ -141,7 +159,7 @@ export function buildArticleLd(args: {
     dateModified: mod,
     author: {
       "@type": "Organization",
-      name: SITE_BRAND,
+      name: author,
     },
     publisher: {
       "@type": "Organization",

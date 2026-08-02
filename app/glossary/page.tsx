@@ -40,10 +40,8 @@ export default function GlossaryPage() {
       terms: terms.map((t) => ({
         name: t.term,
         description: t.shortDefinition,
-        url: t.relatedArticleSlug
-          ? getCanonicalUrl(`/articles/${encodeURIComponent(t.relatedArticleSlug)}`) ??
-            undefined
-          : undefined,
+        url:
+          getCanonicalUrl(`/glossary/${encodeURIComponent(t.slug)}`) ?? undefined,
       })),
     }),
     buildBreadcrumbListLd([

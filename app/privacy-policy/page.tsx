@@ -7,7 +7,7 @@ import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 export const metadata: Metadata = buildStaticPageMetadata({
   title: "개인정보처리방침",
   description:
-    "머니깨비 계산기·아티클·용어사전과 이미지 툴의 개인정보 처리, 업로드 파일 비저장 원칙, 브라우저 처리, 쿠키·Google 애드센스·Google 애널리틱스 가능성, 문의처 안내.",
+    "머니깨비 계산기·아티클·용어사전의 개인정보 처리, 브라우저 기반 계산, 쿠키·Google 애드센스·Google 애널리틱스, 문의처 안내.",
   path: "/privacy-policy",
   keywords: [
     "개인정보처리방침",
@@ -30,9 +30,9 @@ export default function PrivacyPolicyPage() {
         <p className="legal-updated">최종 수정일: {updated}</p>
 
         <p className="legal-lead">
-          머니깨비(이하 &quot;사이트&quot;)는 이용자가 회원가입 없이 계산기·아티클·용어사전과
-          이미지 툴을 쓸 수 있도록 설계하였습니다. 개인정보 보호법 등 관련 법령을 준수하며,
-          아래와 같이 개인정보 및 이용자 데이터를 처리합니다.
+          머니깨비(이하 &quot;사이트&quot;)는 이용자가 회원가입 없이 계산기·아티클·용어사전을
+          이용할 수 있도록 설계하였습니다. 개인정보 보호법 등 관련 법령을 준수하며, 아래와 같이
+          개인정보 및 이용자 데이터를 처리합니다.
         </p>
 
         <h2 className="legal-h2">1. 수집·처리할 수 있는 정보의 종류</h2>
@@ -40,12 +40,6 @@ export default function PrivacyPolicyPage() {
           <li>
             <strong>계산기 입력값:</strong> 청약 가점·신용점수·연말정산·적금 계산기에 입력한
             숫자는 서버로 전송되지 않고 이용자 브라우저 안에서만 계산·표시됩니다.
-          </li>
-          <li>
-            <strong>도구 이용 시 이미지·파일:</strong> 원칙적으로 이용자 단말의 브라우저 메모리에서만
-            처리하며, 운영 정책상 회사 서버에 업로드 파일을 저장하거나 데이터베이스에 보관하지
-            않습니다. 결과 파일은 이용자가 다운로드버튼으로 기기에 저장할 때만 해당 기기에
-            기록됩니다.
           </li>
           <li>
             <strong>문의 시 제공 정보:</strong> 문의 과정에서 이용자가 자발적으로 입력하는 이름(또는
@@ -62,25 +56,16 @@ export default function PrivacyPolicyPage() {
           </li>
         </ul>
 
-        <h2 className="legal-h2">2. 업로드 파일의 저장 여부</h2>
+        <h2 className="legal-h2">2. 계산기 데이터 처리 방식</h2>
         <p>
-          이용자가 도구에서 선택하는 이미지·파일은 <strong>서버 디스크에 영구 저장하지 않습니다</strong>
-          를 원칙으로 합니다. 처리는 이용자 브라우저가 제공하는 Canvas·파일 API 등 웹 표준 기능을
-          활용합니다. 다만 향후 특정 기능에서 서버 연산을 도입할 경우, 해당 화면에 목적·보관
-          기간을 별도로 표시하고 본 방침을 개정합니다.
+          계산기에 입력한 숫자는 <strong>서버로 전송되지 않으며</strong>, 이용자 브라우저가
+          제공하는 JavaScript 환경에서만 계산·표시됩니다. 탭을 닫거나 새로고침하면 입력값은
+          일반적으로 소멸합니다.
         </p>
 
-        <h2 className="legal-h2">3. 브라우저 기반 처리 방식</h2>
-        <p>
-          대부분의 도구는 페이지가 열린 동안 브라우저 메모리에서만 데이터가 처리됩니다. 탭을
-          닫거나 새로고침하면 메모리 상의 원본·중간 데이터는 소멸되는 것이 일반적입니다. 공용 PC를
-          이용한 경우 민감한 이미지 처리 후에는 브라우저 기록·다운로드 폴더를 확인하는 것이
-          바람직합니다.
-        </p>
-
-        <h2 className="legal-h2">4. 처리 목적</h2>
+        <h2 className="legal-h2">3. 처리 목적</h2>
         <ul className="legal-ul">
-          <li>계산기·아티클·용어사전·이미지 툴 기능 제공·품질 개선·오류 대응</li>
+          <li>계산기·아티클·용어사전 기능 제공·품질 개선·오류 대응</li>
           <li>문의 접수 및 회신</li>
           <li>부정 이용 방지, 보안 사고 대응</li>
           <li>
@@ -94,7 +79,7 @@ export default function PrivacyPolicyPage() {
           <li>법령에 따른 의무 이행</li>
         </ul>
 
-        <h2 className="legal-h2">5. Google 애드센스에 관한 안내</h2>
+        <h2 className="legal-h2">4. Google 애드센스에 관한 안내</h2>
         <p>
           사이트 운영비 일부를 충당하기 위해{" "}
           <strong>Google LLC 등이 제공하는 Google 애드센스</strong> 광고를 게재할 수 있습니다. 애드센스는
@@ -118,7 +103,7 @@ export default function PrivacyPolicyPage() {
           있습니다.
         </p>
 
-        <h2 className="legal-h2">6. Google Analytics에 관한 안내</h2>
+        <h2 className="legal-h2">5. Google Analytics에 관한 안내</h2>
         <p>
           서비스 이용 현황 파악을 위해 <strong>Google 애널리틱스(GA4 등)</strong>를 도입할 수 있습니다.
           분석 목적의 정보는 쿠키·식별자를 통해 수집될 수 있으며, 브라우저 부가 기능이나 Google
@@ -126,15 +111,15 @@ export default function PrivacyPolicyPage() {
           방침에 반영합니다.
         </p>
 
-        <h2 className="legal-h2">7. 쿠키 및 저장소</h2>
+        <h2 className="legal-h2">6. 쿠키 및 저장소</h2>
         <p>
           사이트는 이용 편의·통계·광고를 위해 쿠키 또는 로컬 스토리지를 사용할 수 있습니다. 브라우저
           설정에서 쿠키를 거부할 수 있으나, 일부 기능이나 광고 표시 방식이 달라질 수 있습니다.
         </p>
 
-        <h2 className="legal-h2">8. 이용자 데이터 처리 방식 요약</h2>
+        <h2 className="legal-h2">7. 이용자 데이터 처리 방식 요약</h2>
         <ul className="legal-ul">
-          <li>도구 입력 파일: 브라우저 처리 원칙, 서버 비저장.</li>
+          <li>계산기 입력값: 브라우저 처리, 서버 비전송.</li>
           <li>문의 메일: 회신 목적으로만 사용하며, 스팸 방지를 위해 불필요한 수집을 지양합니다.</li>
           <li>
             로그·분석·광고: 도입 시점에 맞춰 최소한의 범위에서 처리하며, 관련 제3자 정책을
@@ -142,25 +127,25 @@ export default function PrivacyPolicyPage() {
           </li>
         </ul>
 
-        <h2 className="legal-h2">9. 보관 및 파기</h2>
+        <h2 className="legal-h2">8. 보관 및 파기</h2>
         <p>
           수집 목적이 달성되면 지체 없이 파기합니다. 다만 관련 법령에 따라 보관이 필요한 경우 해당
           기간 동안 보관할 수 있습니다.
         </p>
 
-        <h2 className="legal-h2">10. 이용자의 권리</h2>
+        <h2 className="legal-h2">9. 이용자의 권리</h2>
         <p>
           개인정보 열람·정정·삭제·처리 정지 등을 요청할 수 있으며, 문의 채널을 통해 접수합니다.
         </p>
 
-        <h2 className="legal-h2">11. 개인정보 문의 및 연락처</h2>
+        <h2 className="legal-h2">10. 개인정보 문의 및 연락처</h2>
         <p>
           개인정보 관련 문의는 전자우편 <a href={`mailto:${inquiryEmail}`}>{inquiryEmail}</a> 또는{" "}
           <Link href="/contact">문의 페이지</Link>를 이용해 주세요. 운영 가능한 범위에서 성실히
           답변합니다.
         </p>
 
-        <h2 className="legal-h2">12. 방침의 변경</h2>
+        <h2 className="legal-h2">11. 방침의 변경</h2>
         <p>
           법령·서비스 변경에 따라 본 방침을 수정할 수 있으며, 중요한 변경은 사이트를 통해 공지합니다.
         </p>

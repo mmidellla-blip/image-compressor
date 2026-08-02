@@ -34,10 +34,15 @@ export function GlossarySearch({ terms }: { terms: GlossaryTerm[] }) {
         <dl className="glossary-list">
           {filtered.map((t) => (
             <div key={t.slug} className="glossary-item">
-              <dt className="glossary-term">{t.term}</dt>
+              <dt className="glossary-term">
+                <Link href={`/glossary/${encodeURIComponent(t.slug)}`}>{t.term}</Link>
+              </dt>
               <dd className="glossary-def">
                 {t.shortDefinition}
                 <div className="glossary-links">
+                  <Link href={`/glossary/${encodeURIComponent(t.slug)}`}>
+                    용어 페이지 →
+                  </Link>
                   {t.relatedArticleSlug ? (
                     <Link href={`/articles/${encodeURIComponent(t.relatedArticleSlug)}`}>
                       자세히 보기 →
@@ -89,6 +94,13 @@ export function GlossarySearch({ terms }: { terms: GlossaryTerm[] }) {
           font-size: 1.02rem;
           margin-bottom: 0.35rem;
           color: #0f172a;
+        }
+        .glossary-term a {
+          color: inherit;
+          text-decoration: none;
+        }
+        .glossary-term a:hover {
+          color: #d69e2e;
         }
         .glossary-def {
           margin: 0;

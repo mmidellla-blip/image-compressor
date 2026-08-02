@@ -1,8 +1,16 @@
 # 애드센스·운영 준비 체크리스트
 
-기준일: 2026년 5월 6일. 배포 URL·문의 메일 설정 후 다시 확인하세요.
+기준일: 2026년 8월 3일. AdSense 저품질 콘텐츠 대응(Phase 1~2) 반영 후 배포·재신청은 [adsense-reapply-checklist.md](./adsense-reapply-checklist.md)를 따르세요.
 
-## 완료한 항목
+## 2026-08-03 추가 완료 (AdSense 대응)
+
+- **레거시 차단**: `/blog`, 14개 이미지 도구 → middleware 301 → `/`, robots Disallow
+- **브랜드 정렬**: privacy/terms에서 이미지 툴 문구 제거, 홈 카피·푸터 정리
+- **콘텐츠**: 아티클 40편(신규 18), 본문 평균 2,000자+ 확장
+- **용어사전**: `/glossary/[slug]` 18개 + sitemap
+- **E-E-A-T**: `/editorial-policy`, 아티클 YMYL 면책·작성자·공식 출처
+
+## 완료한 항목 (이전)
 
 - **필수 페이지**: `/about`, `/contact`, `/privacy-policy`, `/terms` 존재. 소개·문의에 운영 목적·응답 지연 안내·오류/제안/제휴 안내.
 - **개인정보·약관**: 브라우저 처리·비저장 원칙·쿠키·애드센스·Analytics 가능성·문의 메일 (privacy-policy).

@@ -10,6 +10,8 @@ export type Article = {
   description: string;
   category: string;
   datePublished: string;
+  /** 작성자 표시명 (미설정 시 머니깨비 편집팀) */
+  author?: string;
   contentHtml: string;
   relatedSlugs: string[];
   faq?: ArticleFaqItem[];

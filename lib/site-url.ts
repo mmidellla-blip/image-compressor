@@ -1,4 +1,4 @@
-/** 운영 사이트 기본 주소. `NEXT_PUBLIC_SITE_URL`이 없을 때 canonical·사이트맵 등에 사용합니다. */
+/** 운영 사이트 기본 주소 (폴백). AdSense·Search Console 등록 URL과 NEXT_PUBLIC_SITE_URL을 일치시키세요. */
 export const DEFAULT_PUBLIC_SITE_URL = "https://www.compressdeck.com";
 
 /**

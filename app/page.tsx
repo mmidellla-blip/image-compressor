@@ -61,7 +61,8 @@ export default function HomePage() {
           계산기와 쉬운 설명으로 바로 확인해 보세요.
         </p>
         <p className="home-problem-lead">
-          머니깨비 유튜브·인스타그램 채널 내용을 계산기로 바로 확인해보세요.
+          청약·신용·연말정산·적금 주제별 아티클과 계산기로, 내 상황에 맞는 숫자와 개념을
+          바로 확인해 보세요.
         </p>
         <ul className="home-pill-list" aria-label="서비스 특징">
           <li>회원가입 없이 사용</li>

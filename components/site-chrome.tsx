@@ -116,11 +116,14 @@ export function SiteChrome({
               <li>
                 <Link href="/terms">이용약관</Link>
               </li>
+              <li>
+                <Link href="/editorial-policy">편집 기준</Link>
+              </li>
             </ul>
           </div>
         </div>
         <p className="footer-trust">
-          입력하신 데이터와 파일은 서버로 전송되거나 저장되지 않으며, 브라우저 내에서만 안전하게 처리됩니다.
+          계산기 입력값은 서버로 전송되지 않으며, 브라우저 안에서만 처리됩니다.
         </p>
         <p className="footer-links-row">
           <Link href="/contact">문의</Link>

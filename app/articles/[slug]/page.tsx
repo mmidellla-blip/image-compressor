@@ -12,6 +12,7 @@ import {
   getRelatedArticles,
 } from "@/lib/articles";
 import { CALCULATORS } from "@/lib/calculators/registry";
+import { DEFAULT_ARTICLE_AUTHOR, YMYL_DISCLAIMER_HTML } from "@/lib/official-sources";
 import { getCanonicalUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -61,12 +62,15 @@ export default async function ArticleDetailPage({ params }: Props) {
   const articlesIndex = getCanonicalUrl("/articles") ?? "/articles";
   const home = getCanonicalUrl("/") ?? "/";
 
+  const authorName = article.author ?? DEFAULT_ARTICLE_AUTHOR;
+
   const graph: Record<string, unknown>[] = [
     buildArticleLd({
       headline: article.title,
       description: article.description,
       url: canonical,
       datePublished: article.datePublished,
+      authorName,
     }),
     buildBreadcrumbListLd([
       { name: "홈", url: home },
@@ -103,7 +107,7 @@ export default async function ArticleDetailPage({ params }: Props) {
             itemScope
             itemType="https://schema.org/Person"
           >
-            <span itemProp="name">머니깨비 편집팀</span>
+            <span itemProp="name">{authorName}</span>
           </span>
           {article.datePublished && (
             <>
@@ -156,6 +160,11 @@ export default async function ArticleDetailPage({ params }: Props) {
             </dl>
           </section>
         ) : null}
+
+        <div
+          className="prose prose-html article-disclaimer"
+          dangerouslySetInnerHTML={{ __html: YMYL_DISCLAIMER_HTML }}
+        />
 
         <aside className="cta-box" aria-label="계산기 안내">
           {ctaCalculator ? (
@@ -354,6 +363,23 @@ export default async function ArticleDetailPage({ params }: Props) {
         }
         .article-home-link:hover {
           text-decoration: underline;
+        }
+        .article-disclaimer {
+          margin-top: 1.75rem;
+        }
+        .article-disclaimer :global(.ymyl-disclaimer) {
+          margin: 0;
+          padding: 1rem;
+          background: #fffbeb;
+          border: 1px solid #fde68a;
+          border-radius: 10px;
+          font-size: 0.85rem;
+          line-height: 1.65;
+          color: #78350f;
+        }
+        .article-disclaimer :global(.ymyl-disclaimer a) {
+          color: #b45309;
+          font-weight: 600;
         }
       `}</style>
     </SiteChrome>
