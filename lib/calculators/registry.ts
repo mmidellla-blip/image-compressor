@@ -31,6 +31,12 @@ export const CALCULATORS: CalculatorEntry[] = [
     title: "적금 이자 계산기",
     description: "단리·복리 방식의 만기 세후 수령액을 비교합니다.",
   },
+  {
+    slug: "comprehensive-real-estate-tax",
+    path: "/calculators/comprehensive-real-estate-tax",
+    title: "종합부동산세 계산기",
+    description: "2026년 세제개편안 기준 공시가격·공제·누진세율로 예상 종부세를 계산합니다.",
+  },
 ];
 
 export const CALCULATOR_PATHS: string[] = CALCULATORS.map((c) => c.path);

@@ -5,16 +5,16 @@ import { CALCULATORS } from "@/lib/calculators/registry";
 import { buildStaticPageMetadata } from "@/lib/seo/static-metadata";
 
 export const metadata: Metadata = buildStaticPageMetadata({
-  title: "경제 계산기 모음 - 청약·신용점수·연말정산·적금",
+  title: "경제 계산기 모음 - 청약·신용점수·연말정산·종부세",
   description:
-    "청약 가점 계산기, 신용점수 시뮬레이터, 연말정산 환급액 계산기, 적금 이자 계산기를 한곳에서 무료로 이용하세요.",
+    "청약 가점 계산기, 신용점수 시뮬레이터, 연말정산 환급액 계산기, 종합부동산세 계산기를 한곳에서 무료로 이용하세요.",
   path: "/calculators",
   keywords: [
     "경제 계산기",
     "청약 가점 계산기",
     "신용점수 시뮬레이터",
     "연말정산 환급액 계산기",
-    "적금 이자 계산기",
+    "종합부동산세 계산기",
   ],
 });
 
@@ -43,7 +43,8 @@ export default function CalculatorsIndexPage() {
           →소득공제→누진세율→세액공제 순서로 국세청이 안내하는 계산 구조를 따릅니다. 신용점수
           시뮬레이터는 신용평가사가 공개하지 않는 정확한 알고리즘 대신 일반적으로 알려진 항목별
           영향 범위를 참고한 추정치이고, 적금 이자 계산기는 단리·복리 공식과 이자소득세(15.4%)를
-          그대로 계산에 넣었습니다.
+          그대로 계산에 넣었습니다. 종합부동산세 계산기는 2026년 8월 발표된 세제개편안의
+          기본공제·공정시장가액비율·누진세율 구조를 그대로 반영했습니다.
         </p>
         <p className="calc-about-p">
           다만 모든 계산기는 <strong>참고용 추정치</strong>입니다. 실제 접수·신고 시 최종 수치는

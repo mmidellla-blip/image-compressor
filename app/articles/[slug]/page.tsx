@@ -24,6 +24,7 @@ const CATEGORY_CALCULATOR_SLUG: Record<string, string> = {
   신용점수: "credit-score",
   연말정산: "year-end-tax",
   적금: "savings-interest",
+  종부세: "comprehensive-real-estate-tax",
 };
 
 type Props = { params: Promise<{ slug: string }> };
