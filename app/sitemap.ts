@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CALCULATOR_PATHS } from "@/lib/calculators/registry";
 import { getAllArticleSlugs } from "@/lib/articles";
-import { getAllGlossarySlugs } from "@/lib/glossary";
 import { DEFAULT_PUBLIC_SITE_URL, getPublicSiteUrl } from "@/lib/site-url";
 import { headers } from "next/headers";
 
@@ -43,7 +42,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       "/calculators",
       "/glossary",
       ...CALCULATOR_PATHS,
-      ...getAllGlossarySlugs().map((slug) => `/glossary/${encodeURIComponent(slug)}`),
       ...getAllArticleSlugs().map((slug) => `/articles/${encodeURIComponent(slug)}`),
     ]),
   ];

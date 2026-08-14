@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${term.term} 뜻 — ${SITE_BRAND} 용어사전`,
     description: term.shortDefinition,
     path: `/glossary/${term.slug}`,
+    noindex: true,
   });
 }
 
